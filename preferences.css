@@ -1,0 +1,53 @@
+
+body {
+    font-family: Helvetica;
+}
+
+header {
+    background: rgb(44, 44, 44);
+    height: 100px;
+}
+header ul li {
+    display: inline-block;
+    margin-top: 40px;
+    margin-right: 75px;
+}
+nav {
+    width: 960px;
+    margin: 0px auto;
+}
+main {
+    width: 960px;
+    margin: 30px auto;
+}
+
+nav ul li a {
+    text-decoration: none;
+    list-style: none;
+    color: white;
+}
+
+main ul li {
+    list-style: none;
+    float: left;
+    margin: 30px 30px 30px 0px;
+}
+main ul li button {
+    list-style: none;
+    float: left;
+    margin: 30px 30px 30px 0px;
+    width: 200px;
+    height: 200px;
+}
+
+button {
+    margin: 10px 41% 10px 41%;
+    border: none;
+    padding: 10px 30px;
+    background: black;
+    color: white;
+    border-radius: 3px;
+    font-size: 18px;
+    transition: 350ms;
+    cursor: pointer;
+}
