@@ -37,12 +37,28 @@ main {
     word-spacing: .1em;
     font-size: 16px;
     background: #cde7f0;
-    color: gray;
+    color: 888;
     font-weight: bolder;
     border-radius: 12px;
     padding:2px;
-    margin-left: 600px;
-    margin-top: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px; 
+  }
+
+  .btngroup button{
+      background-color:#f5e9dc;
+      color: gray;
+      padding:10px 24px;
+      float: right;
+      margin-right: 375px;
+      margin-bottom: 40px;
+      border-radius: 12px;
+      margin-top: 40px;
+      font-size: 14px;
+      font-weight: bold;
+
   }
 
   #resthead {
@@ -59,16 +75,18 @@ main {
     font-weight: bolder;
     border-radius: 12px;
     padding:2px;
-    margin-left: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 50px;
   }
 /* got this code from W3 schools */
   #map {
-    
+    margin-top: 70px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 600px;
   }
 
  footer {
