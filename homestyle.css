@@ -42,7 +42,7 @@ h1 {
     z-index:100;
 }
 .overlay {
-    background-color:black;
+    background-color:rgb(29, 191, 255);
     height:100%;
     width:100%;
     opacity: 0.7;
@@ -64,14 +64,14 @@ video#bgVideo { /*from stackoverflow*/
     background-color: rgb(25, 255, 121);
 }
 #guest:hover {
-    border:solid rgb(29, 191, 255) 2px;
-    background-color:rgb(29, 191, 255);
+    border:solid rgb(160, 78, 255) 2px;
+    background-color:rgb(160, 78, 255);
 }
 #sign:active {
     border:solid rgb(18, 160, 77) 2px;
     background-color: rgb(18, 160, 77);
 }
 #guest:active {
-    border:solid rgb(21, 133, 177) 2px;
-    background-color:rgb(21, 133, 177);
+    border:solid rgb(107, 52, 170) 2px;
+    background-color:rgb(107, 52, 170);
 }
