@@ -75,12 +75,12 @@ function sumbitHandler() {
     for (var k = 0; k < Restaurant.allRestaurants.length; k++) {
       if (Restaurant.allRestaurants[k].mealtype === mainMeal && Restaurant.allRestaurants[k].price === mainPrice) {
         results.push(Restaurant.allRestaurants[k]);
-        console.log(results);
       }
     }
+    console.log('matching restaurants are: ', results);
     //create a random number using the array
     var ranNumber = Math.floor(Math.random()*results.length);
-    console.log(ranNumber);
+    console.log('random index is: ' + ranNumber);
     //display random result
     var testEl = document.getElementById('test');
     var liEl = document.createElement('li');
