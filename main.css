@@ -1,5 +1,4 @@
 * {
-  width: 100%;
   font-size: 18px;
   font-family: 'Quicksand', sans-serif;
 }
@@ -9,7 +8,7 @@ html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: 100%;
 }
 body {
   width: 100%;
@@ -51,9 +50,15 @@ nav ul li {
   margin: 85px auto 0 auto;
   width: 500px;
   height: 525px;
-  background-color: #242931;
+  background-color: #242931f8;
   border-radius: 5px;
+}
 
+#inner-container {
+  display: block;
+  width: 200px;
+  padding-top: 20px;
+  margin: auto;
 }
 .mealtype {
   font-family: 'Quicksand', sans-serif;
@@ -90,7 +95,8 @@ label input:checked + p {
 
 
 #price {
-  width: 165px;
+  display: block; 
+  width: 100%;
   height: 35px;
   padding-top: 20px;
   padding-bottom: 2px;
@@ -101,19 +107,30 @@ label input:checked + p {
   color: white;
   background-color: rgb(87, 83, 83);
   text-align: center;
-  width: 50px;
   height: 20px;
   display: inline-block;
   margin: 0 auto;
   width: 50px;
   border-radius: 5px;
+  transition: 300ms;
   
 }
+
+p.dollar {
+  width: 30%;
+  margin-right: 3%;
+}
+
+#lastdollar {
+  margin-right: 0%
+}
+
 
 .dollar:hover {
   cursor: pointer;
   background-color: darkgray;
 }
+
 
 .meal-type:first-child {
   margin-top: 15px;
@@ -143,7 +160,6 @@ label input:checked + p {
   border-radius: 80px;
 }
 
-
 #submit:hover {
   cursor: pointer;
   background-color: lightgreen;
@@ -151,4 +167,9 @@ label input:checked + p {
 
 #submit:active {
   background-color: rgb(18, 160, 77);
+}
+
+.dollar:active, .mealtype:active {
+  background-color: rgb(18, 160, 77);
+  transition: 300ms;
 }
