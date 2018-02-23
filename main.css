@@ -173,3 +173,10 @@ p.dollar {
   background-color: rgb(18, 160, 77);
   transition: 300ms;
 }
+
+/* TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEST */
+
+#test {
+  font-size: 30px;
+  color: white;
+}
