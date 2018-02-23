@@ -2,7 +2,6 @@
     box-sizing: border-box;
 }
 body {
-    background-color:gray;
     position: relative;
 }
 a {
@@ -17,6 +16,11 @@ h1 {
     font-size:170px;
     color:white;
 }
+h2 {
+    font-size:35px;
+    font-family: 'Quicksand', sans-serif;
+    margin-bottom:20px;
+}
 .btn {
     text-align: center;
     margin:10px 20px 20px 20px;
@@ -24,9 +28,28 @@ h1 {
     height:50px;
     border:solid white 2px;
     border-radius:80px;
-    padding-top:13px;
+    padding-top:15px;
     transition: 200ms;
     display:inline-block;
+    vertical-align:top;
+}
+.close {
+    float:right;
+    margin-right:20px;
+    margin-top:10px;
+}
+.close:hover {
+    cursor:pointer;
+}
+#signInButtonPopup {
+    text-align: center;
+}
+#signInButton, #signInButtonPopup {
+    background-color: transparent;
+    text-transform: uppercase;
+    color:white;
+    font-size:15px;
+    padding-top:2px;
 }
 .btn a {
     padding-top:5px;
@@ -34,7 +57,6 @@ h1 {
 .signIn {
     height:400px;
     text-align: center;
-    padding: 20px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -42,10 +64,10 @@ h1 {
     z-index:100;
 }
 .overlay {
-    background-color:black;
+    background-color: #242931;
     height:100%;
     width:100%;
-    opacity: 0.7;
+    opacity: 0.8;
     z-index:-50;
 }
 video#bgVideo { /*from stackoverflow*/
@@ -58,11 +80,11 @@ video#bgVideo { /*from stackoverflow*/
     min-height: 100%;
     z-index: -100;    
     background-size: cover;
-    }
+}
 .create:hover {
     text-decoration: underline;
 }
-#sign:hover {
+#signInButton:hover, #signInButtonPopup:hover {
     border:solid rgb(25, 255, 121) 2px;
     background-color: rgb(25, 255, 121);
 }
@@ -70,11 +92,53 @@ video#bgVideo { /*from stackoverflow*/
     border:solid rgb(160, 78, 255) 2px;
     background-color:rgb(160, 78, 255);
 }
-#sign:active {
+#signInButton:active, #signInButtonPopup:active {
     border:solid rgb(18, 160, 77) 2px;
     background-color: rgb(18, 160, 77);
 }
 #guest:active {
     border:solid rgb(107, 52, 170) 2px;
     background-color:rgb(107, 52, 170);
+}
+.modal-body input {
+    width:80%;
+    height: 30px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+.modal { /*from w3schools*/
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 999; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content {
+    position: relative;
+    text-align: center;
+    background-color: #242931;
+    color:white;
+    margin: auto;
+    padding: 20px;
+    border-radius:50px;
+    height: 500px;
+    width: 600px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+.innerModal {
+    margin-top:120px;
+}
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
 }

@@ -2,6 +2,8 @@
 
 var userDb = [];
 var createAccount = document.getElementById('createButton');
+var signIn = document.getElementById('signInButton');
+var popUp = document.getElementById('myModal');
 
 function Constructor(userName, userCity, userCnum) {
   this.name = userName;
@@ -10,22 +12,40 @@ function Constructor(userName, userCity, userCnum) {
   userDb.push(this);
   console.log(userDb);
 }
-
 function handleContactSubmit(event) {
   console.log(event);
   event.preventDefault();
-    // var userName = document.getElementById('userName').value;
-    // var userCity = document.getElementById('userCity').value;
-    // var userCnum = parseInt(document.getElementById('userCnum').value);
+  var userName = document.getElementById('userName').value;
+  var userCity = document.getElementById('userCity').value;
+  var userCnum = parseInt(document.getElementById('userCnum').value);
+  var span = document.getElementsByClassName("close")[0];
 
-  var userName = event.target.userName.value;
-  var userCity = event.target.userCity.value;
-  var userCnum = parseInt(event.target.userCnum.value);
+  //   var userName = event.target.userName.value;
+  //   var userCity = event.target.userCity.value;
+  //   var userCnum = parseInt(event.target.userCnum.value);
 
   new Constructor(userName, userCity, userCnum);
 
-  event.target.userName.value = null;
-  event.target.userCity.value = null;
-  event.target.userCnum.value = null;
+//   event.target.userName.value = null;
+//   event.target.userCity.value = null;
+//   event.target.userCnum.value = null;
 }
-createAccount.addEventListener('click', handleContactSubmit);
+
+///////////// HOMEPAGE POPUP ///////////////
+function handleSignIn(event) {
+  event.preventDefault();
+  popUp.style.display = 'block';
+  console.log('sign in button pushed');
+}
+
+window.onclick = function(event) {
+  if (event.target === popUp) {
+    popUp.style.display = 'none';
+  }
+};
+if (signIn) {
+  signIn.addEventListener('click', handleSignIn);
+}
+if (createAccount) {
+  createAccount.addEventListener('click', handleContactSubmit);
+}
