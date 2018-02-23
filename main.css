@@ -1,7 +1,7 @@
 * {
   width: 100%;
   font-size: 18px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 html {
   background: url(images/background.jpg) no-repeat center center fixed;
@@ -16,6 +16,7 @@ body {
 }
 /* nav */
 nav {
+  margin-top: 20px;
   width: 100%;
   height: 100px;
   background-color: rgba(48, 48, 56, 0.479);
@@ -28,6 +29,7 @@ nav h1 {
   text-align: center;
   font-size: 40px;
   padding-top: 5px;
+  font-family: 'Titan One', cursive;
 }
 
 nav ul {
@@ -48,25 +50,45 @@ nav ul li {
 #main {
   margin: 85px auto 0 auto;
   width: 500px;
-  height: 425px;
-  background-color: rgb(48, 48, 56);
+  height: 525px;
+  background-color: rgb(35, 41, 49);
   border-radius: 5px;
 
 }
-button {
+.mealtype {
+  font-family: 'Quicksand', sans-serif;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+  width: 200px;
+  height: 45px;
   text-decoration: none;
+  padding-top: 25px;
   background-color: rgb(87, 83, 83);
-  border: none;
-  outline: 0;
+  font-size: 20px;
+  font-weight: bold;
   border-radius: 5px;
   color: white;
   transition: 300ms;
+  margin: 10px auto;
 }
 
-button:hover {
-  cursor: pointer;
+.mealtype:hover {
+background-color: darkgray;
+}
+
+
+label input{
+  visibility: hidden; 
+  position: absolute; 
+}
+
+label input:checked + p { 
   background-color: darkgray;
 }
+
+
+
 #price {
   width: 165px;
   height: 35px;
@@ -75,10 +97,22 @@ button:hover {
   margin: auto;
 }
 .dollar {
+  font-weight: bold;
+  color: white;
+  background-color: rgb(87, 83, 83);
+  text-align: center;
+  width: 50px;
+  height: 20px;
   display: inline-block;
   margin: 0 auto;
   width: 50px;
+  border-radius: 5px;
   
+}
+
+.dollar:hover {
+  cursor: pointer;
+  background-color: darkgray;
 }
 
 .meal-type:first-child {
@@ -103,6 +137,9 @@ button:hover {
   transition: 300ms;
   background-color: rgba(169, 169, 169, 0.24);
   border: 1px solid;
+  outline: 0;
+  font-weight: bold;
+  color: white;
 }
 
 #submit:hover {

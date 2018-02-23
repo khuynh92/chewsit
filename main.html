@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <title>Main Page</title>
   <link rel="stylesheet" type="text/css" href="reset.css" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand|Titan+One" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
+
 <body>
   <nav>
     <h1>Chews It</h1>
@@ -13,23 +16,54 @@
       <li>About Us</li>
       <li>Preferences</li>
       <li>History</li>
-   </ul>
+    </ul>
   </nav>
   <section id="main">
     <div id="price">
-      <button class="dollar">$</button>
-      <button class="dollar">$$</button>
-      <button class="dollar">$$$</button>
-     </div>
+      <label>
+        <input type="radio" name="dolla" value="onedolla" />
+        <p class="dollar">$</p>
+      </label>
+
+      <label>
+        <input type="radio" name="dolla" value="twodolla" />
+        <p class="dollar">$$</p>
+      </label>
+
+      <label>
+        <input type="radio" name="dolla" value="threedolla" />
+        <p class="dollar">$$$</p>
+      </label>
+    </div>
     <div id="meal">
-      <button class="meal-type">Breakfast</button>
-      <button class="meal-type">Lunch</button>
-      <button class="meal-type">Dinner</button>
-      <button class="meal-type">Snack</button>
-      <button class="meal-type">Dessert</button>
-    </div>  
+      <label>
+        <input type="radio" name="mealtype" value="breakfast" />
+        <p class="mealtype">Breakfast</p>
+      </label>
+
+      <label>
+        <input type="radio" name="mealtype" value="lunch" />
+        <p class="mealtype">Lunch</p>
+      </label>
+
+      <label>
+        <input type="radio" name="mealtype" value="Dinner" />
+        <p class="mealtype">Dinner</p>
+      </label>
+
+      <label>
+        <input type="radio" name="mealtype" value="Snack" /> 
+        <p class="mealtype">Snack</p>
+      </label>
+
+      <label>
+        <input type="radio" name="mealtype" value="Dessert" />
+        <p class="mealtype">Dessert</p>
+      </label>
+    </div>
   </section>
   <button id="submit">Chews It</button>
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
+
 </html>
