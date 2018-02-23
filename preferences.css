@@ -1,6 +1,11 @@
 
 body {
     font-family: Helvetica;
+    background: rgb(44, 44, 44);
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    background-image: src="img/table-background";
+    background-size: cover;
 }
 
 header {
@@ -25,13 +30,9 @@ nav ul li a {
     text-decoration: none;
     list-style: none;
     color: white;
+    margin: 30px 30px 30px 30px;
 }
 
-main ul li {
-    list-style: none;
-    float: left;
-    margin: 30px 30px 30px 0px;
-}
 main ul li button {
     list-style: none;
     float: left;
@@ -44,10 +45,50 @@ button {
     margin: 10px 41% 10px 41%;
     border: none;
     padding: 10px 30px;
-    background: black;
+    background: #555;
     color: white;
-    border-radius: 3px;
+    border-radius: 7px;
     font-size: 18px;
     transition: 350ms;
     cursor: pointer;
+}
+img {
+    opacity: .6;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+}
+label {
+    width: 250px;
+    margin: 30px;
+}
+label input {
+    visibility: hidden;
+    position: absolute;
+}
+label input:checked + img{
+    border-color: blueviolet;
+    border-width: 10px;
+    opacity: 1;
+    width: 205px;
+    height: 205px;
+}
+div {
+    float: left;
+    width: 250px;
+    margin: 30px;
+}
+div p {
+    text-align: center;
+}
+div input {
+    visibility: hidden;
+    position: absolute;
+}
+div input:checked + img{
+    border-color: blueviolet;
+    border-width: 10px;
+    opacity: 1;
+    width: 205px;
+    height: 205px;
 }
