@@ -86,6 +86,9 @@ function sumbitHandler() {
     var liEl = document.createElement('li');
     liEl.appendChild(document.createTextNode('You\'re eating at ' + results[ranNumber].name));
     testEl.appendChild(liEl);
+    //store results in local storage
+    var resultsStringify = JSON.stringify(results[ranNumber].name);
+    localStorage.setItem('Results', resultsStringify);
   }
   //Create button/logic for multiple tries
 }
