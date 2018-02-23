@@ -87,6 +87,7 @@ video#bgVideo { /*from stackoverflow*/
 #signInButton:hover, #signInButtonPopup:hover {
     border:solid rgb(25, 255, 121) 2px;
     background-color: rgb(25, 255, 121);
+    cursor:pointer;
 }
 #guest:hover {
     border:solid rgb(160, 78, 255) 2px;
@@ -95,6 +96,7 @@ video#bgVideo { /*from stackoverflow*/
 #signInButton:active, #signInButtonPopup:active {
     border:solid rgb(18, 160, 77) 2px;
     background-color: rgb(18, 160, 77);
+    cursor:pointer;
 }
 #guest:active {
     border:solid rgb(107, 52, 170) 2px;
@@ -119,7 +121,7 @@ video#bgVideo { /*from stackoverflow*/
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-.modal-content {
+.modal-content { /*from w3schools*/
     position: relative;
     text-align: center;
     background-color: #242931;
@@ -138,7 +140,7 @@ video#bgVideo { /*from stackoverflow*/
 .innerModal {
     margin-top:120px;
 }
-@keyframes animatetop {
+@keyframes animatetop { /*from w3schools*/
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
 }
