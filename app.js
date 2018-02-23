@@ -1,7 +1,7 @@
 'use strict!';
 
 var userDb = [];
-var createAccount = document.getElementById('create-account');
+var createAccount = document.getElementById('createButton');
 
 function Constructor(userName, userCity, userCnum) {
   this.name = userName;
@@ -13,10 +13,19 @@ function Constructor(userName, userCity, userCnum) {
 
 function handleContactSubmit(event) {
   console.log(event);
-  var userName = document.getElementById('userName');
-  var userCity = document.getElementById('userCity');
-  var userCnum = document.getElementById('userCnum');
+  event.preventDefault();
+    // var userName = document.getElementById('userName').value;
+    // var userCity = document.getElementById('userCity').value;
+    // var userCnum = parseInt(document.getElementById('userCnum').value);
+
+  var userName = event.target.userName.value;
+  var userCity = event.target.userCity.value;
+  var userCnum = parseInt(event.target.userCnum.value);
 
   new Constructor(userName, userCity, userCnum);
+
+  event.target.userName.value = null;
+  event.target.userCity.value = null;
+  event.target.userCnum.value = null;
 }
 createAccount.addEventListener('click', handleContactSubmit);
