@@ -1,6 +1,14 @@
-body {
+html {
+    background: url(images/wooden-background.jpeg) no-repeat center center fixed;
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/wooden-background.jpeg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100%;
+  }
+/* body {
   background: #242931;
-}
+} */
 
 header {
     background:#efefef;
