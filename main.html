@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Main Page</title>  
+  <link rel="stylesheet" type="text/css" href="reset.css" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand|Titan+One" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+
+<body>
+  <nav>
+    <h1>Chews It</h1>
+    <ul>
+      <li>About Us</li>
+      <li>Preferences</li>
+      <li>History</li>
+    </ul>
+  </nav>
+  <section id="main">
+    <div id="inner-container">
+      <div id="price">
+        <label>
+          <input type="radio" name="dolla" value="onedollar" />
+          <p class="dollar">$</p>
+        </label>
+
+        <label>
+          <input type="radio" name="dolla" value="twodollars" />
+          <p class="dollar">$$</p>
+        </label>
+
+        <label>
+          <input type="radio" name="dolla" value="threedollars" />
+          <p class="dollar" id="lastdollar">$$$</p>
+        </label>
+      </div>
+      <div id="meal">
+        <label>
+          <input type="radio" name="mealtype" value="breakfast" />
+          <p class="mealtype">Breakfast</p>
+        </label>
+
+        <label>
+          <input type="radio" name="mealtype" value="lunch" />
+          <p class="mealtype">Lunch</p>
+        </label>
+
+        <label>
+          <input type="radio" name="mealtype" value="dinner" />
+          <p class="mealtype">Dinner</p>
+        </label>
+
+        <label>
+          <input type="radio" name="mealtype" value="snack" />
+          <p class="mealtype">Snack</p>
+        </label>
+
+        <label>
+          <input type="radio" name="mealtype" value="dessert" />
+          <p class="mealtype">Dessert</p>
+        </label>
+      </div>
+    </div>
+  </section>
+  <ul id=test>
+
+  </ul>
+  <button id="submit">Chews It</button>
+  <script src="app.js"></script>
+</body>
+
+</html>
