@@ -1,0 +1,77 @@
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    background-image: url(img/table-salad.jpeg);
+    background-size: cover;
+}
+header {
+    background: rgb(44, 44, 44);
+    height: 100px;
+}
+header ul li {
+    display: inline-block;
+    margin-top: 40px;
+    margin-right: 75px;
+}
+nav {
+    width: 960px;
+    margin: 0px auto;
+}
+nav ul li a {
+    text-decoration: none;
+    list-style: none;
+    color: white;
+    margin: 30px 30px 30px 30px;
+}
+main {
+    width: 960px;
+    margin: 30px auto;
+}
+h1 {
+    text-align: center;
+}
+img {
+    opacity: .6;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    border: solid;
+    border-color: black;
+}
+div {
+    float: left;
+    width: 200px;
+    margin: 30px;
+}
+div p {
+    text-align: center;
+}
+div input {
+    visibility: hidden;
+    position: absolute;
+}
+div input:checked + img{
+    border-color: rgb(25, 255, 121);
+    border-width: 2px;
+    opacity: 1;
+}
+button {
+    margin: 10px 41% 10px 41%;
+    border: none;
+    padding: 10px 30px;
+    background: #555;
+    color: white;
+    border-radius: 7px;
+    font-size: 18px;
+    transition: 350ms;
+    cursor: pointer;
+}
+button:hover {
+    border:solid rgb(25, 255, 121) 2px;
+    background-color: rgb(25, 255, 121);
+}
+button:active {
+    border:solid rgb(18, 160, 77) 2px;
+    background-color: rgb(18, 160, 77);
+}

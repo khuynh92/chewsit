@@ -1,6 +1,97 @@
-'use strict';
+'use strict!';
+////////// PREFERENCES JS //////////////////////
+var prefArray = [];
+var savePref = document.getElementById('save');
 
 Restaurant.names = ['Green Leaf Vietnamese Restaurant', 'Zeeks Pizza', 'Tilikum Place Cafe', 'La Parisienne French Bakery', 'Storyville Coffee Company', 'Bang Bang Cafe', 'Mecca Cafe', 'Shaker and Spear', 'Local 360', 'Andaluca Restaurant', 'CJs Eatery', 'Some Random Bar', 'Dahlia Lounge', 'Six Seven Restaurant', 'The Crumpet Shop'];
+
+function handlePreferences() {
+  var pref = document.getElementsByName('cuisine');
+  for(var i =0; i < pref.length; i++) {
+    if(pref[i].checked === true) {
+      prefArray.push(pref[i].value);
+      console.log(pref[i].value);
+    }
+  }
+  console.log(prefArray);
+
+}
+
+handlePreferences();
+
+var lsData = localStorage.getItem('preferences');
+if (lsData) {
+  prefArray = JSON.parse(lsData);
+} else {
+  localStorage.setItem('preferences', JSON.stringify(prefArray));
+}
+
+savePref.addEventListener('click', handlePreferences);
+
+///////// END OF PREFERENCES JS /////////////////
+
+
+var userDb = [];
+var createAccount = document.getElementById('createButton');
+var signIn = document.getElementById('signInButton');
+var signInButtonPopup = document.getElementById('signInButtonPopup');
+var popUp = document.getElementById('myModal');
+var span = document.getElementsByClassName('close')[0];
+
+function Constructor(userName, userCity, userCnum) {
+  this.name = userName;
+  this.city = userCity;
+  this.cnum = userCnum;
+  userDb.push(this);
+  console.log(userDb);
+}
+function handleContactSubmit(event) {
+  console.log(event);
+  event.preventDefault();
+  var userName = document.getElementById('userName').value;
+  var userCity = document.getElementById('userCity').value;
+  var userCnum = parseInt(document.getElementById('userCnum').value);
+
+  //   var userName = event.target.userName.value;
+  //   var userCity = event.target.userCity.value;
+  //   var userCnum = parseInt(event.target.userCnum.value);
+
+  new Constructor(userName, userCity, userCnum);
+
+//   event.target.userName.value = null;
+//   event.target.userCity.value = null;
+//   event.target.userCnum.value = null;
+}
+
+///////////// HOMEPAGE POPUP ///////////////
+function handleSignIn(event) {
+  event.preventDefault();
+  popUp.style.display = 'block';
+  console.log('sign in button pushed');
+}
+function handleSignInPopup(event) {
+  event.preventDefault();
+  popUp.style.display = 'block';
+  console.log('sign in button pushed');
+
+}
+span.onclick = function() {
+  popUp.style.display = "none";
+};
+window.onclick = function(event) {
+  if (event.target === popUp) {
+    popUp.style.display = 'none';
+  }
+};
+if (signInButtonPopup) {
+  signInButtonPopup.addEventListener('click', handleSignInPopup);
+}
+if (signIn) {
+  signIn.addEventListener('click', handleSignIn);
+}
+if (createAccount) {
+  createAccount.addEventListener('click', handleContactSubmit);
+}
 
 Restaurant.allRestaurants = [];
 var meal = document.getElementsByName('mealtype');
@@ -194,7 +285,7 @@ function nobtnHandler(event) {
   }
   else {
     alert ('Sorry we could not find a match for you.');
-   // window.location.href = "www.yelp.com";
+    // window.location.href = "www.yelp.com";
   }
 }
 
@@ -213,4 +304,3 @@ function reservebtnHandler(event) {
 if(submit) {
   submit.addEventListener('click', sumbitHandler);
 }
-
