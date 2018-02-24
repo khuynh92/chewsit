@@ -30,7 +30,6 @@ if (savePref) {
 
 ///////// END OF PREFERENCES JS /////////////////
 
-
 var userDb = [];
 var createAccount = document.getElementById('createButton');
 var signIn = document.getElementById('signInButton');
@@ -210,6 +209,7 @@ function sumbitHandler() {
     //store results in local storage
     var resultsStringify = JSON.stringify(results);
     localStorage.setItem('Results', resultsStringify);
+    window.open('results.html','_self');
   }
   //Create button/logic for multiple tries
 }
@@ -256,8 +256,8 @@ function displayImage(){
     else{
       restimg.src = restItems[index].image;
       restItems[index].displayed = true;
-      restimg.width = 960;
-      restimg.height = 350;
+      // restimg.width = 960;
+      // restimg.height = 350;
       resthead.textContent = restItems[index].name;
       numTimesShown++;
       unique = true;
