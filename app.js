@@ -17,8 +17,6 @@ function handlePreferences() {
 
 }
 
-handlePreferences();
-
 var lsData = localStorage.getItem('preferences');
 if (lsData) {
   prefArray = JSON.parse(lsData);
@@ -77,9 +75,11 @@ function handleSignInPopup(event) {
   console.log('sign in button pushed');
 
 }
-span.onclick = function() {
-  popUp.style.display = "none";
-};
+if (span) {
+  span.onclick = function() {
+    popUp.style.display = 'none';
+  };
+}
 window.onclick = function(event) {
   if (event.target === popUp) {
     popUp.style.display = 'none';
