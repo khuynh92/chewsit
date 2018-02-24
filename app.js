@@ -26,7 +26,9 @@ if (lsData) {
   localStorage.setItem('preferences', JSON.stringify(prefArray));
 }
 
-savePref.addEventListener('click', handlePreferences);
+if (savePref) {
+  savePref.addEventListener('click', handlePreferences);
+}
 
 ///////// END OF PREFERENCES JS /////////////////
 
