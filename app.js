@@ -1,5 +1,7 @@
 'use strict';
 
+
+// main.html JS start
 Restaurant.names = ['Green Leaf Vietnamese Restaurant', 'Zeeks Pizza', 'Tilikum Place Cafe', 'La Parisienne French Bakery', 'Storyville Coffee Company'];
 Restaurant.allRestaurants = [];
 var meal = document.getElementsByName('mealtype');
@@ -92,7 +94,8 @@ function sumbitHandler() {
   }
   //Create button/logic for multiple tries
 }
+if(submit) {
+  submit.addEventListener('click', sumbitHandler);
+}
 
-submit.addEventListener('click', sumbitHandler);
-
-//create a conditional that says "IF Restaurants.allRestaurants[i].meal === checkedvalue || Restaurants.allRestaurants[i].price === checkedvalue, then push it to the results array."
+// main.html JS END
