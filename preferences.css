@@ -1,13 +1,10 @@
 
 body {
-    font-family: Helvetica;
-    background: rgb(44, 44, 44);
     font-family: 'Quicksand', sans-serif;
     color: white;
-    background-image: src="img/table-background";
+    background-image: url(img/table-salad.jpeg);
     background-size: cover;
 }
-
 header {
     background: rgb(44, 44, 44);
     height: 100px;
@@ -21,26 +18,44 @@ nav {
     width: 960px;
     margin: 0px auto;
 }
-main {
-    width: 960px;
-    margin: 30px auto;
-}
-
 nav ul li a {
     text-decoration: none;
     list-style: none;
     color: white;
     margin: 30px 30px 30px 30px;
 }
-
-main ul li button {
-    list-style: none;
-    float: left;
-    margin: 30px 30px 30px 0px;
+main {
+    width: 960px;
+    margin: 30px auto;
+}
+h1 {
+    text-align: center;
+}
+img {
+    opacity: .6;
+    border-radius: 10px;
     width: 200px;
     height: 200px;
+    border: solid;
+    border-color: black;
 }
-
+div {
+    float: left;
+    width: 200px;
+    margin: 30px;
+}
+div p {
+    text-align: center;
+}
+div input {
+    visibility: hidden;
+    position: absolute;
+}
+div input:checked + img{
+    border-color: rgb(25, 255, 121);
+    border-width: 2px;
+    opacity: 1;
+}
 button {
     margin: 10px 41% 10px 41%;
     border: none;
@@ -52,43 +67,11 @@ button {
     transition: 350ms;
     cursor: pointer;
 }
-img {
-    opacity: .6;
-    border-radius: 10px;
-    width: 200px;
-    height: 200px;
+button:hover {
+    border:solid rgb(25, 255, 121) 2px;
+    background-color: rgb(25, 255, 121);
 }
-label {
-    width: 250px;
-    margin: 30px;
-}
-label input {
-    visibility: hidden;
-    position: absolute;
-}
-label input:checked + img{
-    border-color: blueviolet;
-    border-width: 10px;
-    opacity: 1;
-    width: 205px;
-    height: 205px;
-}
-div {
-    float: left;
-    width: 250px;
-    margin: 30px;
-}
-div p {
-    text-align: center;
-}
-div input {
-    visibility: hidden;
-    position: absolute;
-}
-div input:checked + img{
-    border-color: blueviolet;
-    border-width: 10px;
-    opacity: 1;
-    width: 205px;
-    height: 205px;
+button:active {
+    border:solid rgb(18, 160, 77) 2px;
+    background-color: rgb(18, 160, 77);
 }
