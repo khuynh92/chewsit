@@ -38,6 +38,10 @@ img {
     height: 200px;
     border: solid;
     border-color: black;
+    border-width: 2px;
+}
+img:hover {
+    cursor: pointer;
 }
 div {
     float: left;
