@@ -32,35 +32,86 @@ if (savePref) {
 
 
 var userDb = [];
+var userSignIn = [];
 var createAccount = document.getElementById('createButton');
 var signIn = document.getElementById('signInButton');
 var signInButtonPopup = document.getElementById('signInButtonPopup');
 var popUp = document.getElementById('myModal');
 var span = document.getElementsByClassName('close')[0];
 
-function Constructor(userName, userCity, userCnum) {
+function AccountConstructor(userName, userCity, userCnum, userPw) {
   this.name = userName;
   this.city = userCity;
   this.cnum = userCnum;
+  this.pw = userPw;
   userDb.push(this);
   console.log(userDb);
+}
+function SignInConstructor(userName, userPw) { //ill get user password later / also add userPw to 
+  this.name = userName;
+  this.pw = userPw;
+  userSignIn.push(this);
+  console.log(userSignIn);
+}
+function handleSignInPopup(event) {
+  console.log(event);
+  event.preventDefault();
+  var userName = document.getElementById('popUserName').value;
+  var userPw = document.getElementById('popUserPw').value;
+  new SignInConstructor(userName, userPw);
+  //need to get the userDb from the localstorage
+  //you dont have to but you can store the location of the localstorage database in a varibale to access later
+  var localStorageUserDatabase = localStorage.getItem('userDatabase');
+  //2nd line has to parse the local storage because you have (localstorage only take string data so you have to translate it back into an array of objects)
+  var userDbParse = JSON.parse(localStorageUserDatabase); //you can just directly put localStorage.getItem('userDatabase') directly where localStorageUserDatabase is in the parse variable declaration / this variable now holds the correctly translated userDb for you to use on the homepage / can i define this gloablly somehow
+  console.log(userDbParse);
+  console.log(userDbParse[0].name); //have to specify the index
+  console.log(userDbParse[0].pw); //have to specify the index
+  if(userDbParse.length === 0) {
+    console.log(userDbParse.length);
+    alert('please create an account');
+  } else {
+    for (var i = 0; i < userDbParse.length; i++) {
+      if (userSignIn[i].name === userDbParse[i].name && userSignIn[i].pw === userDbParse[i].pw) {
+        alert('welcome');
+        //navigate them to the main.html page
+      } else {
+        alert('your username or password may be incorrect. try again please');
+        //navigate them to the contact.html page
+      }
+    }
+  }
+  userName = document.getElementById('popUserName').value = '';
+  userPw = document.getElementById('popUserPw').value = '';
+  userSignIn = []; //resets the temporary sign in array
 }
 function handleContactSubmit(event) {
   console.log(event);
   event.preventDefault();
   var userName = document.getElementById('userName').value;
   var userCity = document.getElementById('userCity').value;
+  var userPw = document.getElementById('userPw').value;
   var userCnum = parseInt(document.getElementById('userCnum').value);
 
   //   var userName = event.target.userName.value;
   //   var userCity = event.target.userCity.value;
   //   var userCnum = parseInt(event.target.userCnum.value);
 
-  new Constructor(userName, userCity, userCnum);
+  new AccountConstructor(userName, userCity, userCnum, userPw);
+  //after here is when you you want to do local storage because this is where userDb is updated
+  //first have to set item
+  //1st argument is what you want to call your locale storage userDatabase
+  //2nd argument is what you want to put in the localstorage but it has to be a string ergo the stringify (localstorage only accepts strings which means once you want to access the data in its correct form you have to parse it whcih is translating it back into its original form)
+  localStorage.setItem('userDatabase', JSON.stringify(userDb));
+  //now you want to go where you want to retrieve the data and in this case thats the sign in/home page
 
-//   event.target.userName.value = null;
-//   event.target.userCity.value = null;
-//   event.target.userCnum.value = null;
+  //   event.target.userName.value = null;
+  //   event.target.userCity.value = null;
+  //   event.target.userCnum.value = null;
+  userName = document.getElementById('userName').value = '';
+  userCity = document.getElementById('userCity').value = '';
+  userPw = document.getElementById('userPw').value = '';
+  userCnum = document.getElementById('userCnum').value = '';
 }
 
 ///////////// HOMEPAGE POPUP ///////////////
@@ -68,12 +119,6 @@ function handleSignIn(event) {
   event.preventDefault();
   popUp.style.display = 'block';
   console.log('sign in button pushed');
-}
-function handleSignInPopup(event) {
-  event.preventDefault();
-  popUp.style.display = 'block';
-  console.log('sign in button pushed');
-
 }
 if (span) {
   span.onclick = function() {
@@ -85,6 +130,9 @@ window.onclick = function(event) {
     popUp.style.display = 'none';
   }
 };
+
+///////////// HOMEPAGE EVENT LISTENERS ///////////////
+
 if (signInButtonPopup) {
   signInButtonPopup.addEventListener('click', handleSignInPopup);
 }
@@ -94,6 +142,8 @@ if (signIn) {
 if (createAccount) {
   createAccount.addEventListener('click', handleContactSubmit);
 }
+
+///////////// END OF HOMEPAGE ///////////////
 
 Restaurant.allRestaurants = [];
 var meal = document.getElementsByName('mealtype');
