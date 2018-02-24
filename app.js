@@ -6,7 +6,7 @@ var yesbtn = document.getElementById('yes');
 var nobtn = document.getElementById('no');
 var orderbtn = document.getElementById('order');
 var reservebtn = document.getElementById('reserve');
-var resthead = document.getElementById('resthead');
+// var resthead = document.getElementById('resthead');
 
 ////////// PREFERENCES JS //////////////////////
 var savePref = document.getElementById('save');
@@ -113,13 +113,6 @@ var path = window.location.pathname;
 var page = path.split('/').pop();
 console.log( page );
 
-////////////////////RESULTS PAGE///////////////
-var yesbtn = document.getElementById('yes');
-var nobtn = document.getElementById('no');
-var orderbtn = document.getElementById('order');
-var reservebtn = document.getElementById('reserve');
-var resthead = document.getElementById('resthead');
-
 //constructor function for Restaurants
 function Restaurant(name, cuisine, mealtype, price, image) {
   this.name = name;
@@ -209,15 +202,24 @@ function sumbitHandler() {
           }
         }
       }
+      results = resultsWithPref;
     }
-    console.log(resultsWithPref);
-    console.log(results);
-    results = resultsWithPref;
-    console.log(resultsWithPref);
 
-    var resultsStringify = JSON.stringify(results);
-    localStorage.setItem('Results', resultsStringify);
 
+    //creating random restaurant choice:
+    restChoice = [];
+    var index1 = Math.floor(Math.random() * results.length);
+    restChoice[0] = results[index1];
+    do {
+      var index2 = Math.floor(Math.random() * results.length);
+      restChoice[1] = results[index2];
+      var index3 = Math.floor(Math.random() * results.length);
+      restChoice[2] = results[index3];
+    } while (index1 === index2 || index1 === index3 || index2 === index3);
+    var choiceNumber = 1;
+    localStorage.setItem('choiceNumber', choiceNumber);
+    var restChoiceStringify = JSON.stringify(restChoice);
+    localStorage.setItem('Results', restChoiceStringify);
     window.open('results.html','_self');
 
   }
@@ -228,21 +230,14 @@ if (page === 'main.html'){
   submit.addEventListener('click', sumbitHandler);
 }
 
-//create a conditional that says "IF Restaurants.allRestaurants[i].meal === checkedvalue || Restaurants.allRestaurants[i].price === checkedvalue, then push it to the results array."
-
 ///////////////////RESULTS PAGE//////////////////////////////////////
-var restItems;
-var numTimesShown = 0;
+var restChoice;
 
 if(page === 'results.html'){
 
   if (localStorage.Results) {
-    var strRestItem = localStorage.getItem('Results');
-    restItems = JSON.parse(strRestItem);
-    for (var item of restItems) {
-      console.log(item);
-      item.displayed = false;
-    }
+    var strRestChoice = localStorage.getItem('Results');
+    restChoice = JSON.parse(strRestChoice);
   }
 
   yesbtn.addEventListener('click', yesbtnHandler);
@@ -254,25 +249,15 @@ if(page === 'results.html'){
   displayImage();
 }
 
-function displayImage(){
+function displayImage() {
+  var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
   var restimg = document.getElementById('restimg');
-  var unique = false;
-
-  while ( unique === false){
-    var index = Math.floor(Math.random() * restItems.length);
-    if(restItems[index].displayed === true){
-      continue;
-    }
-    else{
-      restimg.src = restItems[index].image;
-      restItems[index].displayed = true;
-      // restimg.width = 960;
-      // restimg.height = 350;
-      resthead.textContent = restItems[index].name;
-      numTimesShown++;
-      unique = true;
-      break;
-    }
+  if (choiceNumber === 1) {
+    restimg.src = restChoice[0].image;
+  } else if (choiceNumber === 2) {
+    restimg.src = restChoice[1].image;
+  } else if (choiceNumber === 3) {
+    restimg.src = restChoice[2].image;
   }
 }
 
@@ -291,15 +276,13 @@ function disableBtn() {
 
 function nobtnHandler(event) {
   event.preventDefault();
-  if (numTimesShown < 3 && numTimesShown < restItems.length) {
-    displayImage();
+  var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
+  choiceNumber++;
+  localStorage.setItem('choiceNumber', choiceNumber); 
+  displayImage();
 
-  }
-  else {
-    alert ('Sorry we could not find a match for you.');
-    // window.location.href = "www.yelp.com";
-  }
 }
+
 
 function orderbtnHandler(event) {
   event.preventDefault();
