@@ -87,10 +87,11 @@ main {
       margin-top: 50px;
       color: white;
       text-align: center;
-      font-size: 24px;
+      font-size: 40px;
       font-weight: bold;
       word-spacing:.1em;   
       font-family: 'Quicksand', sans-serif;
+      /* font-family: 'Titan One', cursive; */
   }
   
   .restdetails {
@@ -134,3 +135,15 @@ main {
     background: #efefef; 
     color:#888;
  }
+
+ #restaura{
+    height: 600px;
+  }
+ 
+  #restimg {
+    /* width: 90%; */
+    height: 80%;
+    display: block;
+    margin: auto;
+  }
+ 
