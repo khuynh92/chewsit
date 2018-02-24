@@ -1,34 +1,40 @@
 'use strict!';
+
+
+////////////////////RESULTS PAGE VARIABLES///////////////
+var yesbtn = document.getElementById('yes');
+var nobtn = document.getElementById('no');
+var orderbtn = document.getElementById('order');
+var reservebtn = document.getElementById('reserve');
+var resthead = document.getElementById('resthead');
+
 ////////// PREFERENCES JS //////////////////////
-var prefArray = [];
 var savePref = document.getElementById('save');
 
 Restaurant.names = ['Green Leaf Vietnamese Restaurant', 'Zeeks Pizza', 'Tilikum Place Cafe', 'La Parisienne French Bakery', 'Storyville Coffee Company', 'Bang Bang Cafe', 'Mecca Cafe', 'Shaker and Spear', 'Local 360', 'Andaluca Restaurant', 'CJs Eatery', 'Some Random Bar', 'Dahlia Lounge', 'Six Seven Restaurant', 'The Crumpet Shop'];
 
+
 function handlePreferences() {
+  var prefArray = [];
   var pref = document.getElementsByName('cuisine');
   for(var i =0; i < pref.length; i++) {
     if(pref[i].checked === true) {
       prefArray.push(pref[i].value);
       console.log(pref[i].value);
+      pref[i].checked = false;
     }
+
   }
-  console.log(prefArray);
-
-}
-
-var lsData = localStorage.getItem('preferences');
-if (lsData) {
-  prefArray = JSON.parse(lsData);
-} else {
   localStorage.setItem('preferences', JSON.stringify(prefArray));
+  console.log(prefArray);
 }
 
 if (savePref) {
   savePref.addEventListener('click', handlePreferences);
 }
-
 ///////// END OF PREFERENCES JS /////////////////
+
+///////////// HOME PAGE JS ///////////////////////
 
 var userDb = [];
 var createAccount = document.getElementById('createButton');
@@ -93,7 +99,9 @@ if (signIn) {
 if (createAccount) {
   createAccount.addEventListener('click', handleContactSubmit);
 }
+//////////////////// END OF HOMEPAGE JS /////////////////////////////
 
+////////////// MAIN PAGE JS /////////////////////////// 
 Restaurant.allRestaurants = [];
 var meal = document.getElementsByName('mealtype');
 var price = document.getElementsByName('dolla');
@@ -101,7 +109,6 @@ var submit = document.getElementById('submit');
 var mainPrice;
 var mainMeal;
 
-///////////////////FOR ALL PAGES///////////////////////
 var path = window.location.pathname;
 var page = path.split('/').pop();
 console.log( page );
@@ -149,11 +156,6 @@ new Restaurant('Green Leaf Vietnamese Restaurant', 'southeast-asian', 'dinner', 
 new Restaurant('dinner1', 'any', 'dinner', 'onedollar');
 new Restaurant('dinner3', 'any', 'dinner', 'threedollars');
 
-//snack
-new Restaurant('Storyville Coffee Company', 'cafe', 'snack', 'twodollars');
-new Restaurant('snack1', 'any', 'snack', 'onedollar');
-new Restaurant('snack3', 'any', 'snack', 'threedollars');
-
 //dessert
 new Restaurant('La Parisienne French Bakery', 'bakery', 'dessert', 'onedollar');
 new Restaurant('dessert2', 'any', 'dessert', 'twodollars');
@@ -196,20 +198,28 @@ function sumbitHandler() {
         results.push(Restaurant.allRestaurants[k]);
       }
     }
-    console.log('matching restaurants are: ', results);
-    //create a random number using the array
+    var localStoragePreferencesParsed = JSON.parse(localStorage.getItem('preferences'));
+    //checking if preferences matches results
+    if (localStorage.preferences) {
+      var resultsWithPref = [];
+      for (var l = 0; l < localStoragePreferencesParsed.length; l++) {
+        for (var m = 0; m < results.length; m ++) {
+          if (results[m].cuisine === localStoragePreferencesParsed[l]) {
+            resultsWithPref.push(results[m]);
+          }
+        }
+      }
+    }
+    console.log(resultsWithPref);
+    console.log(results);
+    results = resultsWithPref;
+    console.log(resultsWithPref);
 
-    // var ranNumber = Math.floor(Math.random()*results.length);
-    // console.log('random index is: ' + ranNumber);
-    //display random result
-    // var testEl = document.getElementById('test');
-    // var liEl = document.createElement('li');
-    // liEl.appendChild(document.createTextNode('You\'re eating at ' + results[ranNumber].name));
-    // testEl.appendChild(liEl);
-    //store results in local storage
     var resultsStringify = JSON.stringify(results);
     localStorage.setItem('Results', resultsStringify);
+
     window.open('results.html','_self');
+
   }
   //Create button/logic for multiple tries
 }
