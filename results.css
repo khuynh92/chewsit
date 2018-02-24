@@ -1,5 +1,10 @@
+body {
+  background: #242931;
+}
+
 header {
-    background: #cde7f0;
+    background:#efefef;
+    /* background: #242931; */
     height: 100px;
     margin-bottom: 100px;
 }
@@ -26,6 +31,15 @@ a {
     color: #888;
 }
 
+#choice {
+  color: white;
+  font-family: 'Titan One', cursive;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 30px;
+  /* font-family: 'Quicksand', sans-serif; */
+}
+
 main {
     width: 960px;
     margin: 30px auto;
@@ -36,8 +50,8 @@ main {
     height: 30px;
     word-spacing: .1em;
     font-size: 16px;
-    background: #cde7f0;
-    color: 888;
+    background: rgb(25, 255, 121);
+    color: #242931;
     font-weight: bolder;
     border-radius: 12px;
     padding:2px;
@@ -48,30 +62,44 @@ main {
   }
 
   .btngroup button{
-      background-color:#f5e9dc;
-      color: gray;
+      background-color:#8fdef8;
+      color: #242931;
       padding:10px 24px;
       float: right;
       margin-right: 375px;
       margin-bottom: 40px;
       border-radius: 12px;
       margin-top: 40px;
-      font-size: 14px;
-      font-weight: bold;
+      font-size: 16px;
+      font-weight: bolder;
 
   }
 
   #resthead {
       margin-top: 50px;
+      color: white;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      word-spacing:.1em;   
+      font-family: 'Quicksand', sans-serif;
   }
   
+  .restdetails {
+    margin-top: 5px;
+    color: white;
+    font-size: 18px;
+    word-spacing: .1em;
+    font-family: 'Quicksand', sans-serif;
+  }
+
   #reserve {
     width:120px;
     height: 30px;
     word-spacing: .1em;
     font-size: 16px;
-    background: #e6bbad;
-    color: gray;
+    background: yellow;
+    color: #312c24;
     font-weight: bolder;
     border-radius: 12px;
     padding:2px;
@@ -91,8 +119,10 @@ main {
 
  footer {
     clear: both;
-    background: #cde7f0;
-    height: 70px;
+    /* background: #cde7f0; */
+    height: 60px;
     text-align: center;
     padding-top:40px;
+    background: #efefef; 
+    color:#888;
  }
