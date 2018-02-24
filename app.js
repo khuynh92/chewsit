@@ -30,6 +30,7 @@ if (savePref) {
 
 ///////// END OF PREFERENCES JS /////////////////
 
+///////// START OF HOMEPAGE /////////////////
 
 var userDb = [];
 var userSignIn = [];
@@ -47,7 +48,7 @@ function AccountConstructor(userName, userCity, userCnum, userPw) {
   userDb.push(this);
   console.log(userDb);
 }
-function SignInConstructor(userName, userPw) { //ill get user password later / also add userPw to 
+function SignInConstructor(userName, userPw) {
   this.name = userName;
   this.pw = userPw;
   userSignIn.push(this);
@@ -59,14 +60,11 @@ function handleSignInPopup(event) {
   var userName = document.getElementById('popUserName').value;
   var userPw = document.getElementById('popUserPw').value;
   new SignInConstructor(userName, userPw);
-  //need to get the userDb from the localstorage
-  //you dont have to but you can store the location of the localstorage database in a varibale to access later
   var localStorageUserDatabase = localStorage.getItem('userDatabase');
-  //2nd line has to parse the local storage because you have (localstorage only take string data so you have to translate it back into an array of objects)
-  var userDbParse = JSON.parse(localStorageUserDatabase); //you can just directly put localStorage.getItem('userDatabase') directly where localStorageUserDatabase is in the parse variable declaration / this variable now holds the correctly translated userDb for you to use on the homepage / can i define this gloablly somehow
+  var userDbParse = JSON.parse(localStorageUserDatabase);
   console.log(userDbParse);
-  console.log(userDbParse[0].name); //have to specify the index
-  console.log(userDbParse[0].pw); //have to specify the index
+  console.log(userDbParse[0].name);
+  console.log(userDbParse[0].pw);
   if(userDbParse.length === 0) {
     console.log(userDbParse.length);
     alert('please create an account');
@@ -83,7 +81,7 @@ function handleSignInPopup(event) {
   }
   userName = document.getElementById('popUserName').value = '';
   userPw = document.getElementById('popUserPw').value = '';
-  userSignIn = []; //resets the temporary sign in array
+  userSignIn = [];
 }
 function handleContactSubmit(event) {
   console.log(event);
@@ -92,22 +90,7 @@ function handleContactSubmit(event) {
   var userCity = document.getElementById('userCity').value;
   var userPw = document.getElementById('userPw').value;
   var userCnum = parseInt(document.getElementById('userCnum').value);
-
-  //   var userName = event.target.userName.value;
-  //   var userCity = event.target.userCity.value;
-  //   var userCnum = parseInt(event.target.userCnum.value);
-
   new AccountConstructor(userName, userCity, userCnum, userPw);
-  //after here is when you you want to do local storage because this is where userDb is updated
-  //first have to set item
-  //1st argument is what you want to call your locale storage userDatabase
-  //2nd argument is what you want to put in the localstorage but it has to be a string ergo the stringify (localstorage only accepts strings which means once you want to access the data in its correct form you have to parse it whcih is translating it back into its original form)
-  localStorage.setItem('userDatabase', JSON.stringify(userDb));
-  //now you want to go where you want to retrieve the data and in this case thats the sign in/home page
-
-  //   event.target.userName.value = null;
-  //   event.target.userCity.value = null;
-  //   event.target.userCnum.value = null;
   userName = document.getElementById('userName').value = '';
   userCity = document.getElementById('userCity').value = '';
   userPw = document.getElementById('userPw').value = '';
