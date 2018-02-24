@@ -1,184 +1,183 @@
 * {
-    font-size: 18px;
-    font-family: 'Quicksand', sans-serif;
-  }
-  html {
-    background: url(images/background.jpg) no-repeat center center fixed;
-    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/background.jpg');
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: 100%;
-  }
-  body {
-    width: 100%;
-  }
-  /* nav */
-  nav {
-    margin-top: 20px;
-    width: 100%;
-    height: 100px;
-    background-color: rgba(48, 48, 56, 0.479);
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    opacity: 1.0;
-  }
-  
-  nav h1 {
-    text-align: center;
-    font-size: 40px;
-    padding-top: 5px;
-    font-family: 'Titan One', cursive;
-  }
-  
-  nav ul {
-    padding-top: 20px;
-    text-align: center;
-  
-  }
-  
-  nav ul li {
-    font-size: 26px;
-    font-weight: bold;
-    display: inline;
-    padding: 0 50px 0 50px;
-    margin: 0 auto;
-  }
-  
-  /* main */
-  #main {
-    margin: 85px auto 0 auto;
-    width: 500px;
-    height: 525px;
-    background-color: #242931f8;
-    border-radius: 5px;
-  }
-  
-  #inner-container {
-    display: block;
-    width: 200px;
-    padding-top: 20px;
-    margin: auto;
-  }
-  .mealtype {
-    font-family: 'Quicksand', sans-serif;
-    cursor: pointer;
-    vertical-align: middle;
-    text-align: center;
-    width: 200px;
-    height: 45px;
-    text-decoration: none;
-    padding-top: 25px;
-    background-color: rgb(87, 83, 83);
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 5px;
-    color: white;
-    transition: 300ms;
-    margin: 10px auto;
-  }
-  
-  .mealtype:hover {
+  font-size: 18px;
+  font-family: 'Quicksand', sans-serif;
+}
+html {
+  background: url(images/background.jpg) no-repeat center center fixed;
+  background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/background.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 100%;
+}
+body {
+  width: 100%;
+}
+/* nav */
+nav {
+  margin-top: 20px;
+  width: 100%;
+  height: 100px;
+  background-color: rgba(48, 48, 56, 0.479);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  opacity: 1.0;
+}
+
+nav h1 {
+  text-align: center;
+  font-size: 40px;
+  padding-top: 5px;
+  font-family: 'Titan One', cursive;
+}
+
+nav ul {
+  padding-top: 20px;
+  text-align: center;
+
+}
+
+nav ul li {
+  font-size: 26px;
+  font-weight: bold;
+  display: inline;
+  padding: 0 50px 0 50px;
+  margin: 0 auto;
+}
+
+/* main */
+#main {
+  margin: 85px auto 0 auto;
+  width: 500px;
+  height: 525px;
+  background-color: #242931f8;
+  border-radius: 5px;
+}
+
+#inner-container {
+  display: block;
+  width: 200px;
+  padding-top: 20px;
+  margin: auto;
+}
+.mealtype {
+  font-family: 'Quicksand', sans-serif;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+  width: 200px;
+  height: 45px;
+  text-decoration: none;
+  padding-top: 25px;
+  background-color: rgb(87, 83, 83);
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  color: white;
+  transition: 300ms;
+  margin: 10px auto;
+}
+
+.mealtype:hover {
+background-color: darkgray;
+}
+
+
+label input{
+  visibility: hidden; 
+  position: absolute; 
+}
+
+label input:checked + p { 
   background-color: darkgray;
-  }
+}
+
+
+
+#price {
+  display: block; 
+  width: 100%;
+  height: 35px;
+  padding-top: 20px;
+  padding-bottom: 2px;
+  margin: auto;
+}
+.dollar {
+  font-weight: bold;
+  color: white;
+  background-color: rgb(87, 83, 83);
+  text-align: center;
+  height: 20px;
+  display: inline-block;
+  margin: 0 auto;
+  width: 50px;
+  border-radius: 5px;
+  transition: 300ms;
   
+}
+
+p.dollar {
+  width: 30%;
+  margin-right: 3%;
+}
+
+#lastdollar {
+  margin-right: 0%
+}
+
+
+.dollar:hover {
+  cursor: pointer;
+  background-color: darkgray;
+}
+
+
+.meal-type:first-child {
+  margin-top: 15px;
+}
+
+.meal-type {
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#submit {
   
-  label input{
-    visibility: hidden; 
-    position: absolute; 
-  }
-  
-  label input:checked + p { 
-    background-color: darkgray;
-  }
-  
-  
-  
-  #price {
-    display: block; 
-    width: 100%;
-    height: 35px;
-    padding-top: 20px;
-    padding-bottom: 2px;
-    margin: auto;
-  }
-  .dollar {
-    font-weight: bold;
-    color: white;
-    background-color: rgb(87, 83, 83);
-    text-align: center;
-    height: 20px;
-    display: inline-block;
-    margin: 0 auto;
-    width: 50px;
-    border-radius: 5px;
-    transition: 300ms;
-    
-  }
-  
-  p.dollar {
-    width: 30%;
-    margin-right: 3%;
-  }
-  
-  #lastdollar {
-    margin-right: 0%
-  }
-  
-  
-  .dollar:hover {
-    cursor: pointer;
-    background-color: darkgray;
-  }
-  
-  
-  .meal-type:first-child {
-    margin-top: 15px;
-  }
-  
-  .meal-type {
-    display: block;
-    width: 200px;
-    height: 50px;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  #submit {
-    
-    display: block;
-    width: 200px;
-    height: 50px;
-    margin: 25px auto;
-    transition: 300ms;
-    background-color: rgba(169, 169, 169, 0.24);
-    border: 1px solid;
-    outline: 0;
-    font-weight: bold;
-    color: white;
-    border-radius: 80px;
-  }
-  
-  #submit:hover {
-    cursor: pointer;
-    background-color: lightgreen;
-  }
-  
-  #submit:active {
-    background-color: rgb(18, 160, 77);
-  }
-  
-  .dollar:active, .mealtype:active {
-    background-color: rgb(18, 160, 77);
-    transition: 300ms;
-  }
-  
-  /* TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEST */
-  
-  #test {
-    font-size: 30px;
-    color: white;
-    text-align: center;
-  }
-  
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin: 25px auto;
+  transition: 300ms;
+  background-color: rgba(169, 169, 169, 0.24);
+  border: 1px solid;
+  outline: 0;
+  font-weight: bold;
+  color: white;
+  border-radius: 80px;
+}
+
+#submit:hover {
+  cursor: pointer;
+  background-color: lightgreen;
+}
+
+#submit:active {
+  background-color: rgb(18, 160, 77);
+}
+
+.dollar:active, .mealtype:active {
+  background-color: rgb(18, 160, 77);
+  transition: 300ms;
+}
+
+/* TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEST */
+
+#test {
+  font-size: 30px;
+  color: white;
+  text-align: center;
+}

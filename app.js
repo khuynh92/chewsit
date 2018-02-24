@@ -106,6 +106,7 @@ function sumbitHandler() {
     }
     console.log('matching restaurants are: ', results);
     //create a random number using the array
+
     // var ranNumber = Math.floor(Math.random()*results.length);
     // console.log('random index is: ' + ranNumber);
     //display random result
@@ -208,3 +209,8 @@ function reservebtnHandler(event) {
   alert ('Thanks your order has been reserved!');
   //window.location.href = "www.google.com  ";
 }
+
+if(submit) {
+  submit.addEventListener('click', sumbitHandler);
+}
+
