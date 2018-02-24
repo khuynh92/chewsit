@@ -258,6 +258,9 @@ function displayImage() {
     restimg.src = restChoice[1].image;
   } else if (choiceNumber === 3) {
     restimg.src = restChoice[2].image;
+  } else {
+    alert('You ran out of choices!');
+    restimg.src = restChoice[2].image;
   }
 }
 
