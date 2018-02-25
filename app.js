@@ -1,34 +1,38 @@
 'use strict!';
+
+////////////////////RESULTS PAGE VARIABLES///////////////
+var yesbtn = document.getElementById('yes');
+var nobtn = document.getElementById('no');
+var btngroup = document.getElementById('btngroup');
+var orderbtn = document.getElementById('order');
+var reservebtn = document.getElementById('reserve');
+var resthead = document.getElementById('resthead');
+
 ////////// PREFERENCES JS //////////////////////
-var prefArray = [];
 var savePref = document.getElementById('save');
 
 Restaurant.names = ['Green Leaf Vietnamese Restaurant', 'Zeeks Pizza', 'Tilikum Place Cafe', 'La Parisienne French Bakery', 'Storyville Coffee Company', 'Bang Bang Cafe', 'Mecca Cafe', 'Shaker and Spear', 'Local 360', 'Andaluca Restaurant', 'CJs Eatery', 'Some Random Bar', 'Dahlia Lounge', 'Six Seven Restaurant', 'The Crumpet Shop'];
 
 function handlePreferences() {
+  var prefArray = [];
   var pref = document.getElementsByName('cuisine');
   for(var i =0; i < pref.length; i++) {
     if(pref[i].checked === true) {
       prefArray.push(pref[i].value);
       console.log(pref[i].value);
+      pref[i].checked = false;
     }
   }
-  console.log(prefArray);
-
-}
-
-var lsData = localStorage.getItem('preferences');
-if (lsData) {
-  prefArray = JSON.parse(lsData);
-} else {
   localStorage.setItem('preferences', JSON.stringify(prefArray));
+  console.log(prefArray);
 }
 
 if (savePref) {
   savePref.addEventListener('click', handlePreferences);
 }
-
 ///////// END OF PREFERENCES JS /////////////////
+
+///////////// HOME PAGE JS ///////////////////////
 
 var userDb = [];
 var createAccount = document.getElementById('createButton');
@@ -72,8 +76,8 @@ function handleSignInPopup(event) {
   event.preventDefault();
   popUp.style.display = 'block';
   console.log('sign in button pushed');
-
 }
+
 if (span) {
   span.onclick = function() {
     popUp.style.display = 'none';
@@ -93,7 +97,9 @@ if (signIn) {
 if (createAccount) {
   createAccount.addEventListener('click', handleContactSubmit);
 }
+//////////////////// END OF HOMEPAGE JS /////////////////////////////
 
+////////////// MAIN PAGE JS /////////////////////////// 
 Restaurant.allRestaurants = [];
 var meal = document.getElementsByName('mealtype');
 var price = document.getElementsByName('dolla');
@@ -101,7 +107,6 @@ var submit = document.getElementById('submit');
 var mainPrice;
 var mainMeal;
 
-///////////////////FOR ALL PAGES///////////////////////
 var path = window.location.pathname;
 var page = path.split('/').pop();
 console.log( page );
@@ -140,24 +145,125 @@ new Restaurant('Dahlia Lounge', 'breakfast', 'breakfast', 'threedollars', 'image
 new Restaurant('Six Seven Restaurant', 'breakfast', 'breakfast', 'threedollars', 'images/$$$sixseven_breakfast.jpg');
 
 //lunch
+//Italian
 new Restaurant('Zeeks Pizza', 'italian', 'lunch', 'twodollars');
-new Restaurant('lunch1', 'any', 'lunch', 'onedollar');
-new Restaurant('lunch3', 'any', 'lunch', 'threedollars');
+new Restaurant('La Vita E Bella', 'italian', 'lunch', 'twodollars');
+new Restaurant('Buca di Beppo Italian Restaurant', 'italian', 'lunch', 'twodollars');
+
+new Restaurant('dueminuti healthy pasta', 'italian', 'lunch', 'onedollar');
+new Restaurant('Mondello Ristorante Italiano', 'italian', 'lunch', 'onedollar');
+new Restaurant('Pagliacci Pizza', 'italian', 'lunch', 'onedollar');
+
+new Restaurant('Il Fornaio Seattle', 'italian', 'lunch', 'threedollars');
+new Restaurant('Tulio', 'italian', 'lunch', 'threedollars');
+new Restaurant('Agrodolce', 'italian', 'lunch', 'threedollars');
+
+//Cafe
+new Restaurant('The 5 Point Cafe', 'cafe', 'lunch', 'twodollars', 'images/$$5point_lunch.jpg');
+new Restaurant('Tilikum Place Cafe', 'cafe', 'lunch', 'twodollars', 'images/$$tiltkim_lunch.jpg');
+new Restaurant('CJs Eatery', 'cafe', 'lunch', 'twodollars', 'images/$$CJs_lunch.jpeg');
+
+new Restaurant('Citizen', 'cafe', 'lunch', 'onedollar', 'images/$citizen_lunch.jpeg');
+new Restaurant('Bang Bang Cafe', 'cafe', 'lunch', 'onedollar', 'images/$bang_lunch.jpeg');
+new Restaurant('The Other Coast Cafe', 'cafe', 'lunch', 'onedollar', 'images/$otherCoast_lunch.jpeg');
+
+new Restaurant('Dahlia Lounge', 'cafe', 'lunch', 'threedollars', 'images/$$$dahlia_lunch.jpeg');
+new Restaurant('Lola', 'cafe', 'lunch', 'threedollars', 'images/$$$lola_lunch.jpeg');
+new Restaurant('Collections Cafe', 'cafe', 'lunch', 'threedollars', 'images/$$$collections_lunch.jpeg');
+
+//Mexican
+new Restaurant('Agave Cocina and Tequilas', 'mexican', 'lunch', 'twodollars');
+new Restaurant('Villa Escondida', 'mexican', 'lunch', 'twodollars');
+new Restaurant('Cactus South Lake Union', 'mexican', 'lunch', 'twodollars');
+
+new Restaurant('dueminuti healthy pasta', 'italian', 'lunch', 'onedollar');
+new Restaurant('Mondello Ristorante Italiano', 'italian', 'lunch', 'onedollar');
+new Restaurant('Pagliacci Pizza', 'italian', 'lunch', 'onedollar');
+
+new Restaurant('Gracia', 'mexican', 'lunch', 'threedollars');
+new Restaurant('Agave Cocina and Tequilas', 'mexican', 'lunch', 'threedollars');
+new Restaurant('Casco Antiguo', 'mexican', 'lunch', 'threedollars');
+
+
+//south east asian
+new Restaurant('Pho Viet Anh', 'southeastasian', 'lunch', 'onedollar');
+new Restaurant('Mae Phim Thai Restaurant', 'southeastasian', 'lunch', 'onedollar');
+new Restaurant('Green Leaf Vietnamese Restaurant', 'southeastasian', 'lunch', 'onedollar');
+
+new Restaurant('Stateside', 'southeastasian', 'lunch', 'twodollar');
+new Restaurant('Bahn Thai Restaurant', 'southeastasian', 'lunch', 'twodollar');
+new Restaurant('Monsoon Seattle', 'southeastasian', 'lunch', 'twodollar');
+
+//fastfood
+
+new Restaurant('Dicks Drive-In', 'fastfood', 'lunch', 'onedollar');
+new Restaurant('Taxi Dogs', 'fastfood', 'lunch', 'onedollar');
+new Restaurant('Potbelly Sandwich Shop', 'fastfood', 'lunch', 'onedollar');
+
+new Restaurant('Lunchbox Laboratory', 'fastfood', 'lunch', 'twodollar');
+new Restaurant('Happy Garden Fast Food', 'fastfood', 'lunch', 'twodollar');
+new Restaurant('MOD Pizza', 'fastfood', 'lunch', 'twodollar');
+
 
 //dinner
-new Restaurant('Green Leaf Vietnamese Restaurant', 'southeast-asian', 'dinner', 'twodollars' );
-new Restaurant('dinner1', 'any', 'dinner', 'onedollar');
-new Restaurant('dinner3', 'any', 'dinner', 'threedollars');
+//Italian
+new Restaurant('Zeeks Pizza', 'italian', 'dinner', 'twodollars');
+new Restaurant('La Vita E Bella', 'italian', 'dinner', 'twodollars');
+new Restaurant('Buca di Beppo Italian Restaurant', 'italian', 'dinner', 'twodollars');
 
-//snack
-new Restaurant('Storyville Coffee Company', 'cafe', 'snack', 'twodollars');
-new Restaurant('snack1', 'any', 'snack', 'onedollar');
-new Restaurant('snack3', 'any', 'snack', 'threedollars');
+new Restaurant('dueminuti healthy pasta', 'italian', 'dinner', 'onedollar');
+new Restaurant('Mondello Ristorante Italiano', 'italian', 'dinner', 'onedollar');
+new Restaurant('Pagliacci Pizza', 'italian', 'dinner', 'onedollar');
 
-//dessert
-new Restaurant('La Parisienne French Bakery', 'bakery', 'dessert', 'onedollar');
-new Restaurant('dessert2', 'any', 'dessert', 'twodollars');
-new Restaurant('dessert3', 'any', 'dessert', 'threedollars');
+new Restaurant('Il Fornaio Seattle', 'italian', 'dinner', 'threedollars');
+new Restaurant('Tulio', 'italian', 'dinner', 'threedollars');
+new Restaurant('Agrodolce', 'italian', 'dinner', 'threedollars');
+
+//Cafe
+new Restaurant('The 5 Point Cafe', 'cafe', 'dinner', 'twodollars');
+new Restaurant('Tilikum Place Cafe', 'cafe', 'dinner', 'twodollars');
+new Restaurant('CJs Eatery', 'cafe', 'dinner', 'twodollars');
+
+new Restaurant('Citizen', 'cafe', 'dinner', 'onedollar');
+new Restaurant('Bang Bang Cafe', 'cafe', 'dinner', 'onedollar');
+new Restaurant('The Other Coast Cafe', 'cafe', 'dinner', 'onedollar');
+
+new Restaurant('Dahlia Lounge', 'cafe', 'dinner', 'threedollars');
+new Restaurant('Lola', 'cafe', 'dinner', 'threedollars');
+new Restaurant('Collections Cafe', 'cafe', 'dinner', 'threedollars');
+
+//Mexican
+new Restaurant('Agave Cocina and Tequilas', 'mexican', 'dinner', 'twodollars');
+new Restaurant('Villa Escondida', 'mexican', 'dinner', 'twodollars');
+new Restaurant('Cactus South Lake Union', 'mexican', 'dinner', 'twodollars');
+
+new Restaurant('dueminuti healthy pasta', 'italian', 'dinner', 'onedollar');
+new Restaurant('Mondello Ristorante Italiano', 'italian', 'dinner', 'onedollar');
+new Restaurant('Pagliacci Pizza', 'italian', 'dinner', 'onedollar');
+
+new Restaurant('Gracia', 'mexican', 'dinner', 'threedollars');
+new Restaurant('Agave Cocina and Tequilas', 'mexican', 'dinner', 'threedollars');
+new Restaurant('Casco Antiguo', 'mexican', 'dinner', 'threedollars');
+
+
+//south east asian
+new Restaurant('Pho Viet Anh', 'southeastasian', 'dinner', 'onedollar');
+new Restaurant('Mae Phim Thai Restaurant', 'southeastasian', 'dinner', 'onedollar');
+new Restaurant('Green Leaf Vietnamese Restaurant', 'southeastasian', 'dinner', 'onedollar');
+
+new Restaurant('Stateside', 'southeastasian', 'dinner', 'twodollar');
+new Restaurant('Bahn Thai Restaurant', 'southeastasian', 'dinner', 'twodollar');
+new Restaurant('Monsoon Seattle', 'southeastasian', 'dinner', 'twodollar');
+
+//fastfood
+
+new Restaurant('Dicks Drive-In', 'fastfood', 'dinner', 'onedollar');
+new Restaurant('Taxi Dogs', 'fastfood', 'dinner', 'onedollar');
+new Restaurant('Potbelly Sandwich Shop', 'fastfood', 'dinner', 'onedollar');
+
+new Restaurant('Lunchbox Laboratory', 'fastfood', 'dinner', 'twodollar');
+new Restaurant('Happy Garden Fast Food', 'fastfood', 'dinner', 'twodollar');
+new Restaurant('MOD Pizza', 'fastfood', 'dinner', 'twodollar');
 
 
 function sumbitHandler() {
@@ -196,19 +302,23 @@ function sumbitHandler() {
         results.push(Restaurant.allRestaurants[k]);
       }
     }
-    console.log('matching restaurants are: ', results);
-    //create a random number using the array
-
-    // var ranNumber = Math.floor(Math.random()*results.length);
-    // console.log('random index is: ' + ranNumber);
-    //display random result
-    // var testEl = document.getElementById('test');
-    // var liEl = document.createElement('li');
-    // liEl.appendChild(document.createTextNode('You\'re eating at ' + results[ranNumber].name));
-    // testEl.appendChild(liEl);
-    //store results in local storage
+    var localStoragePreferencesParsed = JSON.parse(localStorage.getItem('preferences'));
+    //checking if preferences matches results
+    if (localStorage.preferences) {
+      var resultsWithPref = [];
+      for (var l = 0; l < localStoragePreferencesParsed.length; l++) {
+        for (var m = 0; m < results.length; m ++) {
+          if (results[m].cuisine === localStoragePreferencesParsed[l]) {
+            resultsWithPref.push(results[m]);
+          }
+        }
+      }
+      results = resultsWithPref;
+    }
+    
     var resultsStringify = JSON.stringify(results);
     localStorage.setItem('Results', resultsStringify);
+
     window.open('results.html','_self');
   }
   //Create button/logic for multiple tries
@@ -271,23 +381,22 @@ function yesbtnHandler(event) {
   //Disable yes/no handlers
   disableBtn();
   window.location = '#order';
-
 }
 
 function disableBtn() {
-  yesbtn.removeEventListener('click', yesbtnHandler);
-  nobtn.removeEventListener('click', yesbtnHandler);
+  btngroup.removeChild(yesbtn);
+  btngroup.removeChild(nobtn);
 }
 
 function nobtnHandler(event) {
   event.preventDefault();
   if (numTimesShown < 3 && numTimesShown < restItems.length) {
     displayImage();
-
   }
   else {
     alert ('Sorry we could not find a match for you.');
-    // window.location.href = "www.yelp.com";
+    disableBtn();
+    window.location.replace("http://www.yelp.com");
   }
 }
 

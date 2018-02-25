@@ -1,0 +1,73 @@
+html {
+    background: url(images/wood_bk.jpg) no-repeat center center fixed;
+    /* background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/wood_bk.jpg'); */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100%;
+}
+
+#abouthead{
+    font-family: 'Titan One', cursive;
+    font-size: 50px;
+    color: #efefef;
+    text-align: center;
+    margin-top: 30px;
+}
+  
+#abouthead2 {
+    font-family: sans-serif;
+    font-size: 38px;
+    color: #efefef;
+    text-align: center;
+    margin-top: 40px;
+    font-weight: bolder;
+}
+
+#abouthead3{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 22px;
+    color: #efefef;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#members1 {
+    font-family: sans-serif;
+    font-size: 38px;
+    color: #efefef;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: bolder;
+}
+
+.mem {
+    font-family: 'Quicksand', sans-serif;
+    color: #efefef;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#khoa {
+      height: 300px;
+      display: block;
+      margin: auto;   
+}
+
+#max {
+    height: 300px;
+    display: block;
+    margin: auto;   
+}
+
+#michael {
+    height: 320px;
+    display: block;
+    margin: auto;   
+}
+
+#lina {
+    height: 280px;
+    display: block;
+    margin: auto;   
+}
