@@ -32,6 +32,7 @@ main {
 }
 h1 {
     text-align: center;
+    margin: 0px auto;
 }
 img {
     opacity: .6;
@@ -47,8 +48,8 @@ img:hover {
 }
 div {
     float: left;
-    width: 200px;
-    margin: 30px;
+    width: 25%;
+    margin: 10px;
 }
 div p {
     text-align: center;
