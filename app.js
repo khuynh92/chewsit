@@ -12,7 +12,7 @@ var reservebtn = document.getElementById('reserve');
 var savePref = document.getElementById('save');
 
 Restaurant.names = ['Green Leaf Vietnamese Restaurant', 'Zeeks Pizza', 'Tilikum Place Cafe', 'La Parisienne French Bakery', 'Storyville Coffee Company', 'Bang Bang Cafe', 'Mecca Cafe', 'Shaker and Spear', 'Local 360', 'Andaluca Restaurant', 'CJs Eatery', 'Some Random Bar', 'Dahlia Lounge', 'Six Seven Restaurant', 'The Crumpet Shop'];
-
+Restaurant.namesPop = [];
 
 function handlePreferences() {
   var prefArray = [];
@@ -114,30 +114,30 @@ var page = path.split('/').pop();
 console.log( page );
 
 //constructor function for Restaurants
-function Restaurant(name, cuisine, mealtype, price, image, iframe) {
+function Restaurant(name, cuisine, mealtype, price, image) {
   this.name = name;
   this.cuisine = cuisine;
   this.mealtype = mealtype;
   this.price = price;
   this.image = image;
-  this.iframe = iframe;
   Restaurant.allRestaurants.push(this);
 }
+//making iframes for all locations
 //breakfast
-new Restaurant('Tilikum Place Cafe', 'breakfast', 'breakfast', 'twodollars', 'images/$$tilikumplace_breakfast.jpg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.419616853272!2d-122.34991868414622!3d47.61797397918542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490154f3b483be9%3A0xb8dba873b8fad944!2sTilikum+Place+Cafe!5e0!3m2!1sen!2sus!4v1519511178625');
-new Restaurant('Local 360', 'breakfast', 'breakfast', 'twodollars', 'images/$$local360_breakfast.jpg' , 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.6531342494445!2d-122.34839058414644!3d47.61343397918521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490154db9c55fbd%3A0xe6d87f7d254efb08!2sLocal+360!5e0!3m2!1sen!2sus!4v1519511574218');
-new Restaurant('Lola', 'breakfast', 'breakfast', 'twodollars', 'images/$$cjseatery_breakfast.jpg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.6541629230837!2d-122.34223968414642!3d47.613413979185154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490154c9e055c17%3A0xd406423caf0d054e!2sLola!5e0!3m2!1sen!2sus!4v1519513183623');
-new Restaurant('Some Random Bar', 'breakfast', 'breakfast', 'twodollars', 'images/$$somerandombar_breakfast.jpg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.543023128394!2d-122.35284368414631!3d47.61557477918526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490154e401b4cb3%3A0x4fef1e810ac1375c!2sSome+Random+Bar!5e0!3m2!1sen!2sus!4v1519511658297');
+new Restaurant('Tilikum Place Cafe', 'breakfast', 'breakfast', 'twodollars', 'images/$$tilikumplace_breakfast.jpg');
+new Restaurant('Local 360', 'breakfast', 'breakfast', 'twodollars', 'images/$$local360_breakfast.jpg');
+new Restaurant('CJs Eatery', 'breakfast', 'breakfast', 'twodollars', 'images/$$cjseatery_breakfast.jpg');
+new Restaurant('Some Random Bar', 'breakfast', 'breakfast', 'twodollars', 'images/$$somerandombar_breakfast.jpg');
 
-new Restaurant('Bang Bang Cafe', 'breakfast', 'breakfast', 'onedollar', 'images/$bangbang_breakfast.jpg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.6261314492804!2d-122.35138778414638!3d47.61395897918502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490154e07f88ee5%3A0x604e04ba588a85be!2sBang+Bang+Cafe!5e0!3m2!1sen!2sus!4v1519511880717');
-new Restaurant('The Crumpet Shop', 'breakfast', 'breakfast', 'onedollar', 'images/$crumpetshop_breakfast.jpg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.8791362598636!2d-122.34270548414658!3d47.60903977918491!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906ab2fe891f07%3A0xea6ec7f5c2a9b794!2sThe+Crumpet+Shop!5e0!3m2!1sen!2sus!4v1519511915046');
-new Restaurant('Mecca Cafe', 'breakfast', 'breakfast', 'onedollar', 'images/$mecca_breakfast.jpg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.1045885070507!2d-122.35862668414613!3d47.62409817918588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490154395570293%3A0xeef477d8d35810d2!2sThe+Mecca+Cafe+%26+Bar!5e0!3m2!1sen!2sus!4v1519512189088');
-new Restaurant('La Parisienne French Bakery', 'breakfast', 'breakfast', 'onedollar', 'images/$laparis_breakfast.jpg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.483948980646!2d-122.34880528414625!3d47.61672327918537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490154edd27ff31%3A0x80956d9d62987237!2sLa+Parisienne!5e0!3m2!1sen!2sus!4v1519512232396');
+new Restaurant('Bang Bang Cafe', 'breakfast', 'breakfast', 'onedollar', 'images/$bangbang_breakfast.jpg');
+new Restaurant('The Crumpet Shop', 'breakfast', 'breakfast', 'onedollar', 'images/$crumpetshop_breakfast.jpg');
+new Restaurant('Mecca Cafe', 'breakfast', 'breakfast', 'onedollar', 'images/$mecca_breakfast.jpg');
+new Restaurant('La Parisienne French Bakery', 'breakfast', 'breakfast', 'onedollar', 'images/$laparis_breakfast.jpg');
 
-new Restaurant('Shaker and Spear', 'breakfast', 'breakfast', 'threedollars', 'images/$$$shakerandspear_breakfast.jpg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.7244308433833!2d-122.34390878414638!3d47.612047779184955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490154cc3c1c9c7%3A0x1a36e12a145b0322!2sShaker+%2B+Spear!5e0!3m2!1sen!2sus!4v1519512280484');
-new Restaurant('Andaluca Restaurant', 'breakfast', 'breakfast', 'threedollars', 'images/$$$andaluca_breakfast.jpg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4831.321024460542!2d-122.33934248168842!3d47.61016377773162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490154b539ba747%3A0xbf3cba605ff1722d!2sAndaluca!5e0!3m2!1sen!2sus!4v1519512410683');
-new Restaurant('Dahlia Lounge', 'breakfast', 'breakfast', 'threedollars', 'images/$$$dahlialounge_breakfast.jpg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.673193326251!2d-122.34256668414646!3d47.613043979185086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490154c9e5cae49%3A0xe954e42d22a80fdd!2sDahlia+Lounge!5e0!3m2!1sen!2sus!4v1519512441964');
-new Restaurant('Six Seven Restaurant', 'breakfast', 'breakfast', 'threedollars', 'images/$$$sixseven_breakfast.jpg', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.708157542192!2d-122.35442238414642!3d47.6123641791851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54901552694cd685%3A0xaed4d83526dc58b!2sSix+Seven+restaurant!5e0!3m2!1sen!2sus!4v1519512472504');
+new Restaurant('Shaker and Spear', 'breakfast', 'breakfast', 'threedollars', 'images/$$$shakerandspear_breakfast.jpg');
+new Restaurant('Andaluca Restaurant', 'breakfast', 'breakfast', 'threedollars', 'images/$$$andaluca_breakfast.jpg');
+new Restaurant('Dahlia Lounge', 'breakfast', 'breakfast', 'threedollars', 'images/$$$dahlialounge_breakfast.jpg');
+new Restaurant('Six Seven Restaurant', 'breakfast', 'breakfast', 'threedollars', 'images/$$$sixseven_breakfast.jpg');
 
 //lunch
 new Restaurant('Zeeks Pizza', 'italian', 'lunch', 'twodollars');
@@ -154,6 +154,10 @@ new Restaurant('La Parisienne French Bakery', 'bakery', 'dessert', 'onedollar');
 new Restaurant('dessert2', 'any', 'dessert', 'twodollars');
 new Restaurant('dessert3', 'any', 'dessert', 'threedollars');
 
+for (var z = 0; z < Restaurant.allRestaurants.length; z++) {
+  Restaurant.namesPop.push(Restaurant.allRestaurants[z].name.split(' ').join('+'));
+  Restaurant.allRestaurants[z].iframe = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyCXvS2M8YF3R6sN_KnqTKS-guj4Aoh4sOU&q=' + Restaurant.namesPop[z] + ',Seattle+WA';
+}
 
 function sumbitHandler() {
   var results = [];
