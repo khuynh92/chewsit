@@ -113,13 +113,6 @@ var path = window.location.pathname;
 var page = path.split('/').pop();
 console.log( page );
 
-////////////////////RESULTS PAGE///////////////
-var yesbtn = document.getElementById('yes');
-var nobtn = document.getElementById('no');
-var orderbtn = document.getElementById('order');
-var reservebtn = document.getElementById('reserve');
-var resthead = document.getElementById('resthead');
-
 //constructor function for Restaurants
 function Restaurant(name, cuisine, mealtype, price, image) {
   this.name = name;
