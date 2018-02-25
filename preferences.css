@@ -48,8 +48,8 @@ img:hover {
 }
 div {
     float: left;
-    width: 25%;
-    margin: 10px;
+    width: 200px;
+    margin: 30px;
 }
 div p {
     text-align: center;
