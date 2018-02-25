@@ -154,6 +154,10 @@ function Restaurant(name, cuisine, mealtype, price, image) {
 }
 //making iframes for all locations
 //breakfast
+
+//for using google places api
+// make a request to allow current location
+//use their location to identify nearby restaurants
 new Restaurant('Tilikum Place Cafe', 'breakfast', 'breakfast', 'twodollars', 'images/$$tilikumplace_breakfast.jpg');
 new Restaurant('Local 360', 'breakfast', 'breakfast', 'twodollars', 'images/$$local360_breakfast.jpg');
 new Restaurant('CJs Eatery', 'breakfast', 'breakfast', 'twodollars', 'images/$$cjseatery_breakfast.jpg');
@@ -333,7 +337,7 @@ function sumbitHandler() {
     }
     var localStoragePreferencesParsed = JSON.parse(localStorage.getItem('preferences'));
     //checking if preferences matches results
-    if (localStorage.preferences) {
+    if (localStoragePreferencesParsed.length > 0) {
       var resultsWithPref = [];
       for (var l = 0; l < localStoragePreferencesParsed.length; l++) {
         for (var m = 0; m < results.length; m ++) {
@@ -443,4 +447,15 @@ function reservebtnHandler(event) {
 
 if(submit) {
   submit.addEventListener('click', sumbitHandler);
+}
+
+//GOOGLE API avttempt
+var map;
+var service;
+var infowindow;
+
+function initialize() {
+  var codefellows = new google.maps.LatLng(47.618515, -122.351513);
+
+  map = new google.maps.Map(document.getElementById('map'))
 }
