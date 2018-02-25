@@ -1,6 +1,6 @@
 html {
     background: url(images/wood_bk.jpg) no-repeat center center fixed;
-    /* background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/wood_bk.jpg'); */
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/wood_bk.jpg'); */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -10,7 +10,7 @@ html {
 #abouthead{
     font-family: 'Titan One', cursive;
     font-size: 50px;
-    color: #efefef;
+    color: rgb(18, 160, 77);
     text-align: center;
     margin-top: 30px;
 }
@@ -18,7 +18,7 @@ html {
 #abouthead2 {
     font-family: sans-serif;
     font-size: 38px;
-    color: #efefef;
+    color: rgb(18, 160, 77);
     text-align: center;
     margin-top: 40px;
     font-weight: bolder;
@@ -26,48 +26,45 @@ html {
 
 #abouthead3{
     font-family: 'Quicksand', sans-serif;
-    font-size: 22px;
-    color: #efefef;
+    font-size: 20px;
+    color: white;
     text-align: center;
     margin-top: 20px;
+    word-spacing: .1em;
+    line-height: 2em;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 #members1 {
     font-family: sans-serif;
     font-size: 38px;
-    color: #efefef;
+    color: rgb(18, 160, 77);
     text-align: center;
     margin-top: 50px;
-    font-weight: bolder;
-}
-
-.mem {
-    font-family: 'Quicksand', sans-serif;
-    color: #efefef;
-    text-align: center;
-    margin-top: 20px;
-}
+    font-weight: bolder; 
+} 
 
 #khoa {
-      height: 300px;
-      display: block;
-      margin: auto;   
-}
-
-#max {
     height: 300px;
     display: block;
     margin: auto;   
 }
 
-#michael {
-    height: 320px;
-    display: block;
-    margin: auto;   
+.founder {
+    font-family: sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    margin-top: 20px;
 }
 
-#lina {
-    height: 280px;
-    display: block;
-    margin: auto;   
+.teamcl {
+    display: inline-block;
+    width:30%;
 }
+
+.team {
+    width: 80%;
+}
+
