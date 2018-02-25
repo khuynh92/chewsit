@@ -147,19 +147,125 @@ new Restaurant('Dahlia Lounge', 'breakfast', 'breakfast', 'threedollars', 'image
 new Restaurant('Six Seven Restaurant', 'breakfast', 'breakfast', 'threedollars', 'images/$$$sixseven_breakfast.jpg');
 
 //lunch
-new Restaurant('Zeeks Pizza', 'italian', 'lunch', 'twodollars');
-new Restaurant('lunch1', 'any', 'lunch', 'onedollar');
-new Restaurant('lunch3', 'any', 'lunch', 'threedollars');
+//Italian
+new Restaurant('Zeeks Pizza', 'italian', 'lunch', 'twodollars', 'images/$zeeks_lunch.jpg');
+new Restaurant('La Vita E Bella', 'italian', 'lunch', 'twodollars', 'images/pexels-photo-774487.jpeg');
+new Restaurant('Buca di Beppo Italian Restaurant', 'italian', 'lunch', 'twodollars', 'images/$$buca_lunch.jpg');
+
+new Restaurant('dueminuti healthy pasta', 'italian', 'lunch', 'onedollar', 'images/food-dinner-pasta-spaghetti-8500.jpg');
+new Restaurant('Mondello Ristorante Italiano', 'italian', 'lunch', 'onedollar', 'images/pexels-photo-546945.jpeg');
+new Restaurant('Pagliacci Pizza', 'italian', 'lunch', 'onedollar', 'images/pexels-photo-532779.jpeg');
+
+new Restaurant('Il Fornaio Seattle', 'italian', 'lunch', 'threedollars', 'images/pexels-photo-263041.jpeg');
+new Restaurant('Tulio', 'italian', 'lunch', 'threedollars', 'images/pexels-photo-803963.jpeg');
+new Restaurant('Agrodolce', 'italian', 'lunch', 'threedollars', 'images/pexels-photo-154145.jpeg');
+
+//Cafe
+new Restaurant('The 5 Point Cafe', 'cafe', 'lunch', 'twodollars', 'images/$$5point_lunch.jpg');
+new Restaurant('Tilikum Place Cafe', 'cafe', 'lunch', 'twodollars', 'images/$$tiltkim_lunch.jpg');
+new Restaurant('CJs Eatery', 'cafe', 'lunch', 'twodollars', 'images/$$CJs_lunch.jpeg');
+
+new Restaurant('Citizen', 'cafe', 'lunch', 'onedollar', 'images/$citizen_lunch.jpeg');
+new Restaurant('Bang Bang Cafe', 'cafe', 'lunch', 'onedollar', 'images/$bang_lunch.jpeg');
+new Restaurant('The Other Coast Cafe', 'cafe', 'lunch', 'onedollar', 'images/$otherCoast_lunch.jpeg');
+
+new Restaurant('Dahlia Lounge', 'cafe', 'lunch', 'threedollars', 'images/$$$dahlia_lunch.jpeg');
+new Restaurant('Lola', 'cafe', 'lunch', 'threedollars', 'images/$$$lola_lunch.jpeg');
+new Restaurant('Collections Cafe', 'cafe', 'lunch', 'threedollars', 'images/$$$collections_lunch.jpeg');
+
+//Mexican
+new Restaurant('Agave Cocina and Tequilas', 'mexican', 'lunch', 'twodollars', 'images/$$mexican-Huevos-Rancheros.jpg');
+new Restaurant('Villa Escondida', 'mexican', 'lunch', 'twodollars', 'images/$$mexican-empanadas.jpg');
+new Restaurant('Cactus South Lake Union', 'mexican', 'lunch', 'twodollars', 'images/$$mexican-grilled-pineapple-pork-burrito.jpg');
+
+new Restaurant('Bang Bang Cafe', 'mexican', 'lunch', 'onedollar', 'images/$mexican-chicken-burritos.jpg');
+new Restaurant('Rancho Bravo Tacos', 'mexican', 'lunch', 'onedollar', 'images/$mexican-beef_taco.jpg');
+new Restaurant('Tenoch Mexican Grill', 'mexican', 'lunch', 'onedollar', 'images/$mexican-nachos.jpg');
+
+new Restaurant('Gracia', 'mexican', 'lunch', 'threedollars', 'images/$$$mexican-azteca-de-oro.jpg');
+new Restaurant('Agave Cocina and Tequilas', 'mexican', 'lunch', 'threedollars', 'images/$$$mexican-mango-catfish-taco.jpg');
+new Restaurant('Casco Antiguo', 'mexican', 'lunch', 'threedollars', 'images/$$$mexican-quiche.jpg');
+
+
+//south east asian
+new Restaurant('Pho Viet Anh', 'southeastasian', 'lunch', 'onedollar', 'images/$eastasian-bean_sprout_squid.jpg');
+new Restaurant('Mae Phim Thai Restaurant', 'southeastasian', 'lunch', 'onedollar', 'images/$eastasian-pot-stickers.jpg');
+new Restaurant('Green Leaf Vietnamese Restaurant', 'southeastasian', 'lunch', 'onedollar', 'images/$eastasian-sesame-beef.jpg');
+
+new Restaurant('Stateside', 'southeastasian', 'lunch', 'twodollar', 'images/$$eastasian-Lok-lak.jpg');
+new Restaurant('Bahn Thai Restaurant', 'southeastasian', 'lunch', 'twodollar', 'images/$$eastasian-padthai.jpg');
+new Restaurant('Monsoon Seattle', 'southeastasian', 'lunch', 'twodollar', 'images/$$eastasian-Fish-Amok.jpg');
+
+//fastfood
+
+new Restaurant('Dicks Drive-In', 'fastfood', 'lunch', 'onedollar', 'images/$fastfood-dicks-original.png');
+new Restaurant('Taxi Dogs', 'fastfood', 'lunch', 'onedollar', 'images/$fastfood-classic-hot-dogs.png');
+new Restaurant('Potbelly Sandwich Shop', 'fastfood', 'lunch', 'onedollar', 'images/$potBelly.jpeg');
+
+new Restaurant('Lunchbox Laboratory', 'fastfood', 'lunch', 'twodollar', 'images/$$lunchBox_lunch.jpg');
+new Restaurant('Happy Garden Fast Food', 'fastfood', 'lunch', 'twodollar','images/$$happyGarden_lunch.jpeg');
+new Restaurant('MOD Pizza', 'fastfood', 'lunch', 'twodollar', 'images/$fastfood-margherita-pizza.jpg');
+
 
 //dinner
-new Restaurant('Green Leaf Vietnamese Restaurant', 'southeast-asian', 'dinner', 'twodollars' );
-new Restaurant('dinner1', 'any', 'dinner', 'onedollar');
-new Restaurant('dinner3', 'any', 'dinner', 'threedollars');
+//Italian
+new Restaurant('Zeeks Pizza', 'italian', 'dinner', 'twodollars', 'images/$zeeks_dinner.jpg');
+new Restaurant('La Vita E Bella', 'italian', 'dinner', 'twodollars', 'images/pexels-photo-774487.jpeg');
+new Restaurant('Buca di Beppo Italian Restaurant', 'italian', 'dinner', 'twodollars', 'images/$$buca_dinner.jpg');
 
-//dessert
-new Restaurant('La Parisienne French Bakery', 'bakery', 'dessert', 'onedollar');
-new Restaurant('dessert2', 'any', 'dessert', 'twodollars');
-new Restaurant('dessert3', 'any', 'dessert', 'threedollars');
+new Restaurant('dueminuti healthy pasta', 'italian', 'dinner', 'onedollar', 'images/food-dinner-pasta-spaghetti-8500.jpg');
+new Restaurant('Mondello Ristorante Italiano', 'italian', 'dinner', 'onedollar', 'images/pexels-photo-546945.jpeg');
+new Restaurant('Pagliacci Pizza', 'italian', 'dinner', 'onedollar', 'images/pexels-photo-532779.jpeg');
+
+new Restaurant('Il Fornaio Seattle', 'italian', 'dinner', 'threedollars', 'images/pexels-photo-263041.jpeg');
+new Restaurant('Tulio', 'italian', 'dinner', 'threedollars', 'images/pexels-photo-803963.jpeg');
+new Restaurant('Agrodolce', 'italian', 'dinner', 'threedollars', 'images/pexels-photo-154145.jpeg');
+
+//Cafe
+new Restaurant('The 5 Point Cafe', 'cafe', 'dinner', 'twodollars', 'images/$$5point_dinner.jpg');
+new Restaurant('Tilikum Place Cafe', 'cafe', 'dinner', 'twodollars', 'images/$$tiltkim_dinner.jpg');
+new Restaurant('CJs Eatery', 'cafe', 'dinner', 'twodollars', 'images/$$CJs_dinner.jpeg');
+
+new Restaurant('Citizen', 'cafe', 'dinner', 'onedollar', 'images/$citizen_dinner.jpeg');
+new Restaurant('Bang Bang Cafe', 'cafe', 'dinner', 'onedollar', 'images/$bang_dinner.jpeg');
+new Restaurant('The Other Coast Cafe', 'cafe', 'dinner', 'onedollar', 'images/$otherCoast_dinner.jpeg');
+
+new Restaurant('Dahlia Lounge', 'cafe', 'dinner', 'threedollars', 'images/$$$dahlia_dinner.jpeg');
+new Restaurant('Lola', 'cafe', 'dinner', 'threedollars', 'images/$$$lola_dinner.jpeg');
+new Restaurant('Collections Cafe', 'cafe', 'dinner', 'threedollars', 'images/$$$collections_dinner.jpeg');
+
+//Mexican
+new Restaurant('Agave Cocina and Tequilas', 'mexican', 'dinner', 'twodollars', 'images/$$mexican-Huevos-Rancheros.jpg');
+new Restaurant('Villa Escondida', 'mexican', 'dinner', 'twodollars', 'images/$$mexican-empanadas.jpg');
+new Restaurant('Cactus South Lake Union', 'mexican', 'dinner', 'twodollars', 'images/$$mexican-grilled-pineapple-pork-burrito.jpg');
+
+new Restaurant('Bang Bang Cafe', 'mexican', 'dinner', 'onedollar', 'images/$mexican-chicken-burritos.jpg');
+new Restaurant('Rancho Bravo Tacos', 'mexican', 'dinner', 'onedollar', 'images/$mexican-beef_taco.jpg');
+new Restaurant('Tenoch Mexican Grill', 'mexican', 'dinner', 'onedollar', 'images/$mexican-nachos.jpg');
+
+new Restaurant('Gracia', 'mexican', 'dinner', 'threedollars', 'images/$$$mexican-azteca-de-oro.jpg');
+new Restaurant('Agave Cocina and Tequilas', 'mexican', 'dinner', 'threedollars', 'images/$$$mexican-mango-catfish-taco.jpg');
+new Restaurant('Casco Antiguo', 'mexican', 'dinner', 'threedollars', 'images/$$$mexican-quiche.jpg');
+
+
+//south east asian
+new Restaurant('Pho Viet Anh', 'southeastasian', 'dinner', 'onedollar', 'images/$eastasian-bean_sprout_squid.jpg');
+new Restaurant('Mae Phim Thai Restaurant', 'southeastasian', 'dinner', 'onedollar', 'images/$eastasian-pot-stickers.jpg');
+new Restaurant('Green Leaf Vietnamese Restaurant', 'southeastasian', 'dinner', 'onedollar', 'images/$eastasian-sesame-beef.jpg');
+
+new Restaurant('Stateside', 'southeastasian', 'dinner', 'twodollar', 'images/$$eastasian-Lok-lak.jpg');
+new Restaurant('Bahn Thai Restaurant', 'southeastasian', 'dinner', 'twodollar', 'images/$$eastasian-padthai.jpg');
+new Restaurant('Monsoon Seattle', 'southeastasian', 'dinner', 'twodollar', 'images/$$eastasian-Fish-Amok.jpg');
+
+//fastfood
+
+new Restaurant('Dicks Drive-In', 'fastfood', 'lunch', 'onedollar', 'images/$fastfood-dicks-original.png');
+new Restaurant('Taxi Dogs', 'fastfood', 'lunch', 'onedollar', 'images/$fastfood-classic-hot-dogs.png');
+new Restaurant('Potbelly Sandwich Shop', 'fastfood', 'lunch', 'onedollar', 'images/$potBelly.jpeg');
+
+new Restaurant('Lunchbox Laboratory', 'fastfood', 'lunch', 'twodollar', 'images/$$lunchBox_lunch.jpg');
+new Restaurant('Happy Garden Fast Food', 'fastfood', 'lunch', 'twodollar','images/$$happyGarden_lunch.jpeg');
+new Restaurant('MOD Pizza', 'fastfood', 'lunch', 'twodollar', 'images/$fastfood-margherita-pizza.jpg');
 
 
 function sumbitHandler() {

@@ -9,7 +9,13 @@ html {
 body {
     font-family: 'Quicksand', sans-serif;
     color: white;
+<<<<<<< HEAD
+    background-image: url(img/table-salad3.jpeg);
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6) ), url('img/table-salad3.jpeg');
+=======
+>>>>>>> master
     background-size: cover;
+    font-size: 18px;
 }
 header {
     background: rgb(44, 44, 44);
@@ -67,15 +73,18 @@ div input:checked + img{
     opacity: 1;
 }
 button {
-    margin: 10px 41% 10px 41%;
-    border: none;
-    padding: 10px 30px;
-    background: #555;
+    display: block;
+    width: 200px;
+    height: 50px;
+    margin: 25px auto;
+    transition: 300ms;
+    background-color: rgba(169, 169, 169, 0.24);
+    border: 1px solid;
+    outline: 0;
+    font-weight: bold;
     color: white;
-    border-radius: 7px;
+    border-radius: 80px;
     font-size: 18px;
-    transition: 350ms;
-    cursor: pointer;
 }
 button:hover {
     border:solid rgb(25, 255, 121) 2px;
