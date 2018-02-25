@@ -6,13 +6,13 @@ var yesbtn = document.getElementById('yes');
 var nobtn = document.getElementById('no');
 var orderbtn = document.getElementById('order');
 var reservebtn = document.getElementById('reserve');
-var resthead = document.getElementById('resthead');
+// var resthead = document.getElementById('resthead');
 
 ////////// PREFERENCES JS //////////////////////
 var savePref = document.getElementById('save');
 
 Restaurant.names = ['Green Leaf Vietnamese Restaurant', 'Zeeks Pizza', 'Tilikum Place Cafe', 'La Parisienne French Bakery', 'Storyville Coffee Company', 'Bang Bang Cafe', 'Mecca Cafe', 'Shaker and Spear', 'Local 360', 'Andaluca Restaurant', 'CJs Eatery', 'Some Random Bar', 'Dahlia Lounge', 'Six Seven Restaurant', 'The Crumpet Shop'];
-
+Restaurant.namesPop = [];
 
 function handlePreferences() {
   var prefArray = [];
@@ -122,7 +122,7 @@ function Restaurant(name, cuisine, mealtype, price, image) {
   this.image = image;
   Restaurant.allRestaurants.push(this);
 }
-
+//making iframes for all locations
 //breakfast
 new Restaurant('Tilikum Place Cafe', 'breakfast', 'breakfast', 'twodollars', 'images/$$tilikumplace_breakfast.jpg');
 new Restaurant('Local 360', 'breakfast', 'breakfast', 'twodollars', 'images/$$local360_breakfast.jpg');
@@ -260,6 +260,10 @@ new Restaurant('Lunchbox Laboratory', 'fastfood', 'lunch', 'twodollar', 'images/
 new Restaurant('Happy Garden Fast Food', 'fastfood', 'lunch', 'twodollar','images/$$happyGarden_lunch.jpeg');
 new Restaurant('MOD Pizza', 'fastfood', 'lunch', 'twodollar', 'images/$fastfood-margherita-pizza.jpg');
 
+for (var z = 0; z < Restaurant.allRestaurants.length; z++) {
+  Restaurant.namesPop.push(Restaurant.allRestaurants[z].name.split(' ').join('+'));
+  Restaurant.allRestaurants[z].iframe = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyCXvS2M8YF3R6sN_KnqTKS-guj4Aoh4sOU&q=' + Restaurant.namesPop[z] + ',Seattle+WA';
+}
 
 function sumbitHandler() {
   var results = [];
@@ -308,15 +312,24 @@ function sumbitHandler() {
           }
         }
       }
+      results = resultsWithPref;
     }
-    console.log(resultsWithPref);
-    console.log(results);
-    results = resultsWithPref;
-    console.log(resultsWithPref);
 
-    var resultsStringify = JSON.stringify(results);
-    localStorage.setItem('Results', resultsStringify);
 
+    //creating random restaurant choice:
+    restChoice = [];
+    var index1 = Math.floor(Math.random() * results.length);
+    restChoice[0] = results[index1];
+    do {
+      var index2 = Math.floor(Math.random() * results.length);
+      restChoice[1] = results[index2];
+      var index3 = Math.floor(Math.random() * results.length);
+      restChoice[2] = results[index3];
+    } while (index1 === index2 || index1 === index3 || index2 === index3);
+    var choiceNumber = 1;
+    localStorage.setItem('choiceNumber', choiceNumber);
+    var restChoiceStringify = JSON.stringify(restChoice);
+    localStorage.setItem('Results', restChoiceStringify);
     window.open('results.html','_self');
 
   }
@@ -327,21 +340,14 @@ if (page === 'main.html'){
   submit.addEventListener('click', sumbitHandler);
 }
 
-//create a conditional that says "IF Restaurants.allRestaurants[i].meal === checkedvalue || Restaurants.allRestaurants[i].price === checkedvalue, then push it to the results array."
-
 ///////////////////RESULTS PAGE//////////////////////////////////////
-var restItems;
-var numTimesShown = 0;
+var restChoice;
 
 if(page === 'results.html'){
 
   if (localStorage.Results) {
-    var strRestItem = localStorage.getItem('Results');
-    restItems = JSON.parse(strRestItem);
-    for (var item of restItems) {
-      console.log(item);
-      item.displayed = false;
-    }
+    var strRestChoice = localStorage.getItem('Results');
+    restChoice = JSON.parse(strRestChoice);
   }
 
   yesbtn.addEventListener('click', yesbtnHandler);
@@ -353,25 +359,22 @@ if(page === 'results.html'){
   displayImage();
 }
 
-function displayImage(){
+function displayImage() {
+  var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
   var restimg = document.getElementById('restimg');
-  var unique = false;
-
-  while ( unique === false){
-    var index = Math.floor(Math.random() * restItems.length);
-    if(restItems[index].displayed === true){
-      continue;
-    }
-    else{
-      restimg.src = restItems[index].image;
-      restItems[index].displayed = true;
-      // restimg.width = 960;
-      // restimg.height = 350;
-      resthead.textContent = restItems[index].name;
-      numTimesShown++;
-      unique = true;
-      break;
-    }
+  var map = document.getElementById('map');
+  if (choiceNumber === 1) {
+    restimg.src = restChoice[0].image;
+    map.firstElementChild.src = restChoice[0].iframe;
+  } else if (choiceNumber === 2) {
+    restimg.src = restChoice[1].image;
+    map.firstElementChild.src = restChoice[1].iframe;
+  } else if (choiceNumber === 3) {
+    restimg.src = restChoice[2].image;
+    map.firstElementChild.src = restChoice[2].iframe;
+  } else {
+    alert('You ran out of choices!');
+    restimg.src = restChoice[2].image;
   }
 }
 
@@ -390,15 +393,13 @@ function disableBtn() {
 
 function nobtnHandler(event) {
   event.preventDefault();
-  if (numTimesShown < 3 && numTimesShown < restItems.length) {
-    displayImage();
+  var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
+  choiceNumber++;
+  localStorage.setItem('choiceNumber', choiceNumber); 
+  displayImage();
 
-  }
-  else {
-    alert ('Sorry we could not find a match for you.');
-    // window.location.href = "www.yelp.com";
-  }
 }
+
 
 function orderbtnHandler(event) {
   event.preventDefault();
