@@ -34,11 +34,7 @@ if (savePref) {
 }
 ///////// END OF PREFERENCES JS /////////////////
 
-<<<<<<< HEAD
 ///////// START OF HOMEPAGE /////////////////
-=======
-///////////// HOME PAGE JS ///////////////////////
->>>>>>> master
 
 var userDb = [];
 var userSignIn = [];
@@ -132,15 +128,10 @@ if (signIn) {
 }
 if (createAccount) {
   createAccount.addEventListener('click', handleContactSubmit);
-}
-//////////////////// END OF HOMEPAGE JS /////////////////////////////
-
-<<<<<<< HEAD
+} 
 ///////////// END OF HOMEPAGE ///////////////
 
-=======
 ////////////// MAIN PAGE JS /////////////////////////// 
->>>>>>> master
 Restaurant.allRestaurants = [];
 var meal = document.getElementsByName('mealtype');
 var price = document.getElementsByName('dolla');
