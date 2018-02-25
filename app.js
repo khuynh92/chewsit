@@ -1,9 +1,9 @@
 'use strict!';
 
-
 ////////////////////RESULTS PAGE VARIABLES///////////////
 var yesbtn = document.getElementById('yes');
 var nobtn = document.getElementById('no');
+var btngroup = document.getElementById('btngroup');
 var orderbtn = document.getElementById('order');
 var reservebtn = document.getElementById('reserve');
 // var resthead = document.getElementById('resthead');
@@ -23,7 +23,6 @@ function handlePreferences() {
       console.log(pref[i].value);
       pref[i].checked = false;
     }
-
   }
   localStorage.setItem('preferences', JSON.stringify(prefArray));
   console.log(prefArray);
@@ -107,6 +106,7 @@ function handleSignIn(event) {
   popUp.style.display = 'block';
   console.log('sign in button pushed');
 }
+
 if (span) {
   span.onclick = function() {
     popUp.style.display = 'none';
@@ -345,7 +345,6 @@ function sumbitHandler() {
       results = resultsWithPref;
     }
 
-
     //creating random restaurant choice:
     restChoice = [];
     var index1 = Math.floor(Math.random() * results.length);
@@ -413,12 +412,11 @@ function yesbtnHandler(event) {
   //Disable yes/no handlers
   disableBtn();
   window.location = '#order';
-
 }
 
 function disableBtn() {
-  yesbtn.removeEventListener('click', yesbtnHandler);
-  nobtn.removeEventListener('click', yesbtnHandler);
+  btngroup.removeChild(yesbtn);
+  btngroup.removeChild(nobtn);
 }
 
 function nobtnHandler(event) {
