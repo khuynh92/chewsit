@@ -1,4 +1,5 @@
 html {
+<<<<<<< HEAD
   background: url(images/wooden-background.jpeg) no-repeat center center fixed;
   background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/wooden-background.jpeg');
   -webkit-background-size: cover;
@@ -6,6 +7,18 @@ html {
   -o-background-size: cover;
   background-size: 100%;
 }
+=======
+    background: url(images/wooden-background.jpeg) no-repeat center center fixed;
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/wooden-background.jpeg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100%;
+  }
+/* body {
+  background: #242931;
+} */
+>>>>>>> 7ee5df916d5c175f6abeab5f6a060e0d5f5659fd
 
 header {
   background:#efefef;

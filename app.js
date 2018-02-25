@@ -13,6 +13,7 @@ var savePref = document.getElementById('save');
 
 Restaurant.names = ['Green Leaf Vietnamese Restaurant', 'Zeeks Pizza', 'Tilikum Place Cafe', 'La Parisienne French Bakery', 'Storyville Coffee Company', 'Bang Bang Cafe', 'Mecca Cafe', 'Shaker and Spear', 'Local 360', 'Andaluca Restaurant', 'CJs Eatery', 'Some Random Bar', 'Dahlia Lounge', 'Six Seven Restaurant', 'The Crumpet Shop'];
 
+
 function handlePreferences() {
   var prefArray = [];
   var pref = document.getElementsByName('cuisine');
@@ -320,6 +321,7 @@ function sumbitHandler() {
     localStorage.setItem('Results', resultsStringify);
 
     window.open('results.html','_self');
+
   }
   //Create button/logic for multiple tries
 }
