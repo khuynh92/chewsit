@@ -6,26 +6,16 @@ html {
     -o-background-size: cover;
     background-size: 100%;
   }
+  
 body {
     font-family: 'Quicksand', sans-serif;
     color: white;
-<<<<<<< HEAD
     background-image: url(img/table-salad3.jpeg);
     background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6) ), url('img/table-salad3.jpeg');
-=======
->>>>>>> master
     background-size: cover;
     font-size: 18px;
 }
-header {
-    background: rgb(44, 44, 44);
-    height: 100px;
-}
-header ul li {
-    display: inline-block;
-    margin-top: 40px;
-    margin-right: 75px;
-}
+
 nav {
     size: 100%;
     margin-top: 30px;
