@@ -449,13 +449,53 @@ if(submit) {
   submit.addEventListener('click', sumbitHandler);
 }
 
-//GOOGLE API avttempt
 var map;
 var service;
 var infowindow;
 
 function initialize() {
-  var codefellows = new google.maps.LatLng(47.618515, -122.351513);
+  var codeFellows = new google.maps.LatLng(47.618233, -122.351861);
 
-  map = new google.maps.Map(document.getElementById('map'))
+  map = new google.maps.Map(document.getElementById('map2'), {
+    center: codeFellows,
+    zoom: 16
+  });
+
+  var request = {
+    location: codeFellows,
+    radius: '500',
+    query: 'coffee'
+  };
+
+  infowindow = new google.maps.InfoWindow();
+  service = new google.maps.places.PlacesService(map);
+  service.textSearch(request, callback);
 }
+
+function callback (results, status) {
+  if (status === google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      createMarker(results[i]);
+    }
+  }
+}
+
+function createMarker(place) {
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+}
+
+if (document.getElementById('map2')) {
+  initialize();
+}
+
+
+//function: check preference array: choose one randomly, search using google places api search, randomize that choice, spit it out to user

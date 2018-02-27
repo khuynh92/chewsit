@@ -157,6 +157,8 @@ main {
 
 /* got this code from W3 schools */
 #map {
+  width: 500px;
+  height: 500px;
   margin-top: 70px;
   display: block;
   margin-left: auto;
@@ -190,3 +192,7 @@ main {
     border-radius: 5px;
   }
  
+  #map2 {
+    width: 400px;
+    height: 400px;
+  }
