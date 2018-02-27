@@ -1,10 +1,13 @@
-html {
-    background: url(images/wood_bk.jpg) no-repeat center center fixed;
-    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/wood_bk.jpg'); */
-    -webkit-background-size: cover;
+/* html {
+    background: url(images/whitebag.jpg) no-repeat center center fixed;
+    /* background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/wood_bk.jpg');  */
+    /* -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: 100%;
+     background-size: 100%;  */
+/* }  */ 
+* {
+    background-color: #fffff9;
 }
 
 #abouthead{
@@ -17,46 +20,60 @@ html {
   
 #abouthead2 {
     font-family: sans-serif;
-    font-size: 38px;
-    color: rgb(18, 160, 77);
+    font-size: 28px;
+    /* color: rgb(18, 160, 77); */
+    color:black;
     text-align: center;
     margin-top: 40px;
     font-weight: bolder;
 }
 
 #abouthead3{
-    font-family: 'Quicksand', sans-serif;
-    font-size: 20px;
-    color: white;
-    text-align: center;
+    font-family: helvetica;
+    font-size: 22px;
+    color: black;
+    text-align: justify;
     margin-top: 20px;
-    word-spacing: .1em;
-    line-height: 2em;
-    margin-left: 30px;
-    margin-right: 30px;
+    /* word-spacing: .1em;
+    line-height: 2em; */
+    display: block;
+    margin: auto;
+    /* margin-left: 30px;
+    margin-right: 30px; */
+    width: 900px;
 }
 
 #members1 {
-    font-family: sans-serif;
-    font-size: 38px;
-    color: rgb(18, 160, 77);
+    font-family:helvetica;
+    font-size: 28px;
+    color: black;
     text-align: center;
     margin-top: 50px;
-    font-weight: bolder; 
 } 
 
+hr {
+    color: gray;
+}
 #khoa {
     height: 300px;
     display: block;
     margin: auto;   
+    border-radius: 100%;
 }
 
 .founder {
-    font-family: sans-serif;
-    color: white;
+    font-family: helvetica;
+    color: black;
     text-align: center;
-    font-size: 28px;
+    font-size: 24px;
     margin-top: 20px;
+}
+
+.found {
+    font-family: helvetica;
+    font-size: 20px;
+    color: black;
+    margin-top: 10px;
 }
 
 .teamcl {
@@ -65,6 +82,14 @@ html {
 }
 
 .team {
-    width: 80%;
+    width: 52%;
+    border-radius: 100%;
 }
 
+#tagline {
+    font-family: helvetica;
+    font-size: 24px;
+    color: rgb(18, 160, 77);
+    text-align: center;
+    
+}
