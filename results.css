@@ -14,17 +14,7 @@ header {
 }
 
 nav {
-<<<<<<< HEAD
-=======
-  width: 960px;
-  margin: 0px auto;
-}
-<<<<<<< HEAD
-   size: 100%;
-=======
->>>>>>> master
     size: 100%;
->>>>>>> ff882e18cc8a6c4fa6a397de4f74206ba03878d6
     margin-top: 30px;
     padding-top: 30px;
     width: 100%;
@@ -197,7 +187,6 @@ main {
     margin: auto;
     border-radius: 5px;
   }
-<<<<<<< HEAD
 
   iframe {
     border-radius: 5px;
@@ -207,6 +196,3 @@ main {
     width: 400px;
     height: 400px;
   }
-=======
- 
->>>>>>> master
