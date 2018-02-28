@@ -33,6 +33,7 @@ function handlePreferences() {
   }
   localStorage.setItem('preferences', JSON.stringify(prefArray));
   console.log(prefArray);
+  window.open('main.html','_self');
 }
 /////////////////////// PREFERENCES //////////////////////////
 
