@@ -34,11 +34,7 @@ if (savePref) {
 }
 ///////// END OF PREFERENCES JS /////////////////
 
-<<<<<<< HEAD
-///////// START OF HOMEPAGE /////////////////
-=======
 ///////////// HOME PAGE JS ///////////////////////
->>>>>>> master
 
 var userDb = [];
 var userSignIn = [];
@@ -99,6 +95,9 @@ function handleContactSubmit(event) {
   var userPw = document.getElementById('userPw').value;
   var userCnum = parseInt(document.getElementById('userCnum').value);
   new AccountConstructor(userName, userCity, userCnum, userPw);
+  // here is where the JSON should go
+  localStorage.setItem('userDatabase', JSON.stringify(userDb));
+
   userName = document.getElementById('userName').value = '';
   userCity = document.getElementById('userCity').value = '';
   userPw = document.getElementById('userPw').value = '';
@@ -135,12 +134,7 @@ if (createAccount) {
 }
 //////////////////// END OF HOMEPAGE JS /////////////////////////////
 
-<<<<<<< HEAD
-///////////// END OF HOMEPAGE ///////////////
-
-=======
 ////////////// MAIN PAGE JS /////////////////////////// 
->>>>>>> master
 Restaurant.allRestaurants = [];
 var meal = document.getElementsByName('mealtype');
 var price = document.getElementsByName('dolla');
