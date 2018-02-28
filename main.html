@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="reset.css" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand|Titan+One" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="main.css" />
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXvS2M8YF3R6sN_KnqTKS-guj4Aoh4sOU&libraries=places"></script>
 </head>
 
 <body>
@@ -20,23 +21,30 @@
       <li>History</li>
     </ul>
   </nav>
+  <div id="location">
+      <button id="current-location">Use Current Location</button>
+  </div>
   <section id="main">
     <div id="inner-container">
       <div id="price">
         <label>
-          <input type="radio" name="dolla" value="onedollar" />
+          <input type="radio" name="dolla" value=1   />
           <p class="dollar">$</p>
         </label>
 
         <label>
-          <input type="radio" name="dolla" value="twodollars" />
+          <input type="radio" name="dolla" value=2 />
           <p class="dollar">$$</p>
         </label>
 
         <label>
-          <input type="radio" name="dolla" value="threedollars" />
-          <p class="dollar" id="lastdollar">$$$</p>
+          <input type="radio" name="dolla" value=3 />
+          <p class="dollar">$$$</p>
         </label>
+        <label>
+            <input type="radio" name="dolla" value=4 />
+            <p class="dollar" id="lastdollar">$$$$</p>
+          </label>
       </div>
       <div id="meal">
         <label>
@@ -65,7 +73,11 @@
 
   </ul>
   <button id="submit">Chews It</button>
+  <ul id="results"></ul>
+  <div id="map"></div>
+  <img src="http://developers.google.com/places/documentation/images/powered-by-google-on-white.png"/>
   <script src="app.js"></script>
+  
 </body>
 
 
