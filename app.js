@@ -1,4 +1,5 @@
-'use strict!';
+'use strict';
+
 
 ////////////////////RESULTS PAGE VARIABLES///////////////
 var yesbtn = document.getElementById('yes');
@@ -6,14 +7,20 @@ var nobtn = document.getElementById('no');
 var btngroup = document.getElementById('btngroup');
 var orderbtn = document.getElementById('order');
 var reservebtn = document.getElementById('reserve');
-// var resthead = document.getElementById('resthead');
 
-////////// PREFERENCES JS //////////////////////
+//search google restaurants for places that match
+var map, service, infoWindow, restInfo, foodType1, foodType2, foodType3, mainPrice, mainMeal;
+var preferences = JSON.parse(localStorage.getItem('preferences'));
+var path = window.location.pathname;
+var page = path.split('/').pop();
+var submit = document.getElementById('submit');
+var currentLocation = document.getElementById('current-location');
+var meal = document.getElementsByName('mealtype');
+var price = document.getElementsByName('dolla');
 var savePref = document.getElementById('save');
-
-Restaurant.names = ['Green Leaf Vietnamese Restaurant', 'Zeeks Pizza', 'Tilikum Place Cafe', 'La Parisienne French Bakery', 'Storyville Coffee Company', 'Bang Bang Cafe', 'Mecca Cafe', 'Shaker and Spear', 'Local 360', 'Andaluca Restaurant', 'CJs Eatery', 'Some Random Bar', 'Dahlia Lounge', 'Six Seven Restaurant', 'The Crumpet Shop'];
-Restaurant.namesPop = [];
-
+var restResults = [];
+var finalThree = [];
+///////////////////////// PREFERENCES ///////////////////////////
 function handlePreferences() {
   var prefArray = [];
   var pref = document.getElementsByName('cuisine');
@@ -27,11 +34,7 @@ function handlePreferences() {
   localStorage.setItem('preferences', JSON.stringify(prefArray));
   console.log(prefArray);
 }
-
-if (savePref) {
-  savePref.addEventListener('click', handlePreferences);
-}
-///////// END OF PREFERENCES JS /////////////////
+/////////////////////// PREFERENCES //////////////////////////
 
 ///////// START OF HOMEPAGE /////////////////
 
@@ -131,191 +134,41 @@ if (createAccount) {
 } 
 ///////////// END OF HOMEPAGE ///////////////
 
-////////////// MAIN PAGE JS /////////////////////////// 
-Restaurant.allRestaurants = [];
-var meal = document.getElementsByName('mealtype');
-var price = document.getElementsByName('dolla');
-var submit = document.getElementById('submit');
-var mainPrice;
-var mainMeal;
-
-var path = window.location.pathname;
-var page = path.split('/').pop();
-console.log( page );
-
-//constructor function for Restaurants
-function Restaurant(name, cuisine, mealtype, price, image) {
-  this.name = name;
-  this.cuisine = cuisine;
-  this.mealtype = mealtype;
-  this.price = price;
-  this.image = image;
-  Restaurant.allRestaurants.push(this);
-}
-//making iframes for all locations
-//breakfast
-
-//for using google places api
-// make a request to allow current location
-//use their location to identify nearby restaurants
-new Restaurant('Tilikum Place Cafe', 'breakfast', 'breakfast', 'twodollars', 'images/$$tilikumplace_breakfast.jpg');
-new Restaurant('Local 360', 'breakfast', 'breakfast', 'twodollars', 'images/$$local360_breakfast.jpg');
-new Restaurant('CJs Eatery', 'breakfast', 'breakfast', 'twodollars', 'images/$$cjseatery_breakfast.jpg');
-new Restaurant('Some Random Bar', 'breakfast', 'breakfast', 'twodollars', 'images/$$somerandombar_breakfast.jpg');
-
-new Restaurant('Bang Bang Cafe', 'breakfast', 'breakfast', 'onedollar', 'images/$bangbang_breakfast.jpg');
-new Restaurant('The Crumpet Shop', 'breakfast', 'breakfast', 'onedollar', 'images/$crumpetshop_breakfast.jpg');
-new Restaurant('Mecca Cafe', 'breakfast', 'breakfast', 'onedollar', 'images/$mecca_breakfast.jpg');
-new Restaurant('La Parisienne French Bakery', 'breakfast', 'breakfast', 'onedollar', 'images/$laparis_breakfast.jpg');
-
-new Restaurant('Shaker and Spear', 'breakfast', 'breakfast', 'threedollars', 'images/$$$shakerandspear_breakfast.jpg');
-new Restaurant('Andaluca Restaurant', 'breakfast', 'breakfast', 'threedollars', 'images/$$$andaluca_breakfast.jpg');
-new Restaurant('Dahlia Lounge', 'breakfast', 'breakfast', 'threedollars', 'images/$$$dahlialounge_breakfast.jpg');
-new Restaurant('Six Seven Restaurant', 'breakfast', 'breakfast', 'threedollars', 'images/$$$sixseven_breakfast.jpg');
-
-//lunch
-//Italian
-new Restaurant('Zeeks Pizza', 'italian', 'lunch', 'twodollars', 'images/$zeeks_lunch.jpg');
-new Restaurant('La Vita E Bella', 'italian', 'lunch', 'twodollars', 'images/pexels-photo-774487.jpeg');
-new Restaurant('Buca di Beppo Italian Restaurant', 'italian', 'lunch', 'twodollars', 'images/$$buca_lunch.jpg');
-
-new Restaurant('dueminuti healthy pasta', 'italian', 'lunch', 'onedollar', 'images/food-dinner-pasta-spaghetti-8500.jpg');
-new Restaurant('Mondello Ristorante Italiano', 'italian', 'lunch', 'onedollar', 'images/pexels-photo-546945.jpeg');
-new Restaurant('Pagliacci Pizza', 'italian', 'lunch', 'onedollar', 'images/pexels-photo-532779.jpeg');
-
-new Restaurant('Il Fornaio Seattle', 'italian', 'lunch', 'threedollars', 'images/pexels-photo-263041.jpeg');
-new Restaurant('Tulio', 'italian', 'lunch', 'threedollars', 'images/pexels-photo-803963.jpeg');
-new Restaurant('Agrodolce', 'italian', 'lunch', 'threedollars', 'images/pexels-photo-154145.jpeg');
-
-//Cafe
-new Restaurant('The 5 Point Cafe', 'cafe', 'lunch', 'twodollars', 'images/$$5point_lunch.jpg');
-new Restaurant('Tilikum Place Cafe', 'cafe', 'lunch', 'twodollars', 'images/$$tiltkim_lunch.jpg');
-new Restaurant('CJs Eatery', 'cafe', 'lunch', 'twodollars', 'images/$$CJs_lunch.jpeg');
-
-new Restaurant('Citizen', 'cafe', 'lunch', 'onedollar', 'images/$citizen_lunch.jpeg');
-new Restaurant('Bang Bang Cafe', 'cafe', 'lunch', 'onedollar', 'images/$bang_lunch.jpeg');
-new Restaurant('The Other Coast Cafe', 'cafe', 'lunch', 'onedollar', 'images/$otherCoast_lunch.jpeg');
-
-new Restaurant('Dahlia Lounge', 'cafe', 'lunch', 'threedollars', 'images/$$$dahlia_lunch.jpeg');
-new Restaurant('Lola', 'cafe', 'lunch', 'threedollars', 'images/$$$lola_lunch.jpeg');
-new Restaurant('Collections Cafe', 'cafe', 'lunch', 'threedollars', 'images/$$$collections_lunch.jpeg');
-
-//Mexican
-new Restaurant('Agave Cocina and Tequilas', 'mexican', 'lunch', 'twodollars', 'images/$$mexican-Huevos-Rancheros.jpg');
-new Restaurant('Villa Escondida', 'mexican', 'lunch', 'twodollars', 'images/$$mexican-empanadas.jpg');
-new Restaurant('Cactus South Lake Union', 'mexican', 'lunch', 'twodollars', 'images/$$mexican-grilled-pineapple-pork-burrito.jpg');
-
-new Restaurant('Bang Bang Cafe', 'mexican', 'lunch', 'onedollar', 'images/$mexican-chicken-burritos.jpg');
-new Restaurant('Rancho Bravo Tacos', 'mexican', 'lunch', 'onedollar', 'images/$mexican-beef_taco.jpg');
-new Restaurant('Tenoch Mexican Grill', 'mexican', 'lunch', 'onedollar', 'images/$mexican-nachos.jpg');
-
-new Restaurant('Gracia', 'mexican', 'lunch', 'threedollars', 'images/$$$mexican-azteca-de-oro.jpg');
-new Restaurant('Agave Cocina and Tequilas', 'mexican', 'lunch', 'threedollars', 'images/$$$mexican-mango-catfish-taco.jpg');
-new Restaurant('Casco Antiguo', 'mexican', 'lunch', 'threedollars', 'images/$$$mexican-quiche.jpg');
-
-
-//south east asian
-new Restaurant('Pho Viet Anh', 'southeastasian', 'lunch', 'onedollar', 'images/$eastasian-bean_sprout_squid.jpg');
-new Restaurant('Mae Phim Thai Restaurant', 'southeastasian', 'lunch', 'onedollar', 'images/$eastasian-pot-stickers.jpg');
-new Restaurant('Green Leaf Vietnamese Restaurant', 'southeastasian', 'lunch', 'onedollar', 'images/$eastasian-sesame-beef.jpg');
-
-new Restaurant('Stateside', 'southeastasian', 'lunch', 'twodollar', 'images/$$eastasian-Lok-lak.jpg');
-new Restaurant('Bahn Thai Restaurant', 'southeastasian', 'lunch', 'twodollar', 'images/$$eastasian-padthai.jpg');
-new Restaurant('Monsoon Seattle', 'southeastasian', 'lunch', 'twodollar', 'images/$$eastasian-Fish-Amok.jpg');
-
-//fastfood
-
-new Restaurant('Dicks Drive-In', 'fastfood', 'lunch', 'onedollar', 'images/$fastfood-dicks-original.png');
-new Restaurant('Taxi Dogs', 'fastfood', 'lunch', 'onedollar', 'images/$fastfood-classic-hot-dogs.png');
-new Restaurant('Potbelly Sandwich Shop', 'fastfood', 'lunch', 'onedollar', 'images/$potBelly.jpeg');
-
-new Restaurant('Lunchbox Laboratory', 'fastfood', 'lunch', 'twodollar', 'images/$$lunchBox_lunch.jpg');
-new Restaurant('Happy Garden Fast Food', 'fastfood', 'lunch', 'twodollar','images/$$happyGarden_lunch.jpeg');
-new Restaurant('MOD Pizza', 'fastfood', 'lunch', 'twodollar', 'images/$fastfood-margherita-pizza.jpg');
-
-
-//dinner
-//Italian
-new Restaurant('Zeeks Pizza', 'italian', 'dinner', 'twodollars', 'images/$zeeks_dinner.jpg');
-new Restaurant('La Vita E Bella', 'italian', 'dinner', 'twodollars', 'images/pexels-photo-774487.jpeg');
-new Restaurant('Buca di Beppo Italian Restaurant', 'italian', 'dinner', 'twodollars', 'images/$$buca_dinner.jpg');
-
-new Restaurant('dueminuti healthy pasta', 'italian', 'dinner', 'onedollar', 'images/food-dinner-pasta-spaghetti-8500.jpg');
-new Restaurant('Mondello Ristorante Italiano', 'italian', 'dinner', 'onedollar', 'images/pexels-photo-546945.jpeg');
-new Restaurant('Pagliacci Pizza', 'italian', 'dinner', 'onedollar', 'images/pexels-photo-532779.jpeg');
-
-new Restaurant('Il Fornaio Seattle', 'italian', 'dinner', 'threedollars', 'images/pexels-photo-263041.jpeg');
-new Restaurant('Tulio', 'italian', 'dinner', 'threedollars', 'images/pexels-photo-803963.jpeg');
-new Restaurant('Agrodolce', 'italian', 'dinner', 'threedollars', 'images/pexels-photo-154145.jpeg');
-
-//Cafe
-new Restaurant('The 5 Point Cafe', 'cafe', 'dinner', 'twodollars', 'images/$$5point_dinner.jpg');
-new Restaurant('Tilikum Place Cafe', 'cafe', 'dinner', 'twodollars', 'images/$$tiltkim_dinner.jpg');
-new Restaurant('CJs Eatery', 'cafe', 'dinner', 'twodollars', 'images/$$CJs_dinner.jpeg');
-
-new Restaurant('Citizen', 'cafe', 'dinner', 'onedollar', 'images/$citizen_dinner.jpeg');
-new Restaurant('Bang Bang Cafe', 'cafe', 'dinner', 'onedollar', 'images/$bang_dinner.jpeg');
-new Restaurant('The Other Coast Cafe', 'cafe', 'dinner', 'onedollar', 'images/$otherCoast_dinner.jpeg');
-
-new Restaurant('Dahlia Lounge', 'cafe', 'dinner', 'threedollars', 'images/$$$dahlia_dinner.jpeg');
-new Restaurant('Lola', 'cafe', 'dinner', 'threedollars', 'images/$$$lola_dinner.jpeg');
-new Restaurant('Collections Cafe', 'cafe', 'dinner', 'threedollars', 'images/$$$collections_dinner.jpeg');
-
-//Mexican
-new Restaurant('Agave Cocina and Tequilas', 'mexican', 'dinner', 'twodollars', 'images/$$mexican-Huevos-Rancheros.jpg');
-new Restaurant('Villa Escondida', 'mexican', 'dinner', 'twodollars', 'images/$$mexican-empanadas.jpg');
-new Restaurant('Cactus South Lake Union', 'mexican', 'dinner', 'twodollars', 'images/$$mexican-grilled-pineapple-pork-burrito.jpg');
-
-new Restaurant('Bang Bang Cafe', 'mexican', 'dinner', 'onedollar', 'images/$mexican-chicken-burritos.jpg');
-new Restaurant('Rancho Bravo Tacos', 'mexican', 'dinner', 'onedollar', 'images/$mexican-beef_taco.jpg');
-new Restaurant('Tenoch Mexican Grill', 'mexican', 'dinner', 'onedollar', 'images/$mexican-nachos.jpg');
-
-new Restaurant('Gracia', 'mexican', 'dinner', 'threedollars', 'images/$$$mexican-azteca-de-oro.jpg');
-new Restaurant('Agave Cocina and Tequilas', 'mexican', 'dinner', 'threedollars', 'images/$$$mexican-mango-catfish-taco.jpg');
-new Restaurant('Casco Antiguo', 'mexican', 'dinner', 'threedollars', 'images/$$$mexican-quiche.jpg');
-
-
-//south east asian
-new Restaurant('Pho Viet Anh', 'southeastasian', 'dinner', 'onedollar', 'images/$eastasian-bean_sprout_squid.jpg');
-new Restaurant('Mae Phim Thai Restaurant', 'southeastasian', 'dinner', 'onedollar', 'images/$eastasian-pot-stickers.jpg');
-new Restaurant('Green Leaf Vietnamese Restaurant', 'southeastasian', 'dinner', 'onedollar', 'images/$eastasian-sesame-beef.jpg');
-
-new Restaurant('Stateside', 'southeastasian', 'dinner', 'twodollar', 'images/$$eastasian-Lok-lak.jpg');
-new Restaurant('Bahn Thai Restaurant', 'southeastasian', 'dinner', 'twodollar', 'images/$$eastasian-padthai.jpg');
-new Restaurant('Monsoon Seattle', 'southeastasian', 'dinner', 'twodollar', 'images/$$eastasian-Fish-Amok.jpg');
-
-//fastfood
-
-new Restaurant('Dicks Drive-In', 'fastfood', 'lunch', 'onedollar', 'images/$fastfood-dicks-original.png');
-new Restaurant('Taxi Dogs', 'fastfood', 'lunch', 'onedollar', 'images/$fastfood-classic-hot-dogs.png');
-new Restaurant('Potbelly Sandwich Shop', 'fastfood', 'lunch', 'onedollar', 'images/$potBelly.jpeg');
-
-new Restaurant('Lunchbox Laboratory', 'fastfood', 'lunch', 'twodollar', 'images/$$lunchBox_lunch.jpg');
-new Restaurant('Happy Garden Fast Food', 'fastfood', 'lunch', 'twodollar','images/$$happyGarden_lunch.jpeg');
-new Restaurant('MOD Pizza', 'fastfood', 'lunch', 'twodollar', 'images/$fastfood-margherita-pizza.jpg');
-
-for (var z = 0; z < Restaurant.allRestaurants.length; z++) {
-  Restaurant.namesPop.push(Restaurant.allRestaurants[z].name.split(' ').join('+'));
-  Restaurant.allRestaurants[z].iframe = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyCXvS2M8YF3R6sN_KnqTKS-guj4Aoh4sOU&q=' + Restaurant.namesPop[z] + ',Seattle+WA';
+function currentLocationHandler () {
+  console.log('clicked me!');
+  //HTML5 geolocation
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      console.log(pos);
+      localStorage.setItem('current-location', JSON.stringify(pos));
+    }, function () {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    //No support for geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
 }
 
 function sumbitHandler() {
-  var results = [];
-  //check if user selected price range
-  if (price[0].checked === false && price[1].checked === false && price[2].checked === false) {
+  if (price[0].checked === false && price[1].checked === false && price[2].checked === false && price[3].checked === false) {
     alert('please choose a price range!');
   }
   //check if user selected mealtype
-  if (meal[0].checked === false && meal[1].checked === false && meal[2].checked === false && meal[3].checked === false & meal[4].checked === false) {
+  if (meal[0].checked === false && meal[1].checked === false && meal[2].checked === false && meal[3].checked === false) {
     alert('please choose a meal type!');
   }
-  // run meal matcher when both price and mealtype are selected
-  if ((meal[0].checked === true || meal[1].checked === true || meal[2].checked === true || meal[3].checked === true || meal[4].checked === true) && (price[0].checked === true || price[1].checked === true || price[2].checked === true)) {
-  //assign user price choice to a variable
+  if ((meal[0].checked === true || meal[1].checked === true || meal[2].checked === true || meal[3].checked === true) && (price[0].checked === true || price[1].checked === true || price[2].checked === true || price[3].checked === true)) {
+    //assign user price choice to a variable
     for (var i = 0; i < price.length; i++) {
       if (price[i].checked) {
         console.log(price[i].value + ' was clicked!');
         mainPrice = price[i].value;
+        JSON.stringify(localStorage.setItem('price', mainPrice));
         price[i].checked = false;
         break;
       }
@@ -329,85 +182,133 @@ function sumbitHandler() {
         break;
       }
     }
-    //look through all restaurants that match users choice, and store them in an array
-    for (var k = 0; k < Restaurant.allRestaurants.length; k++) {
-      if (Restaurant.allRestaurants[k].mealtype === mainMeal && Restaurant.allRestaurants[k].price === mainPrice) {
-        results.push(Restaurant.allRestaurants[k]);
-      }
-    }
-    var localStoragePreferencesParsed = JSON.parse(localStorage.getItem('preferences'));
-    //checking if preferences matches results
-    if (localStoragePreferencesParsed.length > 0) {
-      var resultsWithPref = [];
-      for (var l = 0; l < localStoragePreferencesParsed.length; l++) {
-        for (var m = 0; m < results.length; m ++) {
-          if (results[m].cuisine === localStoragePreferencesParsed[l]) {
-            resultsWithPref.push(results[m]);
-          }
-        }
-      }
-      results = resultsWithPref;
-    }
-
-    //creating random restaurant choice:
-    restChoice = [];
-    var index1 = Math.floor(Math.random() * results.length);
-    restChoice[0] = results[index1];
-    do {
-      var index2 = Math.floor(Math.random() * results.length);
-      restChoice[1] = results[index2];
-      var index3 = Math.floor(Math.random() * results.length);
-      restChoice[2] = results[index3];
-    } while (index1 === index2 || index1 === index3 || index2 === index3);
+    randomRestaurant();
     var choiceNumber = 1;
-    localStorage.setItem('choiceNumber', choiceNumber);
-    var restChoiceStringify = JSON.stringify(restChoice);
-    localStorage.setItem('Results', restChoiceStringify);
-    window.open('results.html','_self');
-
+    localStorage.setItem('choiceNumber', JSON.stringify(choiceNumber));
+    window.open('results.html','_blank');
   }
-  //Create button/logic for multiple tries
 }
 
-if (page === 'main.html'){
-  submit.addEventListener('click', sumbitHandler);
-}
-
-///////////////////RESULTS PAGE//////////////////////////////////////
-var restChoice;
-
-if(page === 'results.html'){
-
-  if (localStorage.Results) {
-    var strRestChoice = localStorage.getItem('Results');
-    restChoice = JSON.parse(strRestChoice);
-  }
-
-  yesbtn.addEventListener('click', yesbtnHandler);
-  nobtn.addEventListener('click', nobtnHandler);
-  orderbtn.addEventListener('click', orderbtnHandler);
-  reservebtn.addEventListener('click', reservebtnHandler);
-
-  // Display the first image.
-  displayImage();
-}
-
-function displayImage() {
-  var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
-  var restimg = document.getElementById('restimg');
-  var map = document.getElementById('map');
-  if (choiceNumber === 1) {
-    restimg.src = restChoice[0].image;
-    map.firstElementChild.src = restChoice[0].iframe;
-  } else if (choiceNumber === 2) {
-    restimg.src = restChoice[1].image;
-    map.firstElementChild.src = restChoice[1].iframe;
-  } else if (choiceNumber === 3) {
-    restimg.src = restChoice[2].image;
-    map.firstElementChild.src = restChoice[2].iframe;
+//function that creates random choices 
+function randomRestaurant () {
+  var userLatLng = JSON.parse(localStorage.getItem('current-location'));
+  var userLocation = new google.maps.LatLng(userLatLng.lat, userLatLng.lng);
+  var userPrice = JSON.parse(localStorage.getItem('price'));
+  if (localStorage.preferences) {
+    foodType1 = preferences[Math.floor(Math.random() * preferences.length)];
+    foodType2 = preferences[Math.floor(Math.random() * preferences.length)];
+    foodType3 = preferences[Math.floor(Math.random() * preferences.length)];
   } else {
-    alert('You ran out of choices!');
-    restimg.src = restChoice[2].image;
+    foodType1 = 'Restaurant';
+    foodType2 = 'Restaurant';
+    foodType3 = 'Restaurant';
+  }
+  //creating map
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: userLocation,
+    zoom: 12
+  });
+
+  infoWindow = new google.maps.InfoWindow();
+  restInfo = new google.maps.InfoWindow();
+
+  var request1 = {
+    location: userLocation,
+    radius: '500',
+    query: foodType1,
+    foodType: 'restaurant',
+    minPriceLevel: userPrice,
+    maxPriceLevel: userPrice
+  };
+  var request2 = {
+    location: userLocation,
+    radius: '500',
+    query: foodType2,
+    foodType: 'restaurant',
+    minPriceLevel: userPrice,
+    maxPriceLevel: userPrice
+  };
+  var request3 = {
+    location: userLocation,
+    radius: '500',
+    query: foodType3,
+    foodType: 'restaurant',
+    minPriceLevel: userPrice,
+    maxPriceLevel: userPrice
+  };
+  service = new google.maps.places.PlacesService(document.getElementById('map'));
+  service.textSearch(request1, callback);
+  service.textSearch(request2, callback);
+  service.textSearch(request3, callback);
+  var marker = new google.maps.Marker({
+    position: userLatLng,
+    map: map
+  });
+}
+
+function callback (results, status) {
+  if (status === google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      restResults.push(results[i]);  
+      var item=document.createElement('li');
+      item.appendChild(document.createTextNode(results[i].name, results[i].geometry.location));
+      document.getElementById('results').appendChild(item); 
+    }
+      finalThree.push(restResults[Math.floor(Math.random()*restResults.length)]);
+      localStorage.setItem('final-three', JSON.stringify(finalThree));
+    }
+}
+
+
+function createMarker(place) {
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    restInfo.setContent(place.name);
+    restInfo.open(map, this);
+  });
+}
+
+function displayLocation() {
+  var h2El = document.getElementById('resthead');
+  var h3El = document.getElementById('address');
+  var finalThreeParsed = JSON.parse(localStorage.getItem('final-three'));
+  var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
+  if(choiceNumber === 1) {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: finalThreeParsed[0].geometry.location,
+      zoom: 16
+    });
+    restInfo = new google.maps.InfoWindow();
+    createMarker(finalThreeParsed[0]);
+    h2El.textContent = finalThreeParsed[0].name;
+    h3El.textContent = finalThreeParsed[0].formatted_address;
+  }
+  if(choiceNumber === 2) {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: finalThreeParsed[1].geometry.location,
+      zoom: 16
+    });
+    restInfo = new google.maps.InfoWindow();
+    createMarker(finalThreeParsed[1]);
+    h2El.textContent = finalThreeParsed[1].name;
+    h3El.textContent = finalThreeParsed[1].formatted_address;
+  }
+  if(choiceNumber === 3) {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: finalThreeParsed[2].geometry.location,
+      zoom: 16
+    });
+    restInfo = new google.maps.InfoWindow();
+    createMarker(finalThreeParsed[2]);
+    h2El.textContent = finalThreeParsed[2].name;
+    h3El.textContent = finalThreeParsed[2].formatted_address;
+  }
+  if(choiceNumber > 4) {
+    alert('Out of Choices!');
   }
 }
 
@@ -428,10 +329,9 @@ function nobtnHandler(event) {
   var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
   choiceNumber++;
   localStorage.setItem('choiceNumber', choiceNumber); 
-  displayImage();
+  displayLocation();
 
 }
-
 
 function orderbtnHandler(event) {
   event.preventDefault();
@@ -445,57 +345,22 @@ function reservebtnHandler(event) {
   //window.location.href = "www.google.com  ";
 }
 
-if(submit) {
+if (savePref) {
+  savePref.addEventListener('click', handlePreferences);
+}
+
+if (currentLocation) {
+  currentLocation.addEventListener('click', currentLocationHandler);
+}
+
+if (submit) {
   submit.addEventListener('click', sumbitHandler);
 }
 
-var map;
-var service;
-var infowindow;
-
-function initialize() {
-  var codeFellows = new google.maps.LatLng(47.618233, -122.351861);
-
-  map = new google.maps.Map(document.getElementById('map2'), {
-    center: codeFellows,
-    zoom: 16
-  });
-
-  var request = {
-    location: codeFellows,
-    radius: '500',
-    query: 'coffee'
-  };
-
-  infowindow = new google.maps.InfoWindow();
-  service = new google.maps.places.PlacesService(map);
-  service.textSearch(request, callback);
+if(page === 'results.html'){
+  displayLocation();
+  yesbtn.addEventListener('click', yesbtnHandler);
+  nobtn.addEventListener('click', nobtnHandler);
+  orderbtn.addEventListener('click', orderbtnHandler);
+  reservebtn.addEventListener('click', reservebtnHandler);
 }
-
-function callback (results, status) {
-  if (status === google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-    }
-  }
-}
-
-function createMarker(place) {
-  var placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
-
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
-  });
-}
-
-if (document.getElementById('map2')) {
-  initialize();
-}
-
-
-//function: check preference array: choose one randomly, search using google places api search, randomize that choice, spit it out to user
