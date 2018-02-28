@@ -49,10 +49,17 @@ nav ul li {
   padding: 0 50px 0 50px;
   margin: 0 auto;
 }
-
+/* location */
+#location {
+width: 500px;
+height: 60px;
+background-color: #242931f8;
+margin: 50px auto 0 auto;
+border-radius: 5px;
+}
 /* main */
 #main {
-  margin: 85px auto 0 auto;
+  margin: 25px auto 0 auto;
   width: 500px;
   height: 525px;
   background-color: #242931f8;
@@ -122,8 +129,8 @@ label input:checked + p {
 }
 
 p.dollar {
-  width: 30%;
-  margin-right: 3%;
+  width: 22%;
+  margin-right: 2%;
 }
 
 #lastdollar {
@@ -195,4 +202,9 @@ a {
 
 a:hover {
   color:rgb(160, 78, 255);
+}
+
+#map {
+  width: 400px;
+  height: 400px;
 }

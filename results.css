@@ -14,9 +14,12 @@ header {
 }
 
 nav {
+<<<<<<< HEAD
+=======
   width: 960px;
   margin: 0px auto;
 }
+>>>>>>> master
     size: 100%;
     margin-top: 30px;
     padding-top: 30px;
@@ -160,6 +163,8 @@ main {
 
 /* got this code from W3 schools */
 #map {
+  width: 500px;
+  height: 500px;
   margin-top: 70px;
   display: block;
   margin-left: auto;
@@ -188,4 +193,16 @@ main {
     margin: auto;
     border-radius: 5px;
   }
+<<<<<<< HEAD
+
+  iframe {
+    border-radius: 5px;
+  }
  
+  #map2 {
+    width: 400px;
+    height: 400px;
+  }
+=======
+ 
+>>>>>>> master
