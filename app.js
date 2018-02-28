@@ -78,6 +78,7 @@ function handleSignInPopup(event) {
     for (var i = 0; i < userDbParse.length; i++) {
       if (userSignIn[i].name === userDbParse[i].name && userSignIn[i].pw === userDbParse[i].pw) {
         alert('welcome');
+        window.open('main.html', '_self');
         //navigate them to the main.html page
       } else {
         alert('your username or password may be incorrect. try again please');
@@ -97,10 +98,12 @@ function handleContactSubmit(event) {
   var userPw = document.getElementById('userPw').value;
   var userCnum = parseInt(document.getElementById('userCnum').value);
   new AccountConstructor(userName, userCity, userCnum, userPw);
+  localStorage.setItem('userDatabase', JSON.stringify(userDb));
   userName = document.getElementById('userName').value = '';
   userCity = document.getElementById('userCity').value = '';
   userPw = document.getElementById('userPw').value = '';
   userCnum = document.getElementById('userCnum').value = '';
+  window.open('preferences.html', '_self');
 }
 
 ///////////// HOMEPAGE POPUP ///////////////
