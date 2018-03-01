@@ -2,6 +2,7 @@
   font-size: 18px;
   font-family: 'Quicksand', sans-serif;
 }
+
 html {
   background: url(images/background.jpg) no-repeat center center fixed;
   background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/background.jpg');
@@ -10,9 +11,11 @@ html {
   -o-background-size: cover;
   background-size: 100%;
 }
+
 body {
   width: 100%;
 }
+
 /* nav */
 nav {
   size: 100%;
@@ -39,7 +42,6 @@ nav ul {
   width: 700px;
   padding-top: 20px;
   margin: 0 auto;
-
 }
 
 nav ul li {
@@ -49,6 +51,7 @@ nav ul li {
   padding: 0 50px 0 50px;
   margin: 0 auto;
 }
+
 /* location */
 #location {
 width: 500px;
@@ -87,6 +90,7 @@ font-family: 'Quicksand', sans-serif;
   font-size: 20px;
   letter-spacing: 1px;
 }
+
 /* main */
 #main {
   color: white;
@@ -103,6 +107,7 @@ font-family: 'Quicksand', sans-serif;
   padding-top: 20px;
   margin: auto;
 }
+
 .mealtype {
   font-family: 'Quicksand', sans-serif;
   cursor: pointer;
@@ -125,7 +130,6 @@ font-family: 'Quicksand', sans-serif;
 background-color: darkgray;
 }
 
-
 label input{
   visibility: hidden; 
   position: absolute; 
@@ -143,6 +147,7 @@ label input:checked + p {
   padding-bottom: 10px;
   margin: auto;
 }
+
 .dollar {
   font-weight: bold;
   color: white;
@@ -166,12 +171,10 @@ p.dollar {
   margin-right: 0%
 }
 
-
 .dollar:hover {
   cursor: pointer;
   background-color: darkgray;
 }
-
 
 .meal-type:first-child {
   margin-top: 15px;
@@ -187,7 +190,6 @@ p.dollar {
 }
 
 #submit {
-  
   display: block;
   width: 200px;
   height: 50px;

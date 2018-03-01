@@ -1,5 +1,6 @@
-'use strict';
+// APP.JS
 
+'use strict';
 
 ////////////////////RESULTS PAGE VARIABLES///////////////
 var yesbtn = document.getElementById('yes');
@@ -188,7 +189,7 @@ function sumbitHandler() {
     var choiceNumber = 1;
     localStorage.setItem('choiceNumber', JSON.stringify(choiceNumber));
 
-    setTimeout(function() { 
+    setTimeout(function() {
       window.open('results.html','_self');
     }, 1300);
   }
@@ -368,20 +369,21 @@ function displayLocation() {
       }
     });
   }
-  if(choiceNumber > 4) {
-    alert('Out of Choices!');
+  if(choiceNumber > 2) {
+    disableBtn();
   }
 }
 
 function yesbtnHandler(event) {
   event.preventDefault();
-  //Disable yes/no handlers
-  disableBtn();
+  if (btngroup.lastElementChild !== btngroup.firstElementChild) {
+    disableBtn();
+  }
+  yesbtn.removeEventListener('click', yesbtnHandler);
   window.location = '#order';
 }
 
 function disableBtn() {
-  btngroup.removeChild(yesbtn);
   btngroup.removeChild(nobtn);
 }
 
@@ -425,3 +427,4 @@ if(page === 'results.html'){
   orderbtn.addEventListener('click', orderbtnHandler);
   reservebtn.addEventListener('click', reservebtnHandler);
 }
+

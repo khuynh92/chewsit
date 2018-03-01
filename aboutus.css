@@ -1,11 +1,5 @@
-/* html {
-    background: url(images/whitebag.jpg) no-repeat center center fixed;
-    /* background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/wood_bk.jpg');  */
-    /* -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-     background-size: 100%;  */
-/* }  */ 
+/* ABOUTUS.CSS */
+
 * {
     background-color: #fffff9;
 }
@@ -21,7 +15,6 @@
 #abouthead2 {
     font-family: sans-serif;
     font-size: 28px;
-    /* color: rgb(18, 160, 77); */
     color:black;
     text-align: center;
     margin-top: 40px;
@@ -34,12 +27,8 @@
     color: black;
     text-align: justify;
     margin-top: 20px;
-    /* word-spacing: .1em;
-    line-height: 2em; */
     display: block;
     margin: auto;
-    /* margin-left: 30px;
-    margin-right: 30px; */
     width: 900px;
 }
 
@@ -76,6 +65,15 @@ hr {
     margin-top: 10px;
 }
 
+.us {
+    margin-left: 25px;
+    font-family: helvetica;
+    font-size: 18px;
+    text-align: justify;
+    color: black;
+    width: 85%;
+}
+
 .teamcl {
     display: inline-block;
     width:30%;
@@ -90,6 +88,5 @@ hr {
     font-family: helvetica;
     font-size: 24px;
     color: rgb(18, 160, 77);
-    text-align: center;
-    
+    text-align: center;  
 }
