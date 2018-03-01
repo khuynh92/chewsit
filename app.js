@@ -8,7 +8,7 @@ var nobtn = document.getElementById('no');
 var btngroup = document.getElementById('btngroup');
 var orderbtn = document.getElementById('order');
 var reservebtn = document.getElementById('reserve');
-
+var imgEl = document.getElementById('restimg');
 //search google restaurants for places that match
 var map, service, infoWindow, restInfo, foodType1, foodType2, foodType3, mainPrice, mainMeal;
 var preferences = JSON.parse(localStorage.getItem('preferences'));
@@ -291,7 +291,8 @@ function createMarker(place) {
 }
 
 function displayLocation() {
-  var h2El = document.getElementById('resthead');
+  var choiceEl = document.getElementById('choice-number');
+  var restEl = document.getElementById('resthead');
   var h3El = document.getElementById('address');
   var finalThreeParsed = JSON.parse(localStorage.getItem('final-three'));
   console.log(finalThreeParsed[0].place_id);
@@ -304,7 +305,8 @@ function displayLocation() {
     });
     restInfo = new google.maps.InfoWindow();
     createMarker(finalThreeParsed[0]);
-    h2El.textContent = finalThreeParsed[0].name;
+    choiceEl.textContent = choiceNumber;
+    restEl.textContent = finalThreeParsed[0].name;
     h3El.textContent = finalThreeParsed[0].formatted_address;
     starEl.textContent = finalThreeParsed[0].rating;
     service = new google.maps.places.PlacesService(map);
@@ -312,8 +314,6 @@ function displayLocation() {
       placeId: finalThreeParsed[0].place_id
     }, function(place, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        console.log(place.photos[0]);
-        var imgEl = document.getElementById('restimg');
         imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
           'maxWidth': 400,
          
@@ -328,7 +328,8 @@ function displayLocation() {
     });
     restInfo = new google.maps.InfoWindow();
     createMarker(finalThreeParsed[1]);
-    h2El.textContent = finalThreeParsed[1].name;
+    choiceEl.textContent = choiceNumber;
+    restEl.textContent = finalThreeParsed[1].name;
     h3El.textContent = finalThreeParsed[1].formatted_address;
     starEl.textContent = finalThreeParsed[1].rating;
     service = new google.maps.places.PlacesService(map);
@@ -336,12 +337,10 @@ function displayLocation() {
       placeId: finalThreeParsed[1].place_id
     }, function(place, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        console.log(place.photos[0]);
-        var imgEl = document.getElementById('restimg');
         imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
           'maxWidth': 400,
          
-      });;
+      });
       }
     });
   }
@@ -352,7 +351,8 @@ function displayLocation() {
     });
     restInfo = new google.maps.InfoWindow();
     createMarker(finalThreeParsed[2]);
-    h2El.textContent = finalThreeParsed[2].name;
+    choiceEl.textContent = choiceNumber;
+    restEl.textContent = finalThreeParsed[2].name;
     h3El.textContent = finalThreeParsed[2].formatted_address;
     starEl.textContent = finalThreeParsed[2].rating;
     service = new google.maps.places.PlacesService(map);
@@ -360,15 +360,13 @@ function displayLocation() {
       placeId: finalThreeParsed[2].place_id
     }, function(place, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        console.log(place.photos[0]);
-        var imgEl = document.getElementById('restimg');
         imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
           'maxWidth': 400,
          
       });;
       }
     });
-  }
+  
   if(choiceNumber > 2) {
     disableBtn();
   }
@@ -408,6 +406,30 @@ function reservebtnHandler(event) {
   //window.location.href = "www.google.com  ";
 }
 
+function changeImage() {
+  var thisPlace;
+  var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
+  var finalThreeParsed = JSON.parse(localStorage.getItem('final-three'));
+  if  (choiceNumber === 1) {
+    thisPlace = finalThreeParsed[0].place_id;
+  } else if (choiceNumber === 2) {
+    thisPlace = finalThreeParsed[1].place_id;
+  } else {
+    thisPlace = finalThreeParsed[2].place_id;
+  }
+  service = new google.maps.places.PlacesService(map);
+  service.getDetails({
+    placeId: thisPlace
+  }, function(place, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
+        'maxWidth': 400,
+       
+    });
+    }
+  });
+}
+
 if (savePref) {
   savePref.addEventListener('click', handlePreferences);
 }
@@ -426,5 +448,6 @@ if(page === 'results.html'){
   nobtn.addEventListener('click', nobtnHandler);
   orderbtn.addEventListener('click', orderbtnHandler);
   reservebtn.addEventListener('click', reservebtnHandler);
+  imgEl.addEventListener('click', changeImage)
 }
 
