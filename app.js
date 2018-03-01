@@ -184,7 +184,10 @@ function sumbitHandler() {
     randomRestaurant();
     var choiceNumber = 1;
     localStorage.setItem('choiceNumber', JSON.stringify(choiceNumber));
-    window.open('results.html','_blank');
+
+    setTimeout(function() { 
+      window.open('results.html','_self');
+    }, 1300);
   }
 }
 
@@ -193,17 +196,33 @@ function randomRestaurant () {
   var userLatLng = JSON.parse(localStorage.getItem('current-location'));
   var userLocation = new google.maps.LatLng(userLatLng.lat, userLatLng.lng);
   var userPrice = JSON.parse(localStorage.getItem('price'));
-  if (localStorage.preferences) {
-    foodType1 = preferences[Math.floor(Math.random() * preferences.length)];
-    foodType2 = preferences[Math.floor(Math.random() * preferences.length)];
-    foodType3 = preferences[Math.floor(Math.random() * preferences.length)];
+  if (mainMeal === 'dessert') {
+    foodType1 = 'dessert in seattle';
+    foodType2 = 'dessert in seattle';
+    foodType3 = 'dessert in seattle';
+  } else if (mainMeal === 'breakfast') {
+    foodType1 = 'breakfast';
+    foodType2 = 'breakfast';
+    foodType3 = 'breakfast';
   } else {
-    foodType1 = 'Restaurant';
-    foodType2 = 'Restaurant';
-    foodType3 = 'Restaurant';
+    if (localStorage.preferences) {
+      if (localStorage.preferences.length > 2) {
+        foodType1 = preferences[Math.floor(Math.random() * preferences.length)];
+        foodType2 = preferences[Math.floor(Math.random() * preferences.length)];
+        foodType3 = preferences[Math.floor(Math.random() * preferences.length)];
+      } else {
+        foodType1 = 'Restaurant';
+        foodType2 = 'Restaurant';
+        foodType3 = 'Restaurant';
+      }
+    } else {
+      foodType1 = 'Restaurant';
+      foodType2 = 'Restaurant';
+      foodType3 = 'Restaurant';
+    }
   }
   //creating map
-  map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('test'), {
     center: userLocation,
     zoom: 12
   });
@@ -213,9 +232,8 @@ function randomRestaurant () {
 
   var request1 = {
     location: userLocation,
-    radius: '500',
+    radius: 1500,
     query: foodType1,
-    foodType: 'restaurant',
     minPriceLevel: userPrice,
     maxPriceLevel: userPrice
   };
@@ -223,7 +241,6 @@ function randomRestaurant () {
     location: userLocation,
     radius: '500',
     query: foodType2,
-    foodType: 'restaurant',
     minPriceLevel: userPrice,
     maxPriceLevel: userPrice
   };
@@ -231,7 +248,6 @@ function randomRestaurant () {
     location: userLocation,
     radius: '500',
     query: foodType3,
-    foodType: 'restaurant',
     minPriceLevel: userPrice,
     maxPriceLevel: userPrice
   };
@@ -247,13 +263,14 @@ function randomRestaurant () {
 
 function callback (results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
+    restResults = [];
     for (var i = 0; i < results.length; i++) {
       restResults.push(results[i]);
       var item=document.createElement('li');
       item.appendChild(document.createTextNode(results[i].name, results[i].geometry.location));
-      document.getElementById('results').appendChild(item);
+      document.getElementById('results').appendChild(item); 
     }
-    finalThree.push(restResults[Math.floor(Math.random()*restResults.length)]);
+    finalThree.push(restResults[Math.floor(Math.random() * restResults.length)]);
     localStorage.setItem('final-three', JSON.stringify(finalThree));
   }
 }
@@ -264,18 +281,18 @@ function createMarker(place) {
     map: map,
     position: place.geometry.location
   });
+  restInfo.setContent(place.name + '<br><br>' + place.formatted_address);
+  restInfo.open(map, marker);
 
-  google.maps.event.addListener(marker, 'click', function() {
-    restInfo.setContent(place.name);
-    restInfo.open(map, this);
-  });
 }
 
 function displayLocation() {
   var h2El = document.getElementById('resthead');
   var h3El = document.getElementById('address');
   var finalThreeParsed = JSON.parse(localStorage.getItem('final-three'));
+  console.log(finalThreeParsed[0].place_id);
   var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
+  var starEl = document.getElementById('star');
   if(choiceNumber === 1) {
     map = new google.maps.Map(document.getElementById('map'), {
       center: finalThreeParsed[0].geometry.location,
@@ -285,6 +302,20 @@ function displayLocation() {
     createMarker(finalThreeParsed[0]);
     h2El.textContent = finalThreeParsed[0].name;
     h3El.textContent = finalThreeParsed[0].formatted_address;
+    starEl.textContent = finalThreeParsed[0].rating;
+    service = new google.maps.places.PlacesService(map);
+    service.getDetails({
+      placeId: finalThreeParsed[0].place_id
+    }, function(place, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        console.log(place.photos[0]);
+        var imgEl = document.getElementById('restimg');
+        imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
+          'maxWidth': 400,
+         
+      });;
+      }
+    });
   }
   if(choiceNumber === 2) {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -295,6 +326,20 @@ function displayLocation() {
     createMarker(finalThreeParsed[1]);
     h2El.textContent = finalThreeParsed[1].name;
     h3El.textContent = finalThreeParsed[1].formatted_address;
+    starEl.textContent = finalThreeParsed[1].rating;
+    service = new google.maps.places.PlacesService(map);
+    service.getDetails({
+      placeId: finalThreeParsed[1].place_id
+    }, function(place, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        console.log(place.photos[0]);
+        var imgEl = document.getElementById('restimg');
+        imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
+          'maxWidth': 400,
+         
+      });;
+      }
+    });
   }
   if(choiceNumber === 3) {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -305,6 +350,20 @@ function displayLocation() {
     createMarker(finalThreeParsed[2]);
     h2El.textContent = finalThreeParsed[2].name;
     h3El.textContent = finalThreeParsed[2].formatted_address;
+    starEl.textContent = finalThreeParsed[2].rating;
+    service = new google.maps.places.PlacesService(map);
+    service.getDetails({
+      placeId: finalThreeParsed[2].place_id
+    }, function(place, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        console.log(place.photos[0]);
+        var imgEl = document.getElementById('restimg');
+        imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
+          'maxWidth': 400,
+         
+      });;
+      }
+    });
   }
   if(choiceNumber > 4) {
     alert('Out of Choices!');

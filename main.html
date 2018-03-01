@@ -16,13 +16,14 @@
   <nav>
     <h1><a href=home.html>Chews It</a></h1>
     <ul>
-      <li>About Us</li>
+      <a href=aboutus.html><li>About Us</a></li>
       <li><a href=preferences.html>Preferences</a></li>
       <li>History</li>
     </ul>
   </nav>
   <div id="location">
       <button id="current-location">Use Current Location</button>
+      <p>* REQUIRED *</p>
   </div>
   <section id="main">
     <div id="inner-container">
@@ -76,6 +77,34 @@
   <ul id="results"></ul>
   <div id="map"></div>
   <img src="http://developers.google.com/places/documentation/images/powered-by-google-on-white.png"/>
+  <footer>
+      <div class = "fLinkCont">
+          <h3>Links</h3>
+          <ul id ="fLinks">
+              <li><a href = "index.html">Home</a></li>
+              <li>About Us</li>
+              <li>Privacy</li>
+          </ul>
+      </div>
+      <div class = "fHeadCont">
+          <h3>Headquarters</h3>
+          <ul id = "fHeadQ">
+              <li>Address: 123 Main St.</li>
+              <li>Phone: 206-543-1234</li>
+              <li>Hours: Mon - Fri : 8am - 8pm</li>
+              <li>Email:<a href = "mailto:info@chewsit.com"> info@chewsit.com</a></li>
+          </ul>
+      </div>
+      <div class = "fContactCont">
+          <h3>Contact Us</h3>
+          <ul id = "fContact">
+              <li><input id = "contactUserName" placeholder ="Name" name = "contactUserName" type = "text"></li>
+              <li><input id = "contactEmail" placeholder ="Email" name = "contactEmail" type = "text"></li>
+              <li><textarea id = "contactMessage" rows = "3" placeholder ="Message"></textarea></li>
+              <li><button id ="" type="submit">Submit</button></li>
+          </ul>
+      </div>
+      </footer>
   <script src="app.js"></script>
 </body>
 </html>
