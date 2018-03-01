@@ -20,6 +20,40 @@ h1 {
     margin-top:20px;
     text-align:center;
 }
+.navHeader {
+    display:inline;
+}
+.navHeader a{
+    font-family: 'Titan One', cursive;
+    font-size:40px;
+    color:white;
+    margin-left:20px;
+    text-decoration: none;
+    transition: 230ms;
+}
+header {
+    background-color:rgba(37, 41, 49, .96);
+    height:50px;
+}
+.nav {
+    display:inline-block;
+}
+.nav li {
+    display:inline-block;
+    margin-left:20px;
+}
+.nav li a{
+    text-decoration: none;
+    color:white;
+    transition: 230ms;
+}
+.nav li a:hover{
+    text-decoration: underline;
+    color:rgb(25, 255, 121)
+}
+.navHeader a:hover{
+    color:rgb(25, 255, 121)
+}
 input {
     width:80%;
     height: 30px;
@@ -81,3 +115,77 @@ form {
 .home:hover {
     text-decoration: underline;
 }
+
+footer {
+    height:270px;
+    width:100%;
+    background-color: #242931;
+    position:absolute;
+    top:775px;
+    z-index:100;
+}
+.footerContainer {
+    width:80%;
+    min-width:600px;
+    margin:0 auto;
+    /* background-color: green; */
+}
+.fLinkCont, .fHeadCont, .fContactCont {
+    display:inline-block;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size:.7em;
+    width:25%;
+    height:100px;
+    vertical-align:top;
+    margin:20px 0 20px 0;
+}
+.fLinkCont {
+    margin-left:120px;
+}
+.fLinkCont h3, .fHeadCont h3, .fContactCont h3 {
+    font-weight:700;
+    margin-bottom:20px;
+    text-transform: uppercase;
+}
+.fLinkCont li, .fHeadCont li, .fContactCont li {
+    margin-bottom:20px;
+    margin-left:10px;
+    color: rgb(184, 184, 184);
+}
+.fLinkCont a, .fHeadCont a{
+    color: rgb(184, 184, 184);
+    text-transform: none
+}
+.fLinkCont li:hover, .fLinkCont a:hover, .fHeadCont a:hover {
+    color:rgb(25, 255, 121);
+}
+.fHeadCont a{
+    display:inline;
+}
+.fLinks, .fHeadQ, .fContact {
+    text-indent: 50px;
+}
+.fContactCont input, textarea {
+    border-radius:2px;
+    border:none;
+  }
+.fContactCont input {
+    width:140px;
+    height:30px;
+  }
+.fContactCont input[type="text"], textarea {
+    background-color : rgb(184, 184, 184); 
+  }
+.fContactCont button {
+    background-color :transparent;
+    border :2px solid white;
+    border-radius:2px;
+    color:white;
+    width:60px;
+    height:30px;
+    transition:200ms;
+  }
+.fContactCont button:hover {
+    background-color : rgb(25, 255, 121); 
+  }
