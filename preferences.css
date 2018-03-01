@@ -13,7 +13,7 @@ body {
     background-image: url(img/table-salad3.jpeg);
     background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6) ), url('img/table-salad3.jpeg');
     background-size: cover;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 nav {
@@ -58,13 +58,11 @@ main {
 }
 h1 {
     text-align: center;
-    margin: 10px;
+    margin-top: 30px;
     font-weight: bold;
-
 }
 form {
     margin-left: 9%;
-
 }
 img {
     opacity: .6;
@@ -100,6 +98,7 @@ button {
     width: 200px;
     height: 50px;
     margin: 0px auto;
+    margin-bottom: 30px;
     transition: 300ms;
     background-color: rgba(169, 169, 169, 0.24);
     border: 1px solid;
