@@ -1,3 +1,5 @@
+/* RESULTS.css */
+
 html {
   background: url(images/wooden-background.jpeg) no-repeat center center fixed;
   background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/wooden-background.jpeg');
@@ -113,7 +115,7 @@ main {
   margin-top: 50px; 
 }
 
-.btngroup button{
+#btngroup button{
   color: #242931;
   padding:10px 24px;
   border-radius: 12px;
@@ -212,4 +214,5 @@ main {
     margin: 10px auto;
     color: rgb(145, 141, 141);
   }
+
 

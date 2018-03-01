@@ -1,5 +1,6 @@
-'use strict';
+// APP.JS
 
+'use strict';
 
 ////////////////////RESULTS PAGE VARIABLES///////////////
 var yesbtn = document.getElementById('yes');
@@ -33,6 +34,8 @@ function handlePreferences() {
   }
   localStorage.setItem('preferences', JSON.stringify(prefArray));
   console.log(prefArray);
+  alert('Your preferences have been saved.');
+  window.open('main.html','_self');
 }
 /////////////////////// PREFERENCES //////////////////////////
 
@@ -186,7 +189,7 @@ function sumbitHandler() {
     var choiceNumber = 1;
     localStorage.setItem('choiceNumber', JSON.stringify(choiceNumber));
 
-    setTimeout(function() { 
+    setTimeout(function() {
       window.open('results.html','_self');
     }, 1300);
   }
@@ -269,7 +272,7 @@ function callback (results, status) {
       restResults.push(results[i]);
       var item=document.createElement('li');
       item.appendChild(document.createTextNode(results[i].name, results[i].geometry.location));
-      document.getElementById('results').appendChild(item); 
+      document.getElementById('results').appendChild(item);
     }
     finalThree.push(restResults[Math.floor(Math.random() * restResults.length)]);
     localStorage.setItem('final-three', JSON.stringify(finalThree));
@@ -363,21 +366,22 @@ function displayLocation() {
       });;
       }
     });
-  }
-  if(choiceNumber > 3) {
-    alert('Out of Choices!');
+  
+  if(choiceNumber > 2) {
+    disableBtn();
   }
 }
 
 function yesbtnHandler(event) {
   event.preventDefault();
-  //Disable yes/no handlers
-  disableBtn();
+  if (btngroup.lastElementChild !== btngroup.firstElementChild) {
+    disableBtn();
+  }
+  yesbtn.removeEventListener('click', yesbtnHandler);
   window.location = '#order';
 }
 
 function disableBtn() {
-  btngroup.removeChild(yesbtn);
   btngroup.removeChild(nobtn);
 }
 
