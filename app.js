@@ -1,6 +1,5 @@
 'use strict';
 
-
 ////////////////////RESULTS PAGE VARIABLES///////////////
 var yesbtn = document.getElementById('yes');
 var nobtn = document.getElementById('no');
@@ -131,7 +130,7 @@ if (signIn) {
 }
 if (createAccount) {
   createAccount.addEventListener('click', handleContactSubmit);
-} 
+}
 ///////////// END OF HOMEPAGE ///////////////
 
 function currentLocationHandler () {
@@ -189,7 +188,7 @@ function sumbitHandler() {
   }
 }
 
-//function that creates random choices 
+//function that creates random choices
 function randomRestaurant () {
   var userLatLng = JSON.parse(localStorage.getItem('current-location'));
   var userLocation = new google.maps.LatLng(userLatLng.lat, userLatLng.lng);
@@ -249,14 +248,14 @@ function randomRestaurant () {
 function callback (results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
-      restResults.push(results[i]);  
+      restResults.push(results[i]);
       var item=document.createElement('li');
       item.appendChild(document.createTextNode(results[i].name, results[i].geometry.location));
-      document.getElementById('results').appendChild(item); 
+      document.getElementById('results').appendChild(item);
     }
-      finalThree.push(restResults[Math.floor(Math.random()*restResults.length)]);
-      localStorage.setItem('final-three', JSON.stringify(finalThree));
-    }
+    finalThree.push(restResults[Math.floor(Math.random()*restResults.length)]);
+    localStorage.setItem('final-three', JSON.stringify(finalThree));
+  }
 }
 
 
@@ -328,7 +327,7 @@ function nobtnHandler(event) {
   event.preventDefault();
   var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
   choiceNumber++;
-  localStorage.setItem('choiceNumber', choiceNumber); 
+  localStorage.setItem('choiceNumber', choiceNumber);
   displayLocation();
 
 }

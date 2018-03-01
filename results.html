@@ -32,19 +32,47 @@
       </section>
   </main>
   <div class="btngroup">
-      <button id = "yes">Accept</button>
-      <button id = "no">Not Accept</button>
+    <button id = "yes">Accept</button>
+    <button id = "no">Not Accept</button>
   </div>
   <div id="map">
     <iframe scrolling ="no" marginheight="0" marginwidth="0" src="" width="580" height="400" frameborder="0" style="border:0" ></iframe>>
   </div>  
 
   <div>
-      <input type="submit" id = "order" value = "Order"/><br><br>
-      <input type="submit" id = "reserve" value = "Reserve"/>
+    <input type="submit" id = "order" value = "Order"/><br><br>
+    <input type="submit" id = "reserve" value = "Reserve"/>
   </div>
   <div id="map2"></div>
   <footer>&copy;2018</footer>
+  <footer>
+      <div class = "fLinkCont">
+          <h3>Links</h3>
+          <ul id ="fLinks">
+              <li><a href = "index.html">Home</a></li>
+              <li>About Us</li>
+              <li>Privacy</li>
+          </ul>
+      </div>
+      <div class = "fHeadCont">
+          <h3>Headquarters</h3>
+          <ul id = "fHeadQ">
+              <li>Address: 123 Main St.</li>
+              <li>Phone: 206-543-1234</li>
+              <li>Hours: Mon - Fri : 8am - 8pm</li>
+              <li>Email:<a href = "mailto:info@chewsit.com"> info@chewsit.com</a></li>
+          </ul>
+      </div>
+      <div class = "fContactCont">
+          <h3>Contact Us</h3>
+          <ul id = "fContact">
+              <li><input id = "contactUserName" placeholder ="Name" name = "contactUserName" type = "text"></li>
+              <li><input id = "contactEmail" placeholder ="Email" name = "contactEmail" type = "text"></li>
+              <li><textarea id = "contactMessage" rows = "3" placeholder ="Message"></textarea></li>
+              <li><button id ="" type="submit">Submit</button></li>
+          </ul>
+      </div>
+  </footer>
   <script src="app.js"></script>
 </body>
 </html>
