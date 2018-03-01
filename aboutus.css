@@ -13,7 +13,6 @@
 #abouthead{
     font-family: 'Titan One', cursive;
     font-size: 50px;
-    color: rgb(18, 160, 77);
     text-align: center;
     margin-top: 30px;
 }
@@ -93,3 +92,13 @@ hr {
     text-align: center;
     
 }
+
+a {
+    text-decoration: none;
+    transition: 350ms;
+    color: rgb(18, 160, 77);
+}
+
+a:hover {
+    color:rgb(160, 78, 255);
+  }
