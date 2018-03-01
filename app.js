@@ -366,7 +366,7 @@ function displayLocation() {
       });;
       }
     });
-  
+  }
   if(choiceNumber > 2) {
     disableBtn();
   }
@@ -423,8 +423,7 @@ function changeImage() {
   }, function(place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
-        'maxWidth': 400,
-       
+        'maxWidth': 400, 
     });
     }
   });
@@ -450,4 +449,3 @@ if(page === 'results.html'){
   reservebtn.addEventListener('click', reservebtnHandler);
   imgEl.addEventListener('click', changeImage)
 }
-
