@@ -1,50 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8" />
-    <title>We Chews</title>
-    <link rel="stylesheet" type="text/css" href="reset.css" />
-    <link rel="stylesheet" type="text/css" href="results.css" />   
-    <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXvS2M8YF3R6sN_KnqTKS-guj4Aoh4sOU&libraries=places"></script>
+  <meta charset="utf-8" />
+  <title>We Chews</title>
+  <link rel="stylesheet" type="text/css" href="reset.css" />
+  <link rel="stylesheet" type="text/css" href="results.css" />
+  <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXvS2M8YF3R6sN_KnqTKS-guj4Aoh4sOU&libraries=places"></script>
 
 </head>
+
 <body>
-    <nav>
-      <h1><a href=home.html>Chews It</a></h1>
-      <ul>
-        <li>About Us</li>
-        <li><a href=preferences.html>Preferences</a></li>
-        <li>History</li>
-      </ul>
-    </nav>
+  <nav>
+    <h1>
+      <a href=home.html>Chews It</a>
+    </h1>
+    <ul>
+      <a href=aboutus.html><li>About Us</a></li>
+      <li>
+        <a href=preferences.html>Preferences</a>
+      </li>
+      <li>History</li>
+    </ul>
+  </nav>
   <main>
-      <section>
-        <div id="restaura">
-          <h1 id="choice">We Chews</h1>
-          <!-- <img id = "restimg" src="http://placehold.it/960x350/312c24"/> -->
-          <img id = "restimg"/>
-          <h2 id="resthead">Featured Section Heading</h2>
-          <h3 id="address">address</h3>
-          <!-- <p class="restdetails">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit ametLorem  </p> -->
+    <section>
+      <div id="restaura">
+        <h1 id="choice">We Chews</h1>
+        <img id="restimg" src="" />
+        <!-- <img id = "restimg"/> -->
+        <h2 id="resthead"></h2>
+        <h3 id="address"></h3>
+        <div id="details">
+          <ul>
+            <li id="liStar">&#9733; :
+              <span id="star"></span>
+            </li>
+          </ul>
         </div>
-      </section>
+      </div>
+    </section>
   </main>
   <div class="btngroup">
-      <button id = "yes">Accept</button>
-      <button id = "no">Not Accept</button>
+    <button id="yes">Accept</button>
+    <button id="no">Try Again</button>
   </div>
   <div id="map">
-    <iframe scrolling ="no" marginheight="0" marginwidth="0" src="" width="580" height="400" frameborder="0" style="border:0" ></iframe>>
-  </div>  
+    <iframe scrolling="no" marginheight="0" marginwidth="0" src="" width="580" height="400" frameborder="0" style="border:0"></iframe>>
+  </div>
 
   <div>
-      <input type="submit" id = "order" value = "Order"/><br><br>
-      <input type="submit" id = "reserve" value = "Reserve"/>
+    <input type="submit" id="order" value="Order" />
+    <br>
+    <br>
+    <input type="submit" id="reserve" value="Reserve" />
   </div>
   <div id="map2"></div>
   <footer>&copy;2018</footer>
   <script src="app.js"></script>
 </body>
+
 </html>

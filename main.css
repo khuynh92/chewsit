@@ -52,16 +52,47 @@ nav ul li {
 /* location */
 #location {
 width: 500px;
-height: 60px;
+height: 120px;
 background-color: #242931f8;
 margin: 50px auto 0 auto;
 border-radius: 5px;
+overflow: auto;
+font-family: 'Quicksand', sans-serif;
+}
+
+#location button {
+  height: 40px;
+  color: white;
+  display: block;
+  margin: 3% auto;
+  font-weight: bold;
+  background-color: rgb(87, 83, 83);
+  border-radius: 5px;
+  outline: 0;
+  border: none;
+  transition: 350ms;
+}
+#location button:hover {
+  cursor: pointer;
+  background-color: darkgray;
+}
+
+#location button:active {
+  background-color: rgb(18, 160, 77);
+}
+#location p {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 1px;
 }
 /* main */
 #main {
+  color: white;
   margin: 25px auto 0 auto;
   width: 500px;
-  height: 525px;
+  height: 450px;
   background-color: #242931f8;
   border-radius: 5px;
 }
@@ -101,17 +132,15 @@ label input{
 }
 
 label input:checked + p { 
-  background-color: darkgray;
+  background-color: rgb(18, 160, 77);
 }
-
-
 
 #price {
   display: block; 
   width: 100%;
   height: 35px;
   padding-top: 20px;
-  padding-bottom: 2px;
+  padding-bottom: 10px;
   margin: auto;
 }
 .dollar {
@@ -119,13 +148,13 @@ label input:checked + p {
   color: white;
   background-color: rgb(87, 83, 83);
   text-align: center;
-  height: 20px;
+  height: 30px;
   display: inline-block;
   margin: 0 auto;
   width: 50px;
   border-radius: 5px;
   transition: 300ms;
-  
+  padding-top: 10px;
 }
 
 p.dollar {
@@ -175,23 +204,17 @@ p.dollar {
 #submit:hover {
   cursor: pointer;
   background-color: lightgreen;
+  border-color: lightgreen;
 }
 
 #submit:active {
   background-color: rgb(18, 160, 77);
+  border-color: rgb(18, 160, 77);
 }
 
 .dollar:active, .mealtype:active {
   background-color: rgb(18, 160, 77);
-  transition: 300ms;
-}
-
-/* TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEST */
-
-#test {
-  font-size: 30px;
-  color: white;
-  text-align: center;
+  transition: 1000ms;
 }
 
 a {
@@ -207,4 +230,69 @@ a:hover {
 #map {
   width: 400px;
   height: 400px;
+}
+
+footer {
+  height:270px;
+  width:100%;
+  background-color: #242931;
+  /* position:absolute;
+  top:775px; */
+  z-index:100;
+}
+.fLinkCont, .fHeadCont, .fContactCont {
+  display:inline-block;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  font-size:.7em;
+  width:22%;
+  height:100px;
+  vertical-align:top;
+  margin:20px;
+}
+.fLinkCont h3, .fHeadCont h3, .fContactCont h3 {
+  font-weight:700;
+  margin-bottom:20px;
+  text-transform: uppercase;
+}
+.fLinkCont li, .fHeadCont li, .fContactCont li {
+  margin-bottom:20px;
+  margin-left:10px;
+  color: rgb(184, 184, 184);
+}
+.fLinkCont a, .fHeadCont a{
+  color: rgb(184, 184, 184);
+  text-transform: none
+}
+.fLinkCont li:hover, .fLinkCont a:hover, .fHeadCont a:hover {
+  color:rgb(25, 255, 121);
+}
+.fHeadCont a{
+  display:inline;
+}
+.fLinks, .fHeadQ, .fContact {
+  text-indent: 50px;
+}
+.fContactCont input, textarea {
+  border-radius:2px;
+  border:none;
+}
+.fContactCont input {
+  width:140px;
+  height:30px;
+}
+.fContactCont input[type="text"], textarea {
+  background-color : rgb(184, 184, 184); 
+}
+.fContactCont button {
+  background-color :transparent;
+  border :2px solid white;
+  border-radius:2px;
+  color:white;
+  width:70px;
+  height:30px;
+  transition:200ms;
+}
+.fContactCont button:hover {
+  background-color : rgb(25, 255, 121); 
 }
