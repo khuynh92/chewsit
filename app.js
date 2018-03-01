@@ -1,3 +1,5 @@
+// APP.JS
+
 'use strict';
 
 ////////////////////RESULTS PAGE VARIABLES///////////////
@@ -130,7 +132,7 @@ if (signIn) {
 }
 if (createAccount) {
   createAccount.addEventListener('click', handleContactSubmit);
-}
+} 
 ///////////// END OF HOMEPAGE ///////////////
 
 function currentLocationHandler () {
@@ -185,13 +187,13 @@ function sumbitHandler() {
     var choiceNumber = 1;
     localStorage.setItem('choiceNumber', JSON.stringify(choiceNumber));
 
-    setTimeout(function() { 
+    setTimeout(function() {
       window.open('results.html','_self');
     }, 1300);
   }
 }
 
-//function that creates random choices
+//function that creates random choices 
 function randomRestaurant () {
   var userLatLng = JSON.parse(localStorage.getItem('current-location'));
   var userLocation = new google.maps.LatLng(userLatLng.lat, userLatLng.lng);
@@ -267,8 +269,6 @@ function callback (results, status) {
     for (var i = 0; i < results.length; i++) {
       restResults.push(results[i]);
       var item=document.createElement('li');
-      item.appendChild(document.createTextNode(results[i].name, results[i].geometry.location));
-      document.getElementById('results').appendChild(item); 
     }
     finalThree.push(restResults[Math.floor(Math.random() * restResults.length)]);
     localStorage.setItem('final-three', JSON.stringify(finalThree));
@@ -365,20 +365,21 @@ function displayLocation() {
       }
     });
   }
-  if(choiceNumber > 4) {
-    alert('Out of Choices!');
+  if(choiceNumber > 2) {
+    disableBtn();
   }
 }
 
 function yesbtnHandler(event) {
   event.preventDefault();
-  //Disable yes/no handlers
-  disableBtn();
+  if (btngroup.lastElementChild !== btngroup.firstElementChild) {
+    disableBtn();
+  }
+  yesbtn.removeEventListener('click', yesbtnHandler);
   window.location = '#order';
 }
 
 function disableBtn() {
-  btngroup.removeChild(yesbtn);
   btngroup.removeChild(nobtn);
 }
 
@@ -386,7 +387,7 @@ function nobtnHandler(event) {
   event.preventDefault();
   var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
   choiceNumber++;
-  localStorage.setItem('choiceNumber', choiceNumber);
+  localStorage.setItem('choiceNumber', choiceNumber); 
   displayLocation();
 
 }
@@ -422,3 +423,4 @@ if(page === 'results.html'){
   orderbtn.addEventListener('click', orderbtnHandler);
   reservebtn.addEventListener('click', reservebtnHandler);
 }
+
