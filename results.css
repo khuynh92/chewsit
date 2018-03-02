@@ -10,6 +10,7 @@ html {
 }
 
 header {
+  font-family: 'Quicksand', sans-serif;
   background:#efefef;
   height: 100px;
   margin-bottom: 100px;
@@ -50,18 +51,6 @@ header {
   color:rgb(25, 255, 121)
 }
 
-header img {
-  float: left;
-  margin-top: 15px;
-  margin-right: 30px;
-}
-
-header ul li {
-  display: inline-block;
-  margin-top: 40px;
-  margin-right: 75px;
-}
-
 a {
     text-decoration: none;
     color: white;
@@ -80,7 +69,7 @@ a {
   margin-bottom: 30px;
 }
 
-h2 {
+#choice-h2 {
   color: white;
   font-family: 'Quicksand', sans-serif;
   font-size: 25px;
@@ -159,11 +148,11 @@ main {
   width: 8%;
   margin: 0 auto;
 }
-  #liStar {
+#liStar {
     color: white;
     font-size: 25px;
   }
-  #star {
+#star {
     color: white;
     font-size: 25px;
   }

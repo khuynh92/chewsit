@@ -317,7 +317,7 @@ function displayLocation() {
     }, function(place, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
-          'maxWidth': 400,
+          'maxHeight': 400,
          
       });
       }
@@ -340,7 +340,7 @@ function displayLocation() {
     }, function(place, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
-          'maxWidth': 400,
+          'maxHeight': 400,
          
       });
       }
@@ -363,7 +363,7 @@ function displayLocation() {
     }, function(place, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
-          'maxWidth': 400,
+          'maxHeight': 400,
          
       });;
       }

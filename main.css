@@ -29,6 +29,7 @@ body {
   transition: 230ms;
 }
 header {
+  font-family: 'Quicksand', sans-serif;
   background-color:rgba(37, 41, 49, .96);
   height:50px;
 }
