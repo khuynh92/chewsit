@@ -71,16 +71,15 @@ function handleSignInPopup(event) {
   new SignInConstructor(userName, userPw);
   var localStorageUserDatabase = localStorage.getItem('userDatabase');
   var userDbParse = JSON.parse(localStorageUserDatabase);
-  console.log(userDbParse);
-  console.log(userDbParse[0].name);
-  console.log(userDbParse[0].pw);
-  if(userDbParse.length === 0) {
-    console.log(userDbParse.length);
+
+  if(!userDbParse) {
     alert('please create an account');
+    window.open('contact.html', '_self');
   } else {
     for (var i = 0; i < userDbParse.length; i++) {
       if (userSignIn[i].name === userDbParse[i].name && userSignIn[i].pw === userDbParse[i].pw) {
         alert('welcome');
+        window.open('main.html', '_self');
         //navigate them to the main.html page
       } else {
         alert('your username or password may be incorrect. try again please');
@@ -100,10 +99,13 @@ function handleContactSubmit(event) {
   var userPw = document.getElementById('userPw').value;
   var userCnum = parseInt(document.getElementById('userCnum').value);
   new AccountConstructor(userName, userCity, userCnum, userPw);
+  localStorage.setItem('userDatabase', JSON.stringify(userDb));
   userName = document.getElementById('userName').value = '';
   userCity = document.getElementById('userCity').value = '';
   userPw = document.getElementById('userPw').value = '';
   userCnum = document.getElementById('userCnum').value = '';
+
+  window.open('preferences.html', '_self');
 }
 
 ///////////// HOMEPAGE POPUP ///////////////
