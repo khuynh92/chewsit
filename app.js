@@ -272,9 +272,6 @@ function callback (results, status) {
     restResults = [];
     for (var i = 0; i < results.length; i++) {
       restResults.push(results[i]);
-      var item=document.createElement('li');
-      item.appendChild(document.createTextNode(results[i].name, results[i].geometry.location));
-      document.getElementById('results').appendChild(item);
     }
     finalThree.push(restResults[Math.floor(Math.random() * restResults.length)]);
     localStorage.setItem('final-three', JSON.stringify(finalThree));
