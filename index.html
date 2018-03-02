@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chewsit | Home</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="reset.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="homestyle.css" />
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Titan+One" rel="stylesheet">
+    </head>
+    <body>
+        <div id="myModal" class="modal"> <!-- pop-up modal from w3school.com -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="innerModal">
+                    <div class="modal-header">
+                        <h2>Sign In</h2>
+                    </div>
+                    <div class="modal-body">
+                        <input id = "popUserName" placeholder ="User Name" name = "popUserCity" type = "text">
+                        <br>
+                        <br>
+                        <input id = "popUserPw" placeholder = "Password" name = "popUserPw" type = "password">
+                    </div>
+                    <br>
+                    <div class="modal-footer">
+                        <button class = "btn btnContainer" id ="signInButtonPopup" type="submit">Sign In</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overLay"></div>
+        <div class = "signIn">
+            <h1>Chewsit</h1>
+            <button class = "btn" id ="signInButton" type="submit">Sign In</button>
+            <a class = "btn guestBtn" id ="guest" href = "main.html">Guest</a>
+            <a class = "create" href = "contact.html">Create Account</a>
+        </div>
+        <video id="bgVideo" preload="true" autoplay loop muted> <!-- video background from stack overflow -->
+            <source src="assets/eating.mp4" type="video/mp4" >
+        </video>
+        <script src = "app.js"></script>
+    </body>
+</html>
