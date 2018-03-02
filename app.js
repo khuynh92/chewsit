@@ -317,7 +317,7 @@ function displayLocation() {
         imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
           'maxWidth': 400,
          
-      });;
+      });
       }
     });
   }
