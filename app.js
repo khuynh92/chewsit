@@ -9,7 +9,7 @@ var btngroup = document.getElementById('btngroup');
 var orderbtn = document.getElementById('order');
 var reservebtn = document.getElementById('reserve');
 var imgEl = document.getElementById('restimg');
-//search google restaurants for places that match
+//Declaring variables
 var map, service, infoWindow, restInfo, foodType1, foodType2, foodType3, mainPrice, mainMeal;
 var preferences = JSON.parse(localStorage.getItem('preferences'));
 var path = window.location.pathname;
@@ -139,6 +139,8 @@ if (createAccount) {
 } 
 ///////////// END OF HOMEPAGE ///////////////
 
+//Function to identify current location
+
 function currentLocationHandler () {
   console.log('clicked me!');
   //HTML5 geolocation
@@ -193,7 +195,7 @@ function sumbitHandler() {
 
     setTimeout(function() {
       window.open('results.html','_self');
-    }, 1300);
+    }, 1400);
   }
 }
 
@@ -202,7 +204,7 @@ function randomRestaurant () {
   var userLatLng = JSON.parse(localStorage.getItem('current-location'));
   var userLocation = new google.maps.LatLng(userLatLng.lat, userLatLng.lng);
   var userPrice = JSON.parse(localStorage.getItem('price'));
-  if (mainMeal === 'dessert') {
+  if (mainMeal === 'dessert' && (userPrice === 1 || userPrice === 2 || userPrice ===3)) {
     foodType1 = 'dessert in seattle';
     foodType2 = 'dessert in seattle';
     foodType3 = 'dessert in seattle';
@@ -210,6 +212,11 @@ function randomRestaurant () {
     foodType1 = 'breakfast';
     foodType2 = 'breakfast';
     foodType3 = 'breakfast';
+  } else if (mainMeal === 'dessert' && userPrice === 4) {
+    foodType1 = 'dessert in seattle';
+    foodType2 = 'dessert in seattle';
+    foodType3 = 'dessert in seattle';
+    userPrice = 3;
   } else {
     if (localStorage.preferences) {
       if (localStorage.preferences.length > 2) {

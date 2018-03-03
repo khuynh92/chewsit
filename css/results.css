@@ -1,8 +1,8 @@
 /* RESULTS.css */
 
 html {
-  background: url(images/wooden-background.jpeg) no-repeat center center fixed;
-  background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('images/wooden-background.jpeg');
+  background: url(../images/wooden-background.jpeg) no-repeat center center fixed;
+  background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('../images/wooden-background.jpeg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -13,7 +13,7 @@ header {
   font-family: 'Quicksand', sans-serif;
   background:#efefef;
   height: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .navHeader {
@@ -102,6 +102,10 @@ main {
   margin-top: 50px; 
 }
 
+#order:hover {
+  cursor: pointer;
+}
+
 #btngroup button{
   color: #242931;
   padding:10px 24px;
@@ -118,9 +122,17 @@ main {
   background-color:#8fdef8;
 }
 
+#yes:hover {
+  cursor: pointer;
+}
+
 #no {
   margin-top: 30px;
   background-color: #f88fde;
+}
+
+#no:hover {
+  cursor: pointer;
 }
 
 #resthead {
@@ -172,7 +184,10 @@ main {
   margin-bottom: 50px;
 }
 
-/* got this code from W3 schools */
+#reserve {
+  cursor: pointer;
+}
+
 #map {
   width: 500px;
   height: 500px;
