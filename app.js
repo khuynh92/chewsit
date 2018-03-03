@@ -366,7 +366,7 @@ function nobtnHandler(event) {
   event.preventDefault();
   var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
   choiceNumber++;
-  localStorage.setItem('choiceNumber', choiceNumber); 
+  localStorage.setItem('choiceNumber', choiceNumber);
   displayLocation();
 }
 
@@ -432,5 +432,5 @@ if(page === 'results.html'){
   nobtn.addEventListener('click', nobtnHandler);
   orderbtn.addEventListener('click', orderbtnHandler);
   reservebtn.addEventListener('click', reservebtnHandler);
-  imgEl.addEventListener('click', changeImage)
+  imgEl.addEventListener('click', changeImage);
 }
