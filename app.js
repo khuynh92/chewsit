@@ -199,7 +199,7 @@ function sumbitHandler() {
 
     setTimeout(function() {
       window.open('results.html','_self');
-    }, 1000);
+    }, 1400);
   }
 }
 
@@ -270,7 +270,7 @@ function callback (results, status) {
       while (finalThree[0] === finalThree[1]);
     } else {
       do { finalThree[2] = restResults[Math.floor(Math.random() * restResults.length)]; }
-      while (finalThree[2] === finalThree[1] || finalThree[2] === finalThree[0]);
+      while (finalThree[2] === finalThree[1] || finalThree[2] === finalThree[0] || finalThree[0] === finalThree[1]);
     }
     localStorage.setItem('final-three', JSON.stringify(finalThree));
   }
