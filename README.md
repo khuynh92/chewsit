@@ -5,5 +5,5 @@ Chews It is an application that takes the struggle out of chewsing  quickly. The
 This project was developed with best team in 201. Those individuals are:
 Khoa Huynh
 Maxwell Rediker
-Lina Asthana
+Lina Mukherjee
 Michael Lennerblom

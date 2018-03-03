@@ -17,7 +17,7 @@ var orderbtn = document.getElementById('order');
 var reservebtn = document.getElementById('reserve');
 var imgEl = document.getElementById('restimg');
 ///////////////////////// DECLARING VARIABLES FOR MAIN PAGE ///////////////////////////
-var map, service, infoWindow, restInfo, foodType1, foodType2, foodType3, mainPrice, mainMeal;
+var map, service, restInfo, mainPrice, mainMeal;
 var preferences = JSON.parse(localStorage.getItem('preferences'));
 var path = window.location.pathname;
 var page = path.split('/').pop();
@@ -115,7 +115,6 @@ window.onclick = function(event) {
   }
 };
 
-
 ///////////////////////// HOMEPAGE & CREATEUSER ///////////////////////////
 
 ///////////////////////// PREFERENCES ///////////////////////////
@@ -156,15 +155,24 @@ function currentLocationHandler () {
 
 // Function to handle user selection on main page
 function sumbitHandler() {
+  var locationError = document.getElementById('location-error');
+  var priceError = document.getElementById('price-error');
+  var mealtypeError = document.getElementById('mealtype-error');
   if (!localStorage.userLocation) {
-    alert('please use user current location!');
+    locationError.textContent = 'Please use your current location!';
+  } else {
+    locationError.textContent = '';
   }
   if (price[0].checked === false && price[1].checked === false && price[2].checked === false && price[3].checked === false) {
-    alert('please choose a price range!');
+    priceError.textContent = 'Please select a price range!';
+  } else {
+    priceError.textContent = '';
   }
   //check if user selected mealtype
   if (meal[0].checked === false && meal[1].checked === false && meal[2].checked === false && meal[3].checked === false) {
-    alert('please choose a meal type!');
+    mealtypeError.textContent = 'Please select a meal type!';
+  } else {
+    mealtypeError.textContent = '';
   }
   if ((meal[0].checked === true || meal[1].checked === true || meal[2].checked === true || meal[3].checked === true) && (price[0].checked === true || price[1].checked === true || price[2].checked === true || price[3].checked === true) & (localStorage.userLocation.length > 0)) {
     //assign user price choice to a variable
@@ -172,7 +180,6 @@ function sumbitHandler() {
       if (price[i].checked) {
         console.log(price[i].value + ' was clicked!');
         mainPrice = price[i].value;
-        // JSON.stringify(localStorage.setItem('price', mainPrice));
         price[i].checked = false;
         break;
       }
@@ -192,27 +199,26 @@ function sumbitHandler() {
 
     setTimeout(function() {
       window.open('results.html','_self');
-    }, 1400);
+    }, 1000);
   }
 }
 
 // Function that creates random choices
 function randomRestaurant () {
   var foodType = [];
+  var request = [];
   var userLatLng = JSON.parse(localStorage.getItem('userLocation'));
   var userLocation = new google.maps.LatLng(userLatLng.lat, userLatLng.lng);
-  if (mainMeal === 'dessert' && (mainPrice === 1 || mainPrice === 2 || mainPrice ===3)) {
+  if (mainMeal === 'dessert') {
+    if (mainPrice === '4') {
+      mainPrice = '3';
+    }
     for (var i = 0; i < 3; i++) {
       foodType[i] = 'dessert in seattle';
     }
   } else if (mainMeal === 'breakfast') {
     for (var j = 0; j < 3; j++) {
-      foodType[i] = 'breakfast';
-    }
-  } else if (mainMeal === 'dessert' && mainPrice === 4) {
-    mainPrice = 3;
-    for (var k = 0; k < 3; k++) {
-      foodType[i] = 'dessert in seattle';
+      foodType[j] = 'breakfast';
     }
   } else {
     if (localStorage.preferences) {
@@ -222,71 +228,55 @@ function randomRestaurant () {
         }
       } else {
         for (var m = 0; m < 3; m++) {
-          foodType[i] = 'dessert in seattle';
-          ////////////////////////// END HERE
+          foodType[m] = 'restaurant';
         }
-        foodType1 = 'Restaurant';
-        foodType2 = 'Restaurant';
-        foodType3 = 'Restaurant';
       }
     } else {
-      foodType1 = 'Restaurant';
-      foodType2 = 'Restaurant';
-      foodType3 = 'Restaurant';
+      for (var n = 0; n < 3; n++) {
+        foodType[n] = 'restaurant';
+      }
     }
   }
-  //creating map
-  map = new google.maps.Map(document.getElementById('test'), {
-    center: userLocation,
-    zoom: 12
-  });
 
-  infoWindow = new google.maps.InfoWindow();
-  restInfo = new google.maps.InfoWindow();
+  // Creating three new requests for restaurants around the users location
+  for (var o = 0; o < 3; o++) {
+    request[o] = {
+      location: userLocation,
+      radius: 500,
+      query: foodType[o],
+      minPriceLevel: mainPrice,
+      maxPriceLevel: mainPrice
+    };
+  }
 
-  var request1 = {
-    location: userLocation,
-    radius: 1500,
-    query: foodType1,
-    minPriceLevel: mainPrice,
-    maxPriceLevel: mainPrice
-  };
-  var request2 = {
-    location: userLocation,
-    radius: '500',
-    query: foodType2,
-    minPriceLevel: mainPrice,
-    maxPriceLevel: mainPrice
-  };
-  var request3 = {
-    location: userLocation,
-    radius: '500',
-    query: foodType3,
-    minPriceLevel: mainPrice,
-    maxPriceLevel: mainPrice
-  };
   service = new google.maps.places.PlacesService(document.getElementById('map'));
-  service.textSearch(request1, callback);
-  service.textSearch(request2, callback);
-  service.textSearch(request3, callback);
-  var marker = new google.maps.Marker({
-    position: userLatLng,
-    map: map
-  });
+  for (var p = 0; p < 3; p++) {
+    service.textSearch(request[p], callback);
+  }
 }
 
+// Function for the ladder argument of the textSearch feature from google API
 function callback (results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     restResults = [];
     for (var i = 0; i < results.length; i++) {
       restResults.push(results[i]);
     }
-    finalThree.push(restResults[Math.floor(Math.random() * restResults.length)]);
+    // Creating final choices, and ensuring final choices are not equal
+    if (finalThree.length === 0) {
+      finalThree[0] = restResults[Math.floor(Math.random() * restResults.length)];
+    } else if (finalThree.length === 1) {
+      do {finalThree[1] = restResults[Math.floor(Math.random() * restResults.length)];}
+      while (finalThree[0] === finalThree[1]);
+    } else {
+      do { finalThree[2] = restResults[Math.floor(Math.random() * restResults.length)]; }
+      while (finalThree[2] === finalThree[1] || finalThree[2] === finalThree[0]);
+    }
     localStorage.setItem('final-three', JSON.stringify(finalThree));
   }
 }
 
-
+// Function which creates a marker
 function createMarker(place) {
   var marker = new google.maps.Marker({
     map: map,
@@ -297,88 +287,66 @@ function createMarker(place) {
 
 }
 
+// Function for displaying the location on the results page
 function displayLocation() {
+  var theCenter, theMarker, theName, theAddress, theRating, thePlaceId;
   var choiceEl = document.getElementById('choice-number');
   var restEl = document.getElementById('resthead');
   var h3El = document.getElementById('address');
   var finalThreeParsed = JSON.parse(localStorage.getItem('final-three'));
-  console.log(finalThreeParsed[0].place_id);
   var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
   var starEl = document.getElementById('star');
-  if(choiceNumber === 1) {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: finalThreeParsed[0].geometry.location,
-      zoom: 16
-    });
-    restInfo = new google.maps.InfoWindow();
-    createMarker(finalThreeParsed[0]);
-    choiceEl.textContent = choiceNumber;
-    restEl.textContent = finalThreeParsed[0].name;
-    h3El.textContent = finalThreeParsed[0].formatted_address;
-    starEl.textContent = finalThreeParsed[0].rating;
-    service = new google.maps.places.PlacesService(map);
-    service.getDetails({
-      placeId: finalThreeParsed[0].place_id
-    }, function(place, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
-          'maxHeight': 400,
-         
+  //assign variables the values depending on which restaurant needs to be shown
+  if (choiceNumber === 1) {
+    theCenter = finalThreeParsed[0].geometry.location;
+    theMarker = finalThreeParsed[0];
+    theName = finalThreeParsed[0].name;
+    theAddress = finalThreeParsed[0].formatted_address;
+    theRating = finalThreeParsed[0].rating;
+    thePlaceId = finalThreeParsed[0].place_id;
+  } else if (choiceNumber === 2) {
+    theCenter = finalThreeParsed[1].geometry.location;
+    theMarker = finalThreeParsed[1];
+    theName = finalThreeParsed[1].name;
+    theAddress = finalThreeParsed[1].formatted_address;
+    theRating = finalThreeParsed[1].rating;
+    thePlaceId = finalThreeParsed[1].place_id;
+  } else {
+    theCenter = finalThreeParsed[2].geometry.location;
+    theMarker = finalThreeParsed[2];
+    theName = finalThreeParsed[2].name;
+    theAddress = finalThreeParsed[2].formatted_address;
+    theRating = finalThreeParsed[2].rating;
+    thePlaceId = finalThreeParsed[2].place_id;
+  }
+  //creating the map and text on results page
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: theCenter,
+    zoom: 16
+  });
+  restInfo = new google.maps.InfoWindow();
+  createMarker(theMarker);
+  choiceEl.textContent = choiceNumber;
+  restEl.textContent = theName;
+  h3El.textContent = theAddress;
+  starEl.textContent = theRating;
+  service = new google.maps.places.PlacesService(map);
+  service.getDetails({
+    placeId: thePlaceId
+  }, function (place, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      imgEl.src = place.photos[Math.floor(Math.random() * place.photos.length)].getUrl({
+        'maxHeight': 400,
       });
-      }
-    });
-  }
-  if(choiceNumber === 2) {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: finalThreeParsed[1].geometry.location,
-      zoom: 16
-    });
-    restInfo = new google.maps.InfoWindow();
-    createMarker(finalThreeParsed[1]);
-    choiceEl.textContent = choiceNumber;
-    restEl.textContent = finalThreeParsed[1].name;
-    h3El.textContent = finalThreeParsed[1].formatted_address;
-    starEl.textContent = finalThreeParsed[1].rating;
-    service = new google.maps.places.PlacesService(map);
-    service.getDetails({
-      placeId: finalThreeParsed[1].place_id
-    }, function(place, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
-          'maxHeight': 400,
-         
-      });
-      }
-    });
-  }
-  if(choiceNumber === 3) {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: finalThreeParsed[2].geometry.location,
-      zoom: 16
-    });
-    restInfo = new google.maps.InfoWindow();
-    createMarker(finalThreeParsed[2]);
-    choiceEl.textContent = choiceNumber;
-    restEl.textContent = finalThreeParsed[2].name;
-    h3El.textContent = finalThreeParsed[2].formatted_address;
-    starEl.textContent = finalThreeParsed[2].rating;
-    service = new google.maps.places.PlacesService(map);
-    service.getDetails({
-      placeId: finalThreeParsed[2].place_id
-    }, function(place, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
-          'maxHeight': 400,
-         
-      });;
-      }
-    });
-  }
-  if(choiceNumber > 2) {
+    }
+  });
+
+  if (choiceNumber > 2) {
     disableBtn();
   }
 }
 
+// Function for the yes button
 function yesbtnHandler(event) {
   event.preventDefault();
   if (btngroup.lastElementChild !== btngroup.firstElementChild) {
@@ -388,49 +356,50 @@ function yesbtnHandler(event) {
   window.location = '#order';
 }
 
+// Function to remove the try again button so users cannot keep retrying
 function disableBtn() {
   btngroup.removeChild(nobtn);
 }
 
+// Function to handle the no button
 function nobtnHandler(event) {
   event.preventDefault();
   var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
   choiceNumber++;
   localStorage.setItem('choiceNumber', choiceNumber); 
   displayLocation();
-
 }
 
+// Function to handle the order button
 function orderbtnHandler(event) {
   event.preventDefault();
   alert ('Thanks your order has been submitted!');
-  //window.location.href = "www.google.com";
 }
 
+// Function to handle the reserve button
 function reservebtnHandler(event) {
   event.preventDefault();
   alert ('Thanks your order has been reserved!');
-  //window.location.href = "www.google.com  ";
 }
 
+// Function which allows users to change image with a click
 function changeImage() {
   var thisPlace;
   var choiceNumber = JSON.parse(localStorage.getItem('choiceNumber'));
   var finalThreeParsed = JSON.parse(localStorage.getItem('final-three'));
-  if  (choiceNumber === 1) {
+  if (choiceNumber === 1) {
     thisPlace = finalThreeParsed[0].place_id;
   } else if (choiceNumber === 2) {
     thisPlace = finalThreeParsed[1].place_id;
   } else {
     thisPlace = finalThreeParsed[2].place_id;
   }
-  service = new google.maps.places.PlacesService(map);
   service.getDetails({
     placeId: thisPlace
   }, function(place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
-        'maxWidth': 400, 
+        'maxWidth': 600,
       });
     }
   });
