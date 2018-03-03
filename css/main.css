@@ -4,8 +4,8 @@
 }
 
 html {
-  background: url(images/background.jpg) no-repeat center center fixed;
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('images/background.jpg');
+  background: url(../images/background.jpg) no-repeat center center fixed;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../images/background.jpg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -193,7 +193,7 @@ p.dollar {
   display: block;
   width: 200px;
   height: 50px;
-  margin: 25px auto;
+  margin: 15px auto;
   transition: 300ms;
   background-color: rgba(169, 169, 169, 0.24);
   border: 1px solid;
@@ -234,67 +234,14 @@ a:hover {
   height: 400px;
 }
 
-footer {
-  height:270px;
-  width:100%;
-  background-color: #242931;
-  /* position:absolute;
-  top:775px; */
-  z-index:100;
+#error-msg {
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 0px;
 }
-.fLinkCont, .fHeadCont, .fContactCont {
-  display:inline-block;
-  color: white;
-  font-family: 'Quicksand', sans-serif;
-  font-size:.7em;
-  width:22%;
-  height:100px;
-  vertical-align:top;
-  margin:20px;
-}
-.fLinkCont h3, .fHeadCont h3, .fContactCont h3 {
-  font-weight:700;
-  margin-bottom:20px;
-  text-transform: uppercase;
-}
-.fLinkCont li, .fHeadCont li, .fContactCont li {
-  margin-bottom:20px;
-  margin-left:10px;
-  color: rgb(184, 184, 184);
-}
-.fLinkCont a, .fHeadCont a{
-  color: rgb(184, 184, 184);
-  text-transform: none
-}
-.fLinkCont li:hover, .fLinkCont a:hover, .fHeadCont a:hover {
-  color:rgb(25, 255, 121);
-}
-.fHeadCont a{
-  display:inline;
-}
-.fLinks, .fHeadQ, .fContact {
-  text-indent: 50px;
-}
-.fContactCont input, textarea {
-  border-radius:2px;
-  border:none;
-}
-.fContactCont input {
-  width:140px;
-  height:30px;
-}
-.fContactCont input[type="text"], textarea {
-  background-color : rgb(184, 184, 184); 
-}
-.fContactCont button {
-  background-color :transparent;
-  border :2px solid white;
-  border-radius:2px;
-  color:white;
-  width:70px;
-  height:30px;
-  transition:200ms;
-}
-.fContactCont button:hover {
-  background-color : rgb(25, 255, 121); 
+
+#error-msg p {
+  font-size: 18px;
+  display: inline-block;
+  color: red;
 }
