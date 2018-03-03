@@ -1,46 +1,7 @@
 // APP.JS
 
 'use strict';
-
-////////////////////RESULTS PAGE VARIABLES///////////////
-var yesbtn = document.getElementById('yes');
-var nobtn = document.getElementById('no');
-var btngroup = document.getElementById('btngroup');
-var orderbtn = document.getElementById('order');
-var reservebtn = document.getElementById('reserve');
-var imgEl = document.getElementById('restimg');
-//Declaring variables
-var map, service, infoWindow, restInfo, foodType1, foodType2, foodType3, mainPrice, mainMeal;
-var preferences = JSON.parse(localStorage.getItem('preferences'));
-var path = window.location.pathname;
-var page = path.split('/').pop();
-var submit = document.getElementById('submit');
-var currentLocation = document.getElementById('current-location');
-var meal = document.getElementsByName('mealtype');
-var price = document.getElementsByName('dolla');
-var savePref = document.getElementById('save');
-var restResults = [];
-var finalThree = [];
-///////////////////////// PREFERENCES ///////////////////////////
-function handlePreferences() {
-  var prefArray = [];
-  var pref = document.getElementsByName('cuisine');
-  for(var i =0; i < pref.length; i++) {
-    if(pref[i].checked === true) {
-      prefArray.push(pref[i].value);
-      console.log(pref[i].value);
-      pref[i].checked = false;
-    }
-  }
-  localStorage.setItem('preferences', JSON.stringify(prefArray));
-  console.log(prefArray);
-  alert('Your preferences have been saved.');
-  window.open('main.html','_self');
-}
-/////////////////////// PREFERENCES //////////////////////////
-
-///////// START OF HOMEPAGE /////////////////
-
+///////////////////////// HOMEPAGE AND CREATE ACCOUNT VARIABLES  ///////////////////////////
 var userDb = [];
 var userSignIn = [];
 var createAccount = document.getElementById('createButton');
@@ -48,7 +9,30 @@ var signIn = document.getElementById('signInButton');
 var signInButtonPopup = document.getElementById('signInButtonPopup');
 var popUp = document.getElementById('myModal');
 var span = document.getElementsByClassName('close')[0];
+///////////////////////// RESULTS PAGE VARIABLES ///////////////////////////
+var yesbtn = document.getElementById('yes');
+var nobtn = document.getElementById('no');
+var btngroup = document.getElementById('btngroup');
+var orderbtn = document.getElementById('order');
+var reservebtn = document.getElementById('reserve');
+var imgEl = document.getElementById('restimg');
+///////////////////////// DECLARING VARIABLES FOR MAIN PAGE ///////////////////////////
+var map, service, infoWindow, restInfo, foodType1, foodType2, foodType3, mainPrice, mainMeal;
+var preferences = JSON.parse(localStorage.getItem('preferences'));
+var path = window.location.pathname;
+var page = path.split('/').pop();
+var submit = document.getElementById('submit');
+var currentLocation = document.getElementById('location');
+var meal = document.getElementsByName('mealtype');
+var price = document.getElementsByName('dolla');
+var savePref = document.getElementById('save');
+var restResults = [];
+var finalThree = [];
 
+
+///////////////////////// HOMEPAGE & CREATE USER ///////////////////////////
+
+// Constructor Function to create multiple users
 function AccountConstructor(userName, userCity, userCnum, userPw) {
   this.name = userName;
   this.city = userCity;
@@ -57,12 +41,16 @@ function AccountConstructor(userName, userCity, userCnum, userPw) {
   userDb.push(this);
   console.log(userDb);
 }
+
+// Function for sign in
 function SignInConstructor(userName, userPw) {
   this.name = userName;
   this.pw = userPw;
   userSignIn.push(this);
   console.log(userSignIn);
 }
+
+// Function to store sign in as a new SingInConstructor
 function handleSignInPopup(event) {
   console.log(event);
   event.preventDefault();
@@ -91,6 +79,8 @@ function handleSignInPopup(event) {
   userPw = document.getElementById('popUserPw').value = '';
   userSignIn = [];
 }
+
+// Function which creates a new user account
 function handleContactSubmit(event) {
   console.log(event);
   event.preventDefault();
@@ -104,11 +94,10 @@ function handleContactSubmit(event) {
   userCity = document.getElementById('userCity').value = '';
   userPw = document.getElementById('userPw').value = '';
   userCnum = document.getElementById('userCnum').value = '';
-
   window.open('preferences.html', '_self');
 }
 
-///////////// HOMEPAGE POPUP ///////////////
+// Function which displays sign in pop up
 function handleSignIn(event) {
   event.preventDefault();
   popUp.style.display = 'block';
@@ -126,24 +115,33 @@ window.onclick = function(event) {
   }
 };
 
-///////////// HOMEPAGE EVENT LISTENERS ///////////////
 
-if (signInButtonPopup) {
-  signInButtonPopup.addEventListener('click', handleSignInPopup);
+///////////////////////// HOMEPAGE & CREATEUSER ///////////////////////////
+
+///////////////////////// PREFERENCES ///////////////////////////
+
+//function to store preferences in an array in local storage
+function handlePreferences() {
+  var prefArray = [];
+  var pref = document.getElementsByName('cuisine');
+  for(var i =0; i < pref.length; i++) {
+    if(pref[i].checked === true) {
+      prefArray.push(pref[i].value);
+      console.log(pref[i].value);
+      pref[i].checked = false;
+    }
+  }
+  localStorage.setItem('preferences', JSON.stringify(prefArray));
+  console.log(prefArray);
+  alert('Your preferences have been saved.');
+  window.open('main.html','_self');
 }
-if (signIn) {
-  signIn.addEventListener('click', handleSignIn);
-}
-if (createAccount) {
-  createAccount.addEventListener('click', handleContactSubmit);
-} 
-///////////// END OF HOMEPAGE ///////////////
+/////////////////////// PREFERENCES //////////////////////////
 
-//Function to identify current location
+///////////////////////// MAIN & RESULTS ///////////////////////////
 
+// Function to identify current location
 function currentLocationHandler () {
-  console.log('clicked me!');
-  //HTML5 geolocation
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       var pos = {
@@ -151,17 +149,16 @@ function currentLocationHandler () {
         lng: position.coords.longitude
       };
       console.log(pos);
-      localStorage.setItem('current-location', JSON.stringify(pos));
-    }, function () {
-      handleLocationError(true, infoWindow, map.getCenter());
+      localStorage.setItem('userLocation', JSON.stringify(pos));
     });
-  } else {
-    //No support for geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
   }
 }
 
+// Function to handle user selection on main page
 function sumbitHandler() {
+  if (!localStorage.userLocation) {
+    alert('please use user current location!');
+  }
   if (price[0].checked === false && price[1].checked === false && price[2].checked === false && price[3].checked === false) {
     alert('please choose a price range!');
   }
@@ -169,13 +166,13 @@ function sumbitHandler() {
   if (meal[0].checked === false && meal[1].checked === false && meal[2].checked === false && meal[3].checked === false) {
     alert('please choose a meal type!');
   }
-  if ((meal[0].checked === true || meal[1].checked === true || meal[2].checked === true || meal[3].checked === true) && (price[0].checked === true || price[1].checked === true || price[2].checked === true || price[3].checked === true)) {
+  if ((meal[0].checked === true || meal[1].checked === true || meal[2].checked === true || meal[3].checked === true) && (price[0].checked === true || price[1].checked === true || price[2].checked === true || price[3].checked === true) & (localStorage.userLocation.length > 0)) {
     //assign user price choice to a variable
     for (var i = 0; i < price.length; i++) {
       if (price[i].checked) {
         console.log(price[i].value + ' was clicked!');
         mainPrice = price[i].value;
-        JSON.stringify(localStorage.setItem('price', mainPrice));
+        // JSON.stringify(localStorage.setItem('price', mainPrice));
         price[i].checked = false;
         break;
       }
@@ -199,31 +196,35 @@ function sumbitHandler() {
   }
 }
 
-//function that creates random choices 
+// Function that creates random choices
 function randomRestaurant () {
-  var userLatLng = JSON.parse(localStorage.getItem('current-location'));
+  var foodType = [];
+  var userLatLng = JSON.parse(localStorage.getItem('userLocation'));
   var userLocation = new google.maps.LatLng(userLatLng.lat, userLatLng.lng);
-  var userPrice = JSON.parse(localStorage.getItem('price'));
-  if (mainMeal === 'dessert' && (userPrice === 1 || userPrice === 2 || userPrice ===3)) {
-    foodType1 = 'dessert in seattle';
-    foodType2 = 'dessert in seattle';
-    foodType3 = 'dessert in seattle';
+  if (mainMeal === 'dessert' && (mainPrice === 1 || mainPrice === 2 || mainPrice ===3)) {
+    for (var i = 0; i < 3; i++) {
+      foodType[i] = 'dessert in seattle';
+    }
   } else if (mainMeal === 'breakfast') {
-    foodType1 = 'breakfast';
-    foodType2 = 'breakfast';
-    foodType3 = 'breakfast';
-  } else if (mainMeal === 'dessert' && userPrice === 4) {
-    foodType1 = 'dessert in seattle';
-    foodType2 = 'dessert in seattle';
-    foodType3 = 'dessert in seattle';
-    userPrice = 3;
+    for (var j = 0; j < 3; j++) {
+      foodType[i] = 'breakfast';
+    }
+  } else if (mainMeal === 'dessert' && mainPrice === 4) {
+    mainPrice = 3;
+    for (var k = 0; k < 3; k++) {
+      foodType[i] = 'dessert in seattle';
+    }
   } else {
     if (localStorage.preferences) {
       if (localStorage.preferences.length > 2) {
-        foodType1 = preferences[Math.floor(Math.random() * preferences.length)];
-        foodType2 = preferences[Math.floor(Math.random() * preferences.length)];
-        foodType3 = preferences[Math.floor(Math.random() * preferences.length)];
+        for (var l = 0; l < 3; l++) {
+          foodType[l] = preferences[Math.floor(Math.random() * preferences.length)];
+        }
       } else {
+        for (var m = 0; m < 3; m++) {
+          foodType[i] = 'dessert in seattle';
+          ////////////////////////// END HERE
+        }
         foodType1 = 'Restaurant';
         foodType2 = 'Restaurant';
         foodType3 = 'Restaurant';
@@ -247,22 +248,22 @@ function randomRestaurant () {
     location: userLocation,
     radius: 1500,
     query: foodType1,
-    minPriceLevel: userPrice,
-    maxPriceLevel: userPrice
+    minPriceLevel: mainPrice,
+    maxPriceLevel: mainPrice
   };
   var request2 = {
     location: userLocation,
     radius: '500',
     query: foodType2,
-    minPriceLevel: userPrice,
-    maxPriceLevel: userPrice
+    minPriceLevel: mainPrice,
+    maxPriceLevel: mainPrice
   };
   var request3 = {
     location: userLocation,
     radius: '500',
     query: foodType3,
-    minPriceLevel: userPrice,
-    maxPriceLevel: userPrice
+    minPriceLevel: mainPrice,
+    maxPriceLevel: mainPrice
   };
   service = new google.maps.places.PlacesService(document.getElementById('map'));
   service.textSearch(request1, callback);
@@ -430,23 +431,32 @@ function changeImage() {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       imgEl.src = place.photos[Math.floor(Math.random()*place.photos.length)].getUrl({
         'maxWidth': 400, 
-    });
+      });
     }
   });
 }
+///////////////////////// MAIN & RESULTS ///////////////////////////
 
+///////////////////////// ALL EVENT LISTENERS ///////////////////////////
+
+if (signInButtonPopup) {
+  signInButtonPopup.addEventListener('click', handleSignInPopup);
+}
+if (signIn) {
+  signIn.addEventListener('click', handleSignIn);
+}
+if (createAccount) {
+  createAccount.addEventListener('click', handleContactSubmit);
+}
 if (savePref) {
   savePref.addEventListener('click', handlePreferences);
 }
-
 if (currentLocation) {
   currentLocation.addEventListener('click', currentLocationHandler);
 }
-
 if (submit) {
   submit.addEventListener('click', sumbitHandler);
 }
-
 if(page === 'results.html'){
   displayLocation();
   yesbtn.addEventListener('click', yesbtnHandler);
