@@ -241,7 +241,10 @@ a:hover {
 }
 
 #error-msg p {
-  font-size: 18px;
+  font-size: 20px;
   display: inline-block;
   color: red;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+
 }

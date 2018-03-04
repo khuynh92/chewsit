@@ -141,6 +141,7 @@ function handlePreferences() {
 
 // Function to identify current location
 function currentLocationHandler () {
+  var locationCheck = document.getElementById('location-check');
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       var pos = {
@@ -149,6 +150,8 @@ function currentLocationHandler () {
       };
       console.log(pos);
       localStorage.setItem('userLocation', JSON.stringify(pos));
+      locationCheck.textContent = 'Current Location Saved!';
+      locationCheck.style.color = 'rgb(18, 160, 77)';
     });
   }
 }
