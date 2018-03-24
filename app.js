@@ -29,7 +29,6 @@ var savePref = document.getElementById('save');
 var restResults = [];
 var finalThree = [];
 
-
 ///////////////////////// HOMEPAGE & CREATE USER ///////////////////////////
 
 // Constructor Function to create multiple users
