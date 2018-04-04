@@ -6,6 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>We Chews</title>
+  <link rel="stylesheet" href="css/vendor/styles/icons.css">
   <link rel="stylesheet" type="text/css" href="css/reset.css" />
   <link rel="stylesheet" type="text/css" href="css/results.css" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Titan+One" rel="stylesheet">
@@ -14,14 +15,25 @@
 </head>
 
 <body>
-    <header>
-        <h2 class = "navHeader"><a href ="index.html">Chewsit</a></h2>
-        <ul class = "nav">
-            <li><a href = "main.html">Main  </a></li>
-            <li><a href = "aboutus.html">About</a></li>
-            <li><a href = "preferences.html">Preferences</a></li>
-        </ul>
-    </header>
+    <header class="clearfix">
+        <h2 class="navHeader">
+          <a href="index.html">Chewsit</a>
+        </h2>
+        <div class="nav-container">
+          <div class="icon-menu"></div>
+          <ul class="nav">
+            <li>
+              <a href="main.html">Main</a>
+            </li>
+            <li>
+              <a href="aboutus.html">About</a>
+            </li>
+            <li>
+              <a href="preferences.html">Preferences</a>
+            </li>
+          </ul>
+        </div>
+      </header>
   <main>
     <section>
         <h1 id="choice">We Chews</h1>
@@ -43,8 +55,10 @@
     <button id="yes">Accept</button>
     <button name="no" id="no">Try Again</button>
   </div>
+  <div id="map-container">
   <div id="map">
     <iframe scrolling="no" marginheight="0" marginwidth="0" src="" width="580" height="400" frameborder="0" style="border:0"></iframe>>
+  </div>
   </div>
 
   <div>
