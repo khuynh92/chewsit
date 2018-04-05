@@ -1,6 +1,12 @@
-// APP.JS
-
 'use strict';
+
+$(document).ready(function() {
+  // run test on initial page load
+  checkSize();
+
+  // run test on resize of the window
+  $(window).resize(checkSize);
+});
 ///////////////////////// HOMEPAGE AND CREATE ACCOUNT VARIABLES  ///////////////////////////
 var userDb = [];
 var userSignIn = [];
@@ -21,8 +27,7 @@ var map, service, restInfo, mainPrice, mainMeal;
 var preferences = JSON.parse(localStorage.getItem('preferences'));
 var path = window.location.pathname;
 var page = path.split('/').pop();
-var submit = document.getElementById('submit');
-var currentLocation = document.getElementById('location');
+// var submit = document.getElementById('submit');
 var meal = document.getElementsByName('mealtype');
 var price = document.getElementsByName('dolla');
 var savePref = document.getElementById('save');
@@ -116,6 +121,21 @@ window.onclick = function(event) {
 
 ///////////////////////// HOMEPAGE & CREATEUSER ///////////////////////////
 
+///////////////////////// NAV ///////////////////////////
+function checkSize(){
+  if ($('.nav').css('display') === 'none' ){
+    $('.nav-container').on('mouseenter click', () => {
+      $('.nav').fadeIn(500);
+      $('.nav-container').on('mouseleave', () => {
+        $('.nav').fadeOut(100);
+      });
+    });
+  }
+}
+
+///////////////////////// NAV ///////////////////////////
+
+
 ///////////////////////// PREFERENCES ///////////////////////////
 
 //function to store preferences in an array in local storage
@@ -139,8 +159,7 @@ function handlePreferences() {
 ///////////////////////// MAIN & RESULTS ///////////////////////////
 
 // Function to identify current location
-function currentLocationHandler () {
-  var locationCheck = document.getElementById('location-check');
+$('#location').on('click', () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       var pos = {
@@ -149,14 +168,13 @@ function currentLocationHandler () {
       };
       console.log(pos);
       localStorage.setItem('userLocation', JSON.stringify(pos));
-      locationCheck.textContent = 'Current Location Saved!';
-      locationCheck.style.color = 'rgb(18, 160, 77)';
+      $('#location-check').text('Current Location Saved!').css({'color' : 'rgb(18, 160, 77)'});
     });
   }
-}
+});
 
 // Function to handle user selection on main page
-function sumbitHandler() {
+$('#submit').on('click', () => {
   var locationError = document.getElementById('location-error');
   var priceError = document.getElementById('price-error');
   var mealtypeError = document.getElementById('mealtype-error');
@@ -203,8 +221,7 @@ function sumbitHandler() {
       window.open('results.html','_self');
     }, 1400);
   }
-}
-
+});
 // Function that creates random choices
 function randomRestaurant () {
   var foodType = [];
@@ -422,12 +439,10 @@ if (createAccount) {
 if (savePref) {
   savePref.addEventListener('click', handlePreferences);
 }
-if (currentLocation) {
-  currentLocation.addEventListener('click', currentLocationHandler);
-}
-if (submit) {
-  submit.addEventListener('click', sumbitHandler);
-}
+
+// if (submit) {
+//   submit.addEventListener('click', sumbitHandler);
+// }
 if(page === 'results.html'){
   displayLocation();
   yesbtn.addEventListener('click', yesbtnHandler);

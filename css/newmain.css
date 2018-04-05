@@ -60,9 +60,9 @@ header {
 .nav-container:hover .icon-menu {
   color:rgb(25, 255, 121);
 }
-.nav-container:hover ul {
+/* .nav-container:hover ul {
   display: block;
-}
+} */
 
 .nav-container li a {
   text-decoration: none;
@@ -289,4 +289,22 @@ p.dollar {
   .nav-container ul li:first-child {
     margin-left: 10%;
   }
+
+  #location {
+    width: 500px;
+    height: 120px;
+    background-color: #242931f8;
+    margin: 50px auto 0 auto;
+    border-radius: 5px;
+    overflow: auto;
+    font-family: 'Quicksand', sans-serif;
+    }
+  #main {
+    color: white;
+    margin: 25px auto 0 auto;
+    width: 500px;
+    height: 450px;
+    background-color: #242931f8;
+    border-radius: 5px;
+    }
 }
