@@ -63,7 +63,7 @@ overflow: auto;
 font-family: 'Quicksand', sans-serif;
 }
 
-#location button {
+#location form input {
   height: 40px;
   color: white;
   display: block;

@@ -139,7 +139,8 @@ function handlePreferences() {
 ///////////////////////// MAIN & RESULTS ///////////////////////////
 
 // Function to identify current location
-function currentLocationHandler () {
+function currentLocationHandler (e) {
+  e.preventDefault();
   var locationCheck = document.getElementById('location-check');
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -423,7 +424,7 @@ if (savePref) {
   savePref.addEventListener('click', handlePreferences);
 }
 if (currentLocation) {
-  currentLocation.addEventListener('click', currentLocationHandler);
+  currentLocation.addEventListener('submit', currentLocationHandler);
 }
 if (submit) {
   submit.addEventListener('click', sumbitHandler);
