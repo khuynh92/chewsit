@@ -424,7 +424,7 @@ if (savePref) {
   savePref.addEventListener('click', handlePreferences);
 }
 if (currentLocation) {
-  currentLocation.addEventListener('submit', currentLocationHandler);
+  currentLocation.addEventListener('touchstart', currentLocationHandler);
 }
 if (submit) {
   submit.addEventListener('click', sumbitHandler);
