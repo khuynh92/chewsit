@@ -139,9 +139,8 @@ function handlePreferences() {
 ///////////////////////// MAIN & RESULTS ///////////////////////////
 
 // Function to identify current location
-function currentLocationHandler (e) {
+$('#current-location').on('click touchstart', e => {
   e.preventDefault();
-  var locationCheck = document.getElementById('location-check');
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       var pos = {
@@ -150,11 +149,11 @@ function currentLocationHandler (e) {
       };
       console.log(pos);
       localStorage.setItem('userLocation', JSON.stringify(pos));
-      locationCheck.textContent = 'Current Location Saved!';
-      locationCheck.style.color = 'rgb(18, 160, 77)';
+      $('#location-check').text('Current Location Saved!').css({'color' : 'rgb(18, 160, 77)'});
     });
   }
-}
+});
+  
 
 // Function to handle user selection on main page
 function sumbitHandler() {
@@ -423,9 +422,9 @@ if (createAccount) {
 if (savePref) {
   savePref.addEventListener('click', handlePreferences);
 }
-if (currentLocation) {
-  currentLocation.addEventListener('touchstart', currentLocationHandler);
-}
+// if (currentLocation) {
+//   currentLocation.addEventListener('touchstart', currentLocationHandler);
+// }
 if (submit) {
   submit.addEventListener('click', sumbitHandler);
 }
