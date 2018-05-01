@@ -151,6 +151,9 @@ $('#current-location').on('click touchstart', e => {
       localStorage.setItem('userLocation', JSON.stringify(pos));
       $('#location-check').text('Current Location Saved!').css({'color' : 'rgb(18, 160, 77)'});
     });
+  } else {
+    $('#location-check').text('Location services not available!').css({'color' : 'rgb(255, 50, 77)'});
+
   }
 });
   
